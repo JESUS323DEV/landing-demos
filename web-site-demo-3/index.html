@@ -25,6 +25,29 @@
     }
   </script>
   <style>
+    /* Tabs carta */
+    .tab-btn {
+      flex-shrink: 0;
+      padding: 0.6rem 1.25rem;
+      border-radius: 9999px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      border: 2px solid #C4872A;
+      color: #C4872A;
+      background: transparent;
+      cursor: pointer;
+      transition: background-color 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .tab-btn:hover  { background-color: rgba(196,135,42,0.1); }
+    .tab-btn.active { background-color: #C4872A; color: #fff; }
+    .tab-panel      { display: none; }
+    .tab-panel.show { display: block; }
+
+    /* Ocultar scrollbar tabs en mobile */
+    .tabs-scroll::-webkit-scrollbar { display: none; }
+    .tabs-scroll { -ms-overflow-style: none; scrollbar-width: none; }
+
     #mainNav { background-color: #2C1810; transition: background-color 0.35s ease, box-shadow 0.35s ease; }
     #mainNav.scrolled { background-color: rgba(255,248,239,0.97); box-shadow: 0 2px 24px rgba(44,24,16,0.10); }
     #mainNav .nav-link { color: rgba(255,255,255,0.72); transition: color 0.2s; }
@@ -33,6 +56,8 @@
     #mainNav.scrolled .nav-link:hover { color: #C4872A; }
     #navBrand { color: #ffffff; transition: color 0.35s; }
     #mainNav.scrolled #navBrand { color: #2C1810; }
+    #menuBtn { color: rgba(255,255,255,0.85); transition: color 0.35s; }
+    #mainNav.scrolled #menuBtn { color: #2C1810; }
   </style>
 </head>
 <body class="bg-rancho-cream text-rancho-dark">
@@ -51,11 +76,11 @@
       </div>
       <div class="hidden md:flex items-center gap-8">
         <a href="#nosotros" class="nav-link text-sm font-medium">Nosotros</a>
-        <a href="#menu"     class="nav-link text-sm font-medium">Menú</a>
+        <a href="#carta"    class="nav-link text-sm font-medium">Carta</a>
         <a href="#pedidos"  class="nav-link text-sm font-medium">Pedidos</a>
         <a href="#contacto" class="bg-rancho-amber hover:bg-rancho-gold text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors">Reservar</a>
       </div>
-      <button class="md:hidden text-white p-1" id="menuBtn" aria-label="Abrir menú">
+      <button class="md:hidden p-1" id="menuBtn" aria-label="Abrir menú">
         <svg id="iconMenu" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
         </svg>
@@ -67,7 +92,7 @@
     <div id="mobileMenu" class="hidden md:hidden bg-rancho-dark border-t border-white/10">
       <div class="px-4 py-3 flex flex-col gap-1">
         <a href="#nosotros" class="text-white/80 hover:text-rancho-gold hover:bg-white/5 transition px-4 py-3 rounded-xl text-sm font-medium">Nosotros</a>
-        <a href="#menu"     class="text-white/80 hover:text-rancho-gold hover:bg-white/5 transition px-4 py-3 rounded-xl text-sm font-medium">Menú</a>
+        <a href="#carta"    class="text-white/80 hover:text-rancho-gold hover:bg-white/5 transition px-4 py-3 rounded-xl text-sm font-medium">Carta</a>
         <a href="#pedidos"  class="text-white/80 hover:text-rancho-gold hover:bg-white/5 transition px-4 py-3 rounded-xl text-sm font-medium">Pedidos</a>
         <a href="#contacto" class="mt-2 bg-rancho-amber text-white text-sm font-bold px-4 py-3 rounded-xl text-center">Reservar mesa</a>
       </div>
@@ -256,13 +281,271 @@
       </div>
 
       <div class="text-center mt-12">
-        <a href="#pedidos" class="inline-flex items-center gap-2 border-2 border-rancho-amber text-rancho-amber hover:bg-rancho-amber hover:text-white font-bold px-9 py-4 rounded-full transition-all text-sm uppercase tracking-wider">
-          Ver menú completo
+        <a href="#carta" class="inline-flex items-center gap-2 border-2 border-rancho-amber text-rancho-amber hover:bg-rancho-amber hover:text-white font-bold px-9 py-4 rounded-full transition-all text-sm uppercase tracking-wider">
+          Ver carta completa
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
           </svg>
         </a>
       </div>
+    </div>
+  </section>
+
+  <!-- CARTA -->
+  <section id="carta" class="py-20 md:py-28 bg-rancho-cream">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <div class="text-center mb-10">
+        <span class="text-rancho-amber text-xs font-bold tracking-widest uppercase mb-3 block">Todo lo que servimos</span>
+        <h2 class="text-3xl md:text-5xl font-bold text-rancho-dark leading-tight" style="font-family: Georgia, serif;">
+          Nuestra <span class="text-rancho-amber">carta</span>
+        </h2>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tabs-scroll flex gap-2 overflow-x-auto pb-3 mb-8 justify-start md:justify-center">
+        <button class="tab-btn active" data-tab="entrantes">Entrantes</button>
+        <button class="tab-btn" data-tab="asados">Asados y Parrilladas</button>
+        <button class="tab-btn" data-tab="tipico">Lo más típico</button>
+        <button class="tab-btn" data-tab="bebidas">Bebidas</button>
+      </div>
+
+      <!-- ENTRANTES -->
+      <div id="tab-entrantes" class="tab-panel show">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+          <div class="bg-white rounded-2xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+              <img src="https://placehold.co/160x160/3D2314/E8A83E?text=Arepas" alt="Arepas con hogao" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <h4 class="font-bold text-rancho-dark text-sm leading-snug">Arepas con hogao</h4>
+                <span class="text-rancho-amber font-bold text-sm whitespace-nowrap">4,50 €</span>
+              </div>
+              <p class="text-rancho-mid text-xs leading-relaxed">Arepas de maíz caseras con salsa de tomate y cebolla caramelizada.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+              <img src="https://placehold.co/160x160/5C3520/E8A83E?text=Chicharrón" alt="Chicharrón" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <h4 class="font-bold text-rancho-dark text-sm leading-snug">Chicharrón</h4>
+                <span class="text-rancho-amber font-bold text-sm whitespace-nowrap">5,90 €</span>
+              </div>
+              <p class="text-rancho-mid text-xs leading-relaxed">Cerdo frito crujiente al estilo paisa, con limón y ají casero.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+              <img src="https://placehold.co/160x160/3D2314/E8A83E?text=Patacones" alt="Patacones con guacamole" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <h4 class="font-bold text-rancho-dark text-sm leading-snug">Patacones con guacamole</h4>
+                <span class="text-rancho-amber font-bold text-sm whitespace-nowrap">5,50 €</span>
+              </div>
+              <p class="text-rancho-mid text-xs leading-relaxed">Plátano verde aplastado y frito dos veces, con guacamole casero.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+              <img src="https://placehold.co/160x160/5C3520/E8A83E?text=Empanadas" alt="Empanadas paisas" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <h4 class="font-bold text-rancho-dark text-sm leading-snug">Empanadas paisas</h4>
+                <span class="text-rancho-amber font-bold text-sm whitespace-nowrap">6,50 €</span>
+              </div>
+              <p class="text-rancho-mid text-xs leading-relaxed">Masa de maíz rellena de carne y papa. Ración de 3 unidades.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ASADOS Y PARRILLADAS -->
+      <div id="tab-asados" class="tab-panel">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+          <div class="bg-white rounded-2xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+              <img src="https://placehold.co/160x160/2C1810/E8A83E?text=Asado" alt="Asado a la brasa" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <h4 class="font-bold text-rancho-dark text-sm leading-snug">Asado a la brasa</h4>
+                <span class="text-rancho-amber font-bold text-sm whitespace-nowrap">16,50 €</span>
+              </div>
+              <p class="text-rancho-mid text-xs leading-relaxed">Carne seleccionada a fuego vivo. Con papa criolla, yuca y ají casero.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+              <img src="https://placehold.co/160x160/3D2314/E8A83E?text=Pechuga" alt="Pechuga a la parrilla" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <h4 class="font-bold text-rancho-dark text-sm leading-snug">Pechuga a la parrilla</h4>
+                <span class="text-rancho-amber font-bold text-sm whitespace-nowrap">13,90 €</span>
+              </div>
+              <p class="text-rancho-mid text-xs leading-relaxed">Pollo marinado con especias paisas, arroz blanco y ensalada fresca.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+              <img src="https://placehold.co/160x160/5C3520/E8A83E?text=Chuleta" alt="Chuleta de cerdo" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <h4 class="font-bold text-rancho-dark text-sm leading-snug">Chuleta de cerdo</h4>
+                <span class="text-rancho-amber font-bold text-sm whitespace-nowrap">15,50 €</span>
+              </div>
+              <p class="text-rancho-mid text-xs leading-relaxed">Chuleta jugosa a las brasas con papas y plátano maduro frito.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+              <img src="https://placehold.co/160x160/2C1810/E8A83E?text=Punta+anca" alt="Punta de anca" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <h4 class="font-bold text-rancho-dark text-sm leading-snug">Punta de anca</h4>
+                <span class="text-rancho-amber font-bold text-sm whitespace-nowrap">18,90 €</span>
+              </div>
+              <p class="text-rancho-mid text-xs leading-relaxed">Corte de res madurado, jugoso y tierno. Con arroz y yuca frita.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- LO MÁS TÍPICO -->
+      <div id="tab-tipico" class="tab-panel">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+          <div class="bg-white rounded-2xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+              <img src="https://placehold.co/160x160/5C3520/FFF8EF?text=Bandeja" alt="Bandeja Paisa" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <h4 class="font-bold text-rancho-dark text-sm leading-snug">Bandeja Paisa</h4>
+                <span class="text-rancho-amber font-bold text-sm whitespace-nowrap">13,90 €</span>
+              </div>
+              <p class="text-rancho-mid text-xs leading-relaxed">Frijoles, chicharrón, carne molida, chorizo, arepa, huevo, arroz y aguacate.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+              <img src="https://placehold.co/160x160/3D2314/E8A83E?text=Sancocho" alt="Sancocho Paisa" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <h4 class="font-bold text-rancho-dark text-sm leading-snug">Sancocho Paisa</h4>
+                <span class="text-rancho-amber font-bold text-sm whitespace-nowrap">11,90 €</span>
+              </div>
+              <p class="text-rancho-mid text-xs leading-relaxed">Caldo con carne, plátano, yuca, mazorca y papa. Receta de la abuela.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+              <img src="https://placehold.co/160x160/5C3520/FFF8EF?text=Frijoles" alt="Frijoles con garra" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <h4 class="font-bold text-rancho-dark text-sm leading-snug">Frijoles con garra</h4>
+                <span class="text-rancho-amber font-bold text-sm whitespace-nowrap">10,90 €</span>
+              </div>
+              <p class="text-rancho-mid text-xs leading-relaxed">Frijoles rojos cocinados a fuego lento con carne de cerdo y especias.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+              <img src="https://placehold.co/160x160/2C1810/E8A83E?text=Mondongo" alt="Mondongo" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <h4 class="font-bold text-rancho-dark text-sm leading-snug">Mondongo</h4>
+                <span class="text-rancho-amber font-bold text-sm whitespace-nowrap">11,50 €</span>
+              </div>
+              <p class="text-rancho-mid text-xs leading-relaxed">Sopa tradicional de callos con verduras y especias paisas.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- BEBIDAS -->
+      <div id="tab-bebidas" class="tab-panel">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+          <div class="bg-white rounded-2xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+              <img src="https://placehold.co/160x160/3D2314/E8A83E?text=Limonada" alt="Limonada de coco" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <h4 class="font-bold text-rancho-dark text-sm leading-snug">Limonada de coco</h4>
+                <span class="text-rancho-amber font-bold text-sm whitespace-nowrap">4,50 €</span>
+              </div>
+              <p class="text-rancho-mid text-xs leading-relaxed">Cremosa y refrescante, con leche de coco y limón recién exprimido.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+              <img src="https://placehold.co/160x160/5C3520/FFF8EF?text=Jugo" alt="Jugo natural" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <h4 class="font-bold text-rancho-dark text-sm leading-snug">Jugo natural</h4>
+                <span class="text-rancho-amber font-bold text-sm whitespace-nowrap">3,90 €</span>
+              </div>
+              <p class="text-rancho-mid text-xs leading-relaxed">Mango, maracuyá, guanábana o lulo. Fruta natural, sin azúcar añadida.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+              <img src="https://placehold.co/160x160/2C1810/E8A83E?text=Panela" alt="Agua de panela" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <h4 class="font-bold text-rancho-dark text-sm leading-snug">Agua de panela</h4>
+                <span class="text-rancho-amber font-bold text-sm whitespace-nowrap">2,50 €</span>
+              </div>
+              <p class="text-rancho-mid text-xs leading-relaxed">Bebida tradicional colombiana. Disponible fría o caliente.</p>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-2xl p-4 flex gap-4 shadow-sm hover:shadow-md transition-shadow">
+            <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
+              <img src="https://placehold.co/160x160/3D2314/E8A83E?text=Cerveza" alt="Cerveza artesanal" class="w-full h-full object-cover" />
+            </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-start justify-between gap-2 mb-1">
+                <h4 class="font-bold text-rancho-dark text-sm leading-snug">Cerveza artesanal</h4>
+                <span class="text-rancho-amber font-bold text-sm whitespace-nowrap">3,90 €</span>
+              </div>
+              <p class="text-rancho-mid text-xs leading-relaxed">Selección de cervezas locales y de importación.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -516,6 +799,16 @@
   </footer>
 
   <script>
+    // Tabs carta
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('show'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('show');
+      });
+    });
+
     // Nav scroll state
     const mainNav = document.getElementById('mainNav');
     window.addEventListener('scroll', () => {
