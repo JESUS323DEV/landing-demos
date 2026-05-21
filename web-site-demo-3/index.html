@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>El Rancho Paisa | Cocina Colombiana en Barcelona</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            rancho: {
+              dark:  '#2C1810',
+              brown: '#3D2314',
+              mid:   '#5C3520',
+              amber: '#C4872A',
+              gold:  '#E8A83E',
+              cream: '#FFF8EF',
+              warm:  '#FAF0E0',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    #mainNav { background-color: #2C1810; transition: background-color 0.35s ease, box-shadow 0.35s ease; }
+    #mainNav.scrolled { background-color: rgba(255,248,239,0.97); box-shadow: 0 2px 24px rgba(44,24,16,0.10); }
+    #mainNav .nav-link { color: rgba(255,255,255,0.72); transition: color 0.2s; }
+    #mainNav.scrolled .nav-link { color: rgba(44,24,16,0.65); }
+    #mainNav .nav-link:hover { color: #E8A83E; }
+    #mainNav.scrolled .nav-link:hover { color: #C4872A; }
+    #navBrand { color: #ffffff; transition: color 0.35s; }
+    #mainNav.scrolled #navBrand { color: #2C1810; }
+  </style>
+</head>
+<body class="bg-rancho-cream text-rancho-dark">
+
+  <!-- NAV -->
+  <nav id="mainNav" class="fixed top-0 left-0 right-0 z-50 backdrop-blur-sm">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 rounded-full bg-rancho-amber/20 border-2 border-rancho-amber/60 flex items-center justify-center overflow-hidden flex-shrink-0">
+          <span class="text-rancho-gold text-xs font-bold tracking-wider">ERP</span>
+        </div>
+        <div>
+          <p id="navBrand" class="font-bold text-base leading-tight tracking-wide">El Rancho Paisa</p>
+          <p class="text-rancho-amber text-xs tracking-widest uppercase">Cocina Colombiana</p>
+        </div>
+      </div>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#nosotros" class="nav-link text-sm font-medium">Nosotros</a>
+        <a href="#menu"     class="nav-link text-sm font-medium">Menú</a>
+        <a href="#pedidos"  class="nav-link text-sm font-medium">Pedidos</a>
+        <a href="#contacto" class="bg-rancho-amber hover:bg-rancho-gold text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-colors">Reservar</a>
+      </div>
+      <button class="md:hidden text-white p-1" id="menuBtn" aria-label="Abrir menú">
+        <svg id="iconMenu" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg id="iconClose" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+    <div id="mobileMenu" class="hidden md:hidden bg-rancho-dark border-t border-white/10">
+      <div class="px-4 py-3 flex flex-col gap-1">
+        <a href="#nosotros" class="text-white/80 hover:text-rancho-gold hover:bg-white/5 transition px-4 py-3 rounded-xl text-sm font-medium">Nosotros</a>
+        <a href="#menu"     class="text-white/80 hover:text-rancho-gold hover:bg-white/5 transition px-4 py-3 rounded-xl text-sm font-medium">Menú</a>
+        <a href="#pedidos"  class="text-white/80 hover:text-rancho-gold hover:bg-white/5 transition px-4 py-3 rounded-xl text-sm font-medium">Pedidos</a>
+        <a href="#contacto" class="mt-2 bg-rancho-amber text-white text-sm font-bold px-4 py-3 rounded-xl text-center">Reservar mesa</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" class="relative">
+
+    <!-- Main image + overlay -->
+    <div class="relative min-h-screen flex items-center justify-center overflow-hidden bg-rancho-dark">
+      <div class="absolute inset-0 bg-gradient-to-b from-rancho-dark/80 via-rancho-dark/60 to-rancho-dark"></div>
+
+      <div class="relative z-10 text-center px-6 pt-28 pb-16 max-w-3xl mx-auto">
+        <span class="inline-block bg-rancho-amber/25 border border-rancho-amber/50 text-rancho-gold text-xs font-bold tracking-widest uppercase px-5 py-2 rounded-full mb-7">
+          Cocina Paisa en Barcelona
+        </span>
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-5" style="font-family: Georgia, serif;">
+          El sabor de Colombia<br/>
+          <span class="text-rancho-gold">en tu mesa</span>
+        </h1>
+        <p class="text-white/80 text-base md:text-xl max-w-xl mx-auto mb-10 leading-relaxed">
+          Asados a la brasa, bandeja paisa y los platos más auténticos de Antioquia.
+          En el corazón de Sant Martí, Barcelona.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#pedidos" class="bg-rancho-amber hover:bg-rancho-gold text-white font-bold px-9 py-4 rounded-full transition-all shadow-lg text-sm uppercase tracking-wider">
+            Pedir ahora
+          </a>
+          <a href="#menu" class="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-9 py-4 rounded-full transition-all text-sm uppercase tracking-wider backdrop-blur-sm">
+            Ver menú
+          </a>
+        </div>
+      </div>
+
+      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:block animate-bounce">
+        <svg class="w-6 h-6 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Galeria strip -->
+    <div class="bg-rancho-dark pt-1 pb-3 px-1 md:px-4">
+      <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-1 md:gap-2">
+        <div class="aspect-[4/3] rounded-lg overflow-hidden">
+          <img src="https://placehold.co/600x450/3D2314/E8A83E?text=Asado+a+la+Brasa"    alt="Asado a la brasa"    class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="aspect-[4/3] rounded-lg overflow-hidden">
+          <img src="https://placehold.co/600x450/5C3520/E8A83E?text=Bandeja+Paisa"       alt="Bandeja Paisa"       class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="aspect-[4/3] rounded-lg overflow-hidden">
+          <img src="https://placehold.co/600x450/3D2314/E8A83E?text=Arepas+%26+Chicharrón" alt="Arepas y chicharrón"  class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="aspect-[4/3] rounded-lg overflow-hidden">
+          <img src="https://placehold.co/600x450/5C3520/E8A83E?text=El+Rancho"           alt="El Rancho Paisa"     class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOSOTROS -->
+  <section id="nosotros" class="py-20 md:py-28 bg-rancho-cream">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+
+        <!-- Texto -->
+        <div>
+          <span class="text-rancho-amber text-xs font-bold tracking-widest uppercase mb-3 block">Nuestra historia</span>
+          <h2 class="text-3xl md:text-5xl font-bold text-rancho-dark leading-tight mb-6" style="font-family: Georgia, serif;">
+            Del corazón de<br/><span class="text-rancho-amber">Antioquia</span> a Barcelona
+          </h2>
+          <p class="text-rancho-mid text-base md:text-lg leading-relaxed mb-5">
+            El Rancho Paisa nació de una promesa: llevar la cocina de la abuela a cada plato.
+            Vinimos de Medellín con recetas heredadas de generación en generación y un fogón que nunca se apaga.
+          </p>
+          <p class="text-rancho-mid text-base md:text-lg leading-relaxed mb-10">
+            Cada bandeja, cada asado y cada arepa que servimos tiene el alma de la tierra paisa.
+            Nada de atajos. Solo ingredientes frescos, brasas vivas y mucho sabor.
+          </p>
+          <div class="grid grid-cols-3 gap-4 border-t border-rancho-amber/20 pt-8">
+            <div class="text-center">
+              <p class="text-3xl font-bold text-rancho-amber" style="font-family: Georgia, serif;">+10</p>
+              <p class="text-xs text-rancho-mid mt-1 leading-tight">Años de sabor en Barcelona</p>
+            </div>
+            <div class="text-center border-x border-rancho-amber/20">
+              <p class="text-3xl font-bold text-rancho-amber" style="font-family: Georgia, serif;">100%</p>
+              <p class="text-xs text-rancho-mid mt-1 leading-tight">Recetas auténticas paisas</p>
+            </div>
+            <div class="text-center">
+              <p class="text-3xl font-bold text-rancho-amber" style="font-family: Georgia, serif;">4.8</p>
+              <p class="text-xs text-rancho-mid mt-1 leading-tight">Valoración en Google</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Imagen -->
+        <div class="relative">
+          <div class="aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl">
+            <img
+              src="https://placehold.co/600x800/3D2314/C4872A?text=Foto+Restaurante"
+              alt="Interior El Rancho Paisa"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <div class="absolute -bottom-6 -left-6 bg-rancho-amber text-white rounded-2xl p-6 shadow-2xl">
+            <p class="text-3xl font-bold leading-none mb-1" style="font-family: Georgia, serif;">15+</p>
+            <p class="text-xs font-bold uppercase tracking-wide leading-tight">Platos<br/>típicos</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- PLATOS ESTRELLA -->
+  <section id="menu" class="py-20 md:py-28 bg-rancho-warm">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <span class="text-rancho-amber text-xs font-bold tracking-widest uppercase mb-3 block">Lo que más nos piden</span>
+        <h2 class="text-3xl md:text-5xl font-bold text-rancho-dark leading-tight" style="font-family: Georgia, serif;">
+          Nuestros <span class="text-rancho-amber">platos estrella</span>
+        </h2>
+        <p class="text-rancho-mid mt-4 max-w-md mx-auto text-base md:text-lg">
+          De la parrilla directamente a tu mesa. Sabores que no se olvidan.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+
+        <!-- Card 1 -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all group">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="https://placehold.co/600x450/5C3520/FFF8EF?text=Bandeja+Paisa" alt="Bandeja Paisa" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-start justify-between mb-3">
+              <h3 class="text-lg font-bold text-rancho-dark" style="font-family: Georgia, serif;">Bandeja Paisa</h3>
+              <span class="bg-rancho-amber/10 text-rancho-amber text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">Clásico</span>
+            </div>
+            <p class="text-rancho-mid text-sm leading-relaxed mb-5">
+              Frijoles, chicharrón, carne molida, chorizo, arepa, huevo, arroz y aguacate.
+              El plato completo de la tradición antioqueña.
+            </p>
+            <p class="text-rancho-amber font-bold text-xl">Desde 13,90 €</p>
+          </div>
+        </div>
+
+        <!-- Card 2 (destacada) -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all group md:-mt-5">
+          <div class="relative aspect-[4/3] overflow-hidden">
+            <img src="https://placehold.co/600x450/2C1810/E8A83E?text=Asado+a+la+Brasa" alt="Asado a la Brasa" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <span class="absolute top-4 left-4 bg-rancho-amber text-white text-xs font-bold px-3 py-1.5 rounded-full uppercase tracking-wide">El más pedido</span>
+          </div>
+          <div class="p-6">
+            <div class="flex items-start justify-between mb-3">
+              <h3 class="text-lg font-bold text-rancho-dark" style="font-family: Georgia, serif;">Asado a la Brasa</h3>
+              <span class="bg-rancho-amber/10 text-rancho-amber text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">Parrilla</span>
+            </div>
+            <p class="text-rancho-mid text-sm leading-relaxed mb-5">
+              Carne seleccionada cocinada a fuego vivo. Con papa criolla, yuca y ají casero.
+              El sabor que te lleva directo al rancho.
+            </p>
+            <p class="text-rancho-amber font-bold text-xl">Desde 16,50 €</p>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all group">
+          <div class="aspect-[4/3] overflow-hidden">
+            <img src="https://placehold.co/600x450/5C3520/FFF8EF?text=Sancocho+Paisa" alt="Sancocho Paisa" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          </div>
+          <div class="p-6">
+            <div class="flex items-start justify-between mb-3">
+              <h3 class="text-lg font-bold text-rancho-dark" style="font-family: Georgia, serif;">Sancocho Paisa</h3>
+              <span class="bg-rancho-amber/10 text-rancho-amber text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">Tradicional</span>
+            </div>
+            <p class="text-rancho-mid text-sm leading-relaxed mb-5">
+              El caldo que cura todo. Receta de la abuela con carne, plátano, yuca, mazorca y papa.
+              Un abrazo en cada cucharada.
+            </p>
+            <p class="text-rancho-amber font-bold text-xl">Desde 11,90 €</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="#pedidos" class="inline-flex items-center gap-2 border-2 border-rancho-amber text-rancho-amber hover:bg-rancho-amber hover:text-white font-bold px-9 py-4 rounded-full transition-all text-sm uppercase tracking-wider">
+          Ver menú completo
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PEDIDOS ONLINE -->
+  <section id="pedidos" class="py-20 md:py-28 bg-rancho-dark relative overflow-hidden">
+    <div class="absolute top-0 right-0 w-96 h-96 bg-rancho-amber/5 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 left-0 w-64 h-64 bg-rancho-gold/5 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6 text-center">
+      <span class="text-rancho-amber text-xs font-bold tracking-widest uppercase mb-4 block">Sin salir de casa</span>
+      <h2 class="text-3xl md:text-5xl font-bold text-white leading-tight mb-4" style="font-family: Georgia, serif;">
+        ¿Te quedas en casa?<br/>
+        <span class="text-rancho-gold">Llevamos el rancho a tu puerta</span>
+      </h2>
+      <p class="text-white/65 text-base md:text-lg max-w-xl mx-auto mb-12">
+        Pide por tus plataformas favoritas y recibe tu comida paisa en menos de 45 minutos.
+        Repartimos en toda Barcelona ciudad.
+      </p>
+
+      <!-- Plataformas -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto mb-14">
+        <a href="#" class="bg-white/8 hover:bg-white/15 border border-white/15 hover:border-rancho-amber/50 rounded-2xl p-7 transition-all flex flex-col items-center gap-3 group">
+          <div class="w-14 h-14 bg-black rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform">
+            <span class="text-white font-black text-lg tracking-tight">UE</span>
+          </div>
+          <span class="text-white font-semibold text-sm">Uber Eats</span>
+          <span class="text-rancho-amber text-xs font-medium">Pedir ahora</span>
+        </a>
+        <a href="#" class="bg-white/8 hover:bg-white/15 border border-white/15 hover:border-rancho-amber/50 rounded-2xl p-7 transition-all flex flex-col items-center gap-3 group">
+          <div class="w-14 h-14 bg-orange-500 rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform">
+            <span class="text-white font-black text-lg tracking-tight">JE</span>
+          </div>
+          <span class="text-white font-semibold text-sm">Just Eat</span>
+          <span class="text-rancho-amber text-xs font-medium">Pedir ahora</span>
+        </a>
+        <a href="#" class="bg-white/8 hover:bg-white/15 border border-white/15 hover:border-rancho-amber/50 rounded-2xl p-7 transition-all flex flex-col items-center gap-3 group">
+          <div class="w-14 h-14 bg-cyan-400 rounded-2xl flex items-center justify-center group-hover:scale-105 transition-transform">
+            <span class="text-white font-black text-xl">G</span>
+          </div>
+          <span class="text-white font-semibold text-sm">Glovo</span>
+          <span class="text-rancho-amber text-xs font-medium">Pedir ahora</span>
+        </a>
+      </div>
+
+      <!-- Info strips -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-2xl mx-auto">
+        <div class="flex items-center gap-4 bg-white/5 rounded-xl px-5 py-4">
+          <div class="w-10 h-10 bg-rancho-amber/20 rounded-xl flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-rancho-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+            </svg>
+          </div>
+          <div class="text-left">
+            <p class="text-white font-semibold text-sm">Entrega rápida</p>
+            <p class="text-white/45 text-xs">En 30 a 45 min</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 bg-white/5 rounded-xl px-5 py-4">
+          <div class="w-10 h-10 bg-rancho-amber/20 rounded-xl flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-rancho-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+          </div>
+          <div class="text-left">
+            <p class="text-white font-semibold text-sm">Pedido mínimo</p>
+            <p class="text-white/45 text-xs">Desde 15 €</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 bg-white/5 rounded-xl px-5 py-4">
+          <div class="w-10 h-10 bg-rancho-amber/20 rounded-xl flex items-center justify-center flex-shrink-0">
+            <svg class="w-5 h-5 text-rancho-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div class="text-left">
+            <p class="text-white font-semibold text-sm">Horario reparto</p>
+            <p class="text-white/45 text-xs">12:00 a 23:00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="py-20 md:py-28 bg-rancho-cream">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16">
+
+        <!-- Info -->
+        <div>
+          <span class="text-rancho-amber text-xs font-bold tracking-widest uppercase mb-3 block">Encuéntranos</span>
+          <h2 class="text-3xl md:text-5xl font-bold text-rancho-dark leading-tight mb-6" style="font-family: Georgia, serif;">
+            Ven a conocer<br/><span class="text-rancho-amber">el rancho</span>
+          </h2>
+          <p class="text-rancho-mid text-base md:text-lg leading-relaxed mb-10">
+            Te esperamos con la mesa puesta. Reserva tu sitio o pásate sin más.
+            Siempre hay un plato caliente esperándote.
+          </p>
+
+          <div class="space-y-6">
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 bg-rancho-amber/10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-rancho-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0zM15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="font-bold text-rancho-dark text-sm mb-0.5">Dirección</p>
+                <p class="text-rancho-mid text-sm">Carrer de Fluvià, 97</p>
+                <p class="text-rancho-mid text-sm">Sant Martí, 08019 Barcelona</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 bg-rancho-amber/10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-rancho-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.948V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="font-bold text-rancho-dark text-sm mb-0.5">Teléfono</p>
+                <a href="tel:+34000000000" class="text-rancho-amber hover:text-rancho-gold text-sm font-semibold transition-colors">+34 000 000 000</a>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 bg-rancho-amber/10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-rancho-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+              </div>
+              <div>
+                <p class="font-bold text-rancho-dark text-sm mb-0.5">Horario</p>
+                <p class="text-rancho-mid text-sm">Lun a Vie: 12:00-16:00 / 20:00-23:30</p>
+                <p class="text-rancho-mid text-sm">Sáb y Dom: 12:00-00:00</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-11 h-11 bg-rancho-amber/10 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5">
+                <svg class="w-5 h-5 text-rancho-amber" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"/>
+                </svg>
+              </div>
+              <div>
+                <p class="font-bold text-rancho-dark text-sm mb-1">Redes sociales</p>
+                <div class="flex gap-4">
+                  <a href="#" class="text-rancho-amber hover:text-rancho-gold text-sm font-semibold transition-colors">Instagram</a>
+                  <a href="#" class="text-rancho-amber hover:text-rancho-gold text-sm font-semibold transition-colors">Facebook</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulario -->
+        <div class="bg-white rounded-3xl shadow-xl p-8 md:p-10">
+          <h3 class="text-2xl font-bold text-rancho-dark mb-1" style="font-family: Georgia, serif;">Escríbenos</h3>
+          <p class="text-rancho-mid text-sm mb-7">Para reservas, eventos o cualquier consulta. Respondemos en menos de 24 h.</p>
+          <form class="space-y-4" id="contactForm" onsubmit="handleSubmit(event)" novalidate>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-rancho-dark text-xs font-bold uppercase tracking-wider mb-1.5">Nombre</label>
+                <input type="text" placeholder="Tu nombre" required
+                  class="w-full border border-rancho-amber/25 rounded-xl px-4 py-3 text-sm text-rancho-dark placeholder-rancho-mid/40 focus:outline-none focus:border-rancho-amber focus:ring-2 focus:ring-rancho-amber/20 transition"
+                />
+              </div>
+              <div>
+                <label class="block text-rancho-dark text-xs font-bold uppercase tracking-wider mb-1.5">Teléfono</label>
+                <input type="tel" placeholder="+34 600 000 000"
+                  class="w-full border border-rancho-amber/25 rounded-xl px-4 py-3 text-sm text-rancho-dark placeholder-rancho-mid/40 focus:outline-none focus:border-rancho-amber focus:ring-2 focus:ring-rancho-amber/20 transition"
+                />
+              </div>
+            </div>
+            <div>
+              <label class="block text-rancho-dark text-xs font-bold uppercase tracking-wider mb-1.5">Email</label>
+              <input type="email" placeholder="tu@email.com" required
+                class="w-full border border-rancho-amber/25 rounded-xl px-4 py-3 text-sm text-rancho-dark placeholder-rancho-mid/40 focus:outline-none focus:border-rancho-amber focus:ring-2 focus:ring-rancho-amber/20 transition"
+              />
+            </div>
+            <div>
+              <label class="block text-rancho-dark text-xs font-bold uppercase tracking-wider mb-1.5">Motivo</label>
+              <select class="w-full border border-rancho-amber/25 rounded-xl px-4 py-3 text-sm text-rancho-dark focus:outline-none focus:border-rancho-amber focus:ring-2 focus:ring-rancho-amber/20 transition bg-white appearance-none">
+                <option value="">Selecciona una opción</option>
+                <option>Reserva de mesa</option>
+                <option>Evento privado</option>
+                <option>Consulta sobre pedidos</option>
+                <option>Otro</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-rancho-dark text-xs font-bold uppercase tracking-wider mb-1.5">Mensaje</label>
+              <textarea rows="4" placeholder="¿En qué podemos ayudarte?" required
+                class="w-full border border-rancho-amber/25 rounded-xl px-4 py-3 text-sm text-rancho-dark placeholder-rancho-mid/40 focus:outline-none focus:border-rancho-amber focus:ring-2 focus:ring-rancho-amber/20 transition resize-none"
+              ></textarea>
+            </div>
+            <button type="submit"
+              class="w-full bg-rancho-amber hover:bg-rancho-gold text-white font-bold py-4 rounded-xl transition-all shadow-md hover:shadow-lg text-sm uppercase tracking-wider">
+              Enviar mensaje
+            </button>
+          </form>
+          <div id="successMsg" class="hidden mt-5 bg-green-50 border border-green-200 text-green-700 text-sm rounded-xl px-5 py-3 text-center font-medium">
+            Mensaje enviado. Te contactamos en breve.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-rancho-dark pt-14 pb-8">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-full border border-rancho-amber/40 bg-rancho-amber/10 flex items-center justify-center flex-shrink-0">
+              <span class="text-rancho-gold text-xs font-bold">ERP</span>
+            </div>
+            <div>
+              <p class="text-white font-bold text-sm">El Rancho Paisa</p>
+              <p class="text-rancho-amber text-xs tracking-wider uppercase">Cocina Colombiana</p>
+            </div>
+          </div>
+          <p class="text-white/45 text-xs leading-relaxed max-w-xs">
+            Sabor paisa en el corazón de Barcelona. Desde Medellín hasta Sant Martí, con la receta de la abuela.
+          </p>
+        </div>
+        <div>
+          <p class="text-rancho-amber text-xs font-bold uppercase tracking-widest mb-5">Navegación</p>
+          <ul class="space-y-3">
+            <li><a href="#nosotros" class="text-white/55 hover:text-rancho-gold text-sm transition-colors">Nosotros</a></li>
+            <li><a href="#menu"     class="text-white/55 hover:text-rancho-gold text-sm transition-colors">Menú</a></li>
+            <li><a href="#pedidos"  class="text-white/55 hover:text-rancho-gold text-sm transition-colors">Pedidos online</a></li>
+            <li><a href="#contacto" class="text-white/55 hover:text-rancho-gold text-sm transition-colors">Contacto</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-rancho-amber text-xs font-bold uppercase tracking-widest mb-5">Dónde estamos</p>
+          <p class="text-white/55 text-sm mb-1">Carrer de Fluvià, 97</p>
+          <p class="text-white/55 text-sm mb-5">Sant Martí, 08019 Barcelona</p>
+          <p class="text-white/40 text-xs mb-1">L-V: 12:00-16:00 / 20:00-23:30</p>
+          <p class="text-white/40 text-xs">S-D: 12:00-00:00</p>
+        </div>
+      </div>
+      <div class="border-t border-white/8 pt-6 flex flex-col md:flex-row items-center justify-between gap-3">
+        <p class="text-white/25 text-xs">© 2026 El Rancho Paisa. Todos los derechos reservados.</p>
+        <p class="text-white/15 text-xs">Demo web</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll state
+    const mainNav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      mainNav.classList.toggle('scrolled', window.scrollY > 80);
+    });
+
+    const menuBtn    = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const iconMenu   = document.getElementById('iconMenu');
+    const iconClose  = document.getElementById('iconClose');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      iconMenu.classList.toggle('hidden');
+      iconClose.classList.toggle('hidden');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        iconMenu.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+      });
+    });
+
+    function handleSubmit(e) {
+      e.preventDefault();
+      const msg = document.getElementById('successMsg');
+      msg.classList.remove('hidden');
+      e.target.reset();
+      setTimeout(() => msg.classList.add('hidden'), 5000);
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

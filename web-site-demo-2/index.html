@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cristina Jiménez · Belleza & Bienestar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream:  '#F7F3EE',
+            bark:   '#2C1B0E',
+            sage:   '#7A9C84',
+            sand:   '#D4B896',
+            mist:   '#EAE4DC',
+          },
+          fontFamily: {
+            serif:  ['"Playfair Display"', 'Georgia', 'serif'],
+            sans:   ['"DM Sans"', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    html { scroll-behavior: smooth; }
+    .nav-link { @apply text-bark/70 hover:text-bark transition-colors duration-200 text-sm font-medium tracking-wide; }
+    .btn-primary {
+      @apply inline-block bg-bark text-cream px-7 py-3.5 text-sm font-medium tracking-widest uppercase rounded-full hover:bg-bark/80 transition-all duration-300;
+    }
+    .btn-outline {
+      @apply inline-block border border-bark text-bark px-7 py-3.5 text-sm font-medium tracking-widest uppercase rounded-full hover:bg-bark hover:text-cream transition-all duration-300;
+    }
+    .section-label {
+      @apply text-sage text-xs font-medium tracking-[0.25em] uppercase;
+    }
+    .placeholder-img {
+      background: linear-gradient(135deg, #EAE4DC 0%, #D4B896 50%, #C4A882 100%);
+    }
+    .placeholder-img-sage {
+      background: linear-gradient(135deg, #E8EEE9 0%, #B8CBBC 50%, #7A9C84 100%);
+    }
+  </style>
+</head>
+<body class="bg-cream font-sans text-bark antialiased">
+
+  <!-- ═══════════════════════════════════════════
+       NAV MOBILE
+  ═══════════════════════════════════════════ -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-cream/95 backdrop-blur-sm border-b border-mist">
+    <div class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+
+      <!-- Logo -->
+      <a href="#" class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-full bg-bark flex items-center justify-center">
+          <span class="text-cream font-serif text-sm font-bold">CJ</span>
+        </div>
+        <span class="font-serif text-base font-semibold leading-tight">Cristina Jiménez</span>
+      </a>
+
+      <!-- Desktop nav (md+) -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#sobre-mi" class="nav-link">Sobre mí</a>
+        <a href="#servicios" class="nav-link">Servicios</a>
+        <a href="#galeria" class="nav-link">Galería</a>
+        <a href="#contacto" class="nav-link">Contacto</a>
+      </nav>
+      <a href="#contacto" class="hidden md:inline-block btn-primary text-xs px-5 py-2.5">
+        Reservar cita
+      </a>
+
+      <!-- Mobile hamburger -->
+      <button id="menu-btn" class="md:hidden flex flex-col gap-1.5 p-1" aria-label="Menú">
+        <span class="block w-6 h-0.5 bg-bark transition-all duration-300" id="bar1"></span>
+        <span class="block w-6 h-0.5 bg-bark transition-all duration-300" id="bar2"></span>
+        <span class="block w-4 h-0.5 bg-bark transition-all duration-300" id="bar3"></span>
+      </button>
+    </div>
+
+    <!-- Mobile dropdown -->
+    <div id="mobile-menu" class="md:hidden hidden bg-cream border-t border-mist">
+      <nav class="flex flex-col px-5 py-6 gap-5">
+        <a href="#sobre-mi"  class="nav-link text-base" onclick="closeMenu()">Sobre mí</a>
+        <a href="#servicios" class="nav-link text-base" onclick="closeMenu()">Servicios</a>
+        <a href="#galeria"   class="nav-link text-base" onclick="closeMenu()">Galería</a>
+        <a href="#contacto"  class="nav-link text-base" onclick="closeMenu()">Contacto</a>
+        <a href="#contacto"  class="btn-primary text-center mt-2" onclick="closeMenu()">Reservar cita</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="pt-16">
+
+    <!-- ═══════════════════════════════════════════
+         HERO
+    ═══════════════════════════════════════════ -->
+    <section id="hero" class="min-h-[calc(100svh-4rem)] bg-cream flex items-center">
+      <div class="max-w-6xl mx-auto px-5 py-16 w-full">
+
+        <!-- Mobile: column / Desktop: 2 col -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+          <!-- Copy -->
+          <div class="flex flex-col gap-6">
+            <span class="section-label">Centro de Belleza · Barcelona</span>
+            <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] text-bark">
+              Más de 20 años<br />
+              <em class="font-normal text-sage not-italic">cuidando tu</em><br />
+              bienestar
+            </h1>
+            <p class="text-bark/60 leading-relaxed text-base md:text-lg max-w-md">
+              Tratamientos corporales y faciales personalizados en el corazón de Barcelona. Tecnología LPG, HIFU corporal y depilación láser con resultados reales.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3 pt-2">
+              <a href="#contacto" class="btn-primary text-center">Pedir cita</a>
+              <a href="#servicios" class="btn-outline text-center">Ver tratamientos</a>
+            </div>
+            <div class="flex items-center gap-6 pt-4 border-t border-mist">
+              <div class="text-center">
+                <p class="font-serif text-2xl font-bold">20+</p>
+                <p class="text-xs text-bark/50 tracking-wide">años de exp.</p>
+              </div>
+              <div class="w-px h-8 bg-mist"></div>
+              <div class="text-center">
+                <p class="font-serif text-2xl font-bold">594</p>
+                <p class="text-xs text-bark/50 tracking-wide">seguidoras</p>
+              </div>
+              <div class="w-px h-8 bg-mist"></div>
+              <div class="text-center">
+                <p class="font-serif text-2xl font-bold">LPG</p>
+                <p class="text-xs text-bark/50 tracking-wide">autorizado</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Gallery placeholders -->
+          <div class="grid grid-cols-2 gap-3">
+            <div class="placeholder-img rounded-2xl aspect-[3/4] col-span-1 row-span-2 flex items-end p-4">
+              <span class="text-white/60 text-xs font-medium tracking-widest uppercase">Foto 01</span>
+            </div>
+            <div class="placeholder-img-sage rounded-2xl aspect-square flex items-end p-3">
+              <span class="text-white/60 text-xs font-medium tracking-widest uppercase">Foto 02</span>
+            </div>
+            <div class="placeholder-img rounded-2xl aspect-square flex items-end p-3" style="background: linear-gradient(135deg,#EDE8E1 0%,#C9B8A2 100%)">
+              <span class="text-white/60 text-xs font-medium tracking-widest uppercase">Foto 03</span>
+            </div>
+            <div class="placeholder-img-sage rounded-2xl aspect-[4/3] col-span-2 flex items-end p-4">
+              <span class="text-white/60 text-xs font-medium tracking-widest uppercase">Foto 04</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SOBRE EL NEGOCIO
+    ═══════════════════════════════════════════ -->
+    <section id="sobre-mi" class="bg-mist py-20 md:py-28">
+      <div class="max-w-6xl mx-auto px-5">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+
+          <!-- Texto -->
+          <div class="flex flex-col gap-5">
+            <span class="section-label">Sobre el centro</span>
+            <h2 class="font-serif text-3xl md:text-4xl font-bold leading-tight">
+              Donde la ciencia y el bienestar se encuentran
+            </h2>
+            <p class="text-bark/60 leading-relaxed">
+              Soy Cristina Jiménez, especialista en belleza y cuidado personal con más de dos décadas de experiencia. En mi centro de la Av. Mare de Déu de Montserrat combino las últimas tecnologías con un enfoque totalmente personalizado.
+            </p>
+            <p class="text-bark/60 leading-relaxed">
+              Cada cuerpo es diferente. Por eso diseño planes adaptados a tus objetivos, tu ritmo y tus necesidades reales. Sin promesas vacías, con resultados visibles.
+            </p>
+            <a href="#contacto" class="btn-primary self-start mt-2">Conoce tu plan</a>
+          </div>
+
+          <!-- Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+            <div class="bg-cream rounded-2xl p-6 flex flex-col gap-3 shadow-sm">
+              <div class="w-10 h-10 rounded-full bg-sage/15 flex items-center justify-center">
+                <svg class="w-5 h-5 text-sage" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              </div>
+              <h3 class="font-serif text-lg font-semibold">+20 años de experiencia</h3>
+              <p class="text-bark/55 text-sm leading-relaxed">Formación continua y dominio de las técnicas más avanzadas del sector.</p>
+            </div>
+
+            <div class="bg-bark text-cream rounded-2xl p-6 flex flex-col gap-3 shadow-sm">
+              <div class="w-10 h-10 rounded-full bg-cream/15 flex items-center justify-center">
+                <svg class="w-5 h-5 text-cream" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+              </div>
+              <h3 class="font-serif text-lg font-semibold">Tecnología LPG®</h3>
+              <p class="text-cream/60 text-sm leading-relaxed">Centro autorizado por LPG, líder mundial en tratamientos corporales y faciales.</p>
+            </div>
+
+            <div class="bg-sage/10 rounded-2xl p-6 flex flex-col gap-3 shadow-sm">
+              <div class="w-10 h-10 rounded-full bg-sage/20 flex items-center justify-center">
+                <svg class="w-5 h-5 text-sage" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+              </div>
+              <h3 class="font-serif text-lg font-semibold">Trato personalizado</h3>
+              <p class="text-bark/55 text-sm leading-relaxed">Planes 100% adaptados a tu cuerpo, tus objetivos y tu momento de vida.</p>
+            </div>
+
+            <div class="bg-cream rounded-2xl p-6 flex flex-col gap-3 shadow-sm">
+              <div class="w-10 h-10 rounded-full bg-sand/40 flex items-center justify-center">
+                <svg class="w-5 h-5 text-bark" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+              </div>
+              <h3 class="font-serif text-lg font-semibold">Barcelona centro</h3>
+              <p class="text-bark/55 text-sm leading-relaxed">Av. Mare de Déu de Montserrat, 154. Fácil acceso en transporte público.</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         SERVICIOS
+    ═══════════════════════════════════════════ -->
+    <section id="servicios" class="bg-cream py-20 md:py-28">
+      <div class="max-w-6xl mx-auto px-5">
+
+        <div class="text-center mb-14 flex flex-col gap-3 items-center">
+          <span class="section-label">Tratamientos</span>
+          <h2 class="font-serif text-3xl md:text-4xl font-bold max-w-lg">
+            Resultados reales para cada objetivo
+          </h2>
+          <p class="text-bark/55 max-w-md text-base">
+            Tecnología de última generación con la cercanía de un trato artesanal.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+
+          <!-- Card 1 -->
+          <div class="group border border-mist rounded-2xl overflow-hidden hover:shadow-md transition-shadow duration-300">
+            <div class="placeholder-img aspect-video flex items-center justify-center">
+              <span class="text-white/40 text-xs tracking-widest uppercase">Imagen</span>
+            </div>
+            <div class="p-6 flex flex-col gap-2">
+              <span class="text-sage text-xs font-medium tracking-widest uppercase">Corporal</span>
+              <h3 class="font-serif text-xl font-semibold">HIFU Corporal</h3>
+              <p class="text-bark/55 text-sm leading-relaxed">Ultrasonidos focalizados para reducir volumen y reafirmar sin cirugía.</p>
+              <a href="#contacto" class="text-bark text-sm font-medium mt-2 inline-flex items-center gap-1 hover:gap-2 transition-all">
+                Saber más <span>&rarr;</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="group border border-mist rounded-2xl overflow-hidden hover:shadow-md transition-shadow duration-300">
+            <div class="placeholder-img-sage aspect-video flex items-center justify-center">
+              <span class="text-white/40 text-xs tracking-widest uppercase">Imagen</span>
+            </div>
+            <div class="p-6 flex flex-col gap-2">
+              <span class="text-sage text-xs font-medium tracking-widest uppercase">LPG®</span>
+              <h3 class="font-serif text-xl font-semibold">Plan Corporal Completo</h3>
+              <p class="text-bark/55 text-sm leading-relaxed">Combinación de tratamientos LPG adaptados a tu plan personalizado.</p>
+              <a href="#contacto" class="text-bark text-sm font-medium mt-2 inline-flex items-center gap-1 hover:gap-2 transition-all">
+                Saber más <span>&rarr;</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="group border border-mist rounded-2xl overflow-hidden hover:shadow-md transition-shadow duration-300">
+            <div class="aspect-video flex items-center justify-center" style="background:linear-gradient(135deg,#EDE8E1,#C9B8A2)">
+              <span class="text-white/40 text-xs tracking-widest uppercase">Imagen</span>
+            </div>
+            <div class="p-6 flex flex-col gap-2">
+              <span class="text-sage text-xs font-medium tracking-widest uppercase">Depilación</span>
+              <h3 class="font-serif text-xl font-semibold">Depilación Láser</h3>
+              <p class="text-bark/55 text-sm leading-relaxed">Resultados permanentes con tecnología segura para todo tipo de piel.</p>
+              <a href="#contacto" class="text-bark text-sm font-medium mt-2 inline-flex items-center gap-1 hover:gap-2 transition-all">
+                Saber más <span>&rarr;</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="group border border-mist rounded-2xl overflow-hidden hover:shadow-md transition-shadow duration-300">
+            <div class="placeholder-img aspect-video flex items-center justify-center">
+              <span class="text-white/40 text-xs tracking-widest uppercase">Imagen</span>
+            </div>
+            <div class="p-6 flex flex-col gap-2">
+              <span class="text-sage text-xs font-medium tracking-widest uppercase">Circulación</span>
+              <h3 class="font-serif text-xl font-semibold">Piernas Cansadas</h3>
+              <p class="text-bark/55 text-sm leading-relaxed">Tratamientos específicos para piernas hinchadas y pesadez circulatoria.</p>
+              <a href="#contacto" class="text-bark text-sm font-medium mt-2 inline-flex items-center gap-1 hover:gap-2 transition-all">
+                Saber más <span>&rarr;</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="group border border-mist rounded-2xl overflow-hidden hover:shadow-md transition-shadow duration-300">
+            <div class="placeholder-img-sage aspect-video flex items-center justify-center">
+              <span class="text-white/40 text-xs tracking-widest uppercase">Imagen</span>
+            </div>
+            <div class="p-6 flex flex-col gap-2">
+              <span class="text-sage text-xs font-medium tracking-widest uppercase">Reafirmación</span>
+              <h3 class="font-serif text-xl font-semibold">Reduce y Reafirma</h3>
+              <p class="text-bark/55 text-sm leading-relaxed">Planes adaptados para moldear la silueta y recuperar firmeza visible.</p>
+              <a href="#contacto" class="text-bark text-sm font-medium mt-2 inline-flex items-center gap-1 hover:gap-2 transition-all">
+                Saber más <span>&rarr;</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Card CTA -->
+          <div class="bg-bark rounded-2xl p-6 flex flex-col justify-between gap-6">
+            <div class="flex flex-col gap-3">
+              <span class="text-sand text-xs font-medium tracking-widest uppercase">Personalizado</span>
+              <h3 class="font-serif text-xl font-semibold text-cream">¿No sabes qué tratamiento es para ti?</h3>
+              <p class="text-cream/60 text-sm leading-relaxed">Te orientamos sin compromiso. Primera consulta gratuita.</p>
+            </div>
+            <a href="#contacto" class="btn-outline border-cream text-cream hover:bg-cream hover:text-bark text-center text-xs px-5 py-3">
+              Pedir asesoramiento
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         GALERÍA
+    ═══════════════════════════════════════════ -->
+    <section id="galeria" class="bg-mist py-20 md:py-28">
+      <div class="max-w-6xl mx-auto px-5">
+
+        <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
+          <div class="flex flex-col gap-2">
+            <span class="section-label">Galería</span>
+            <h2 class="font-serif text-3xl md:text-4xl font-bold">Nuestro trabajo habla</h2>
+          </div>
+          <a href="https://www.instagram.com/cristinajimenez_estetica" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 text-sm text-bark/60 hover:text-bark transition-colors">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            Ver en Instagram
+          </a>
+        </div>
+
+        <!-- Grid masonry-style -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div class="placeholder-img rounded-xl aspect-square flex items-end p-3"><span class="text-white/40 text-xs">01</span></div>
+          <div class="placeholder-img-sage rounded-xl aspect-square flex items-end p-3"><span class="text-white/40 text-xs">02</span></div>
+          <div class="rounded-xl aspect-square flex items-end p-3" style="background:linear-gradient(135deg,#EDE8E1,#C9B8A2)"><span class="text-white/40 text-xs">03</span></div>
+          <div class="placeholder-img rounded-xl aspect-square flex items-end p-3"><span class="text-white/40 text-xs">04</span></div>
+          <div class="placeholder-img-sage rounded-xl col-span-2 aspect-video flex items-end p-4"><span class="text-white/40 text-xs tracking-widest uppercase">Antes / Después</span></div>
+          <div class="rounded-xl aspect-square flex items-end p-3" style="background:linear-gradient(135deg,#D4B896,#A8896C)"><span class="text-white/40 text-xs">06</span></div>
+          <div class="placeholder-img rounded-xl aspect-square flex items-end p-3"><span class="text-white/40 text-xs">07</span></div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         CONTACTO
+    ═══════════════════════════════════════════ -->
+    <section id="contacto" class="bg-cream py-20 md:py-28">
+      <div class="max-w-6xl mx-auto px-5">
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-14 items-start">
+
+          <!-- Copy izquierda -->
+          <div class="flex flex-col gap-6">
+            <span class="section-label">Contacto</span>
+            <h2 class="font-serif text-3xl md:text-4xl font-bold leading-tight">
+              Da el primer paso hacia tu mejor versión
+            </h2>
+            <p class="text-bark/60 leading-relaxed">
+              Cuéntanos qué quieres trabajar y te preparamos un plan sin compromiso. Primera consulta gratuita, porque conocerte es el primer paso.
+            </p>
+
+            <!-- Info -->
+            <div class="flex flex-col gap-4 mt-2">
+              <a href="tel:687749378" class="flex items-center gap-4 group">
+                <div class="w-11 h-11 rounded-full bg-mist flex items-center justify-center group-hover:bg-sage/20 transition-colors">
+                  <svg class="w-5 h-5 text-sage" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                </div>
+                <div>
+                  <p class="text-xs text-bark/40 tracking-wide">Teléfono</p>
+                  <p class="font-medium">687 749 378</p>
+                </div>
+              </a>
+
+              <div class="flex items-center gap-4">
+                <div class="w-11 h-11 rounded-full bg-mist flex items-center justify-center">
+                  <svg class="w-5 h-5 text-sage" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                </div>
+                <div>
+                  <p class="text-xs text-bark/40 tracking-wide">Dirección</p>
+                  <p class="font-medium">Av. Mare de Déu de Montserrat, 154</p>
+                  <p class="text-sm text-bark/50">Barcelona</p>
+                </div>
+              </div>
+
+              <a href="https://www.instagram.com/cristinajimenez_estetica" target="_blank" rel="noopener" class="flex items-center gap-4 group">
+                <div class="w-11 h-11 rounded-full bg-mist flex items-center justify-center group-hover:bg-sage/20 transition-colors">
+                  <svg class="w-5 h-5 text-sage" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </div>
+                <div>
+                  <p class="text-xs text-bark/40 tracking-wide">Instagram</p>
+                  <p class="font-medium">@cristinajimenez_estetica</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Formulario -->
+          <div class="bg-mist rounded-2xl p-7 md:p-9">
+            <form class="flex flex-col gap-5" onsubmit="handleSubmit(event)">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div class="flex flex-col gap-1.5">
+                  <label class="text-xs font-medium text-bark/60 tracking-wide" for="nombre">Nombre</label>
+                  <input id="nombre" type="text" placeholder="Tu nombre"
+                    class="bg-cream border border-mist rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-sage/30 focus:border-sage transition placeholder:text-bark/30" required />
+                </div>
+                <div class="flex flex-col gap-1.5">
+                  <label class="text-xs font-medium text-bark/60 tracking-wide" for="telefono">Teléfono</label>
+                  <input id="telefono" type="tel" placeholder="6XX XXX XXX"
+                    class="bg-cream border border-mist rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-sage/30 focus:border-sage transition placeholder:text-bark/30" />
+                </div>
+              </div>
+
+              <div class="flex flex-col gap-1.5">
+                <label class="text-xs font-medium text-bark/60 tracking-wide" for="email">Email</label>
+                <input id="email" type="email" placeholder="tu@email.com"
+                  class="bg-cream border border-mist rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-sage/30 focus:border-sage transition placeholder:text-bark/30" required />
+              </div>
+
+              <div class="flex flex-col gap-1.5">
+                <label class="text-xs font-medium text-bark/60 tracking-wide" for="servicio">¿Qué te interesa?</label>
+                <select id="servicio"
+                  class="bg-cream border border-mist rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-sage/30 focus:border-sage transition text-bark appearance-none">
+                  <option value="" disabled selected class="text-bark/30">Selecciona un tratamiento</option>
+                  <option>HIFU Corporal</option>
+                  <option>Plan Corporal Completo (LPG)</option>
+                  <option>Depilación Láser</option>
+                  <option>Piernas Cansadas / Hinchadas</option>
+                  <option>Reduce y Reafirma</option>
+                  <option>No sé, necesito asesoramiento</option>
+                </select>
+              </div>
+
+              <div class="flex flex-col gap-1.5">
+                <label class="text-xs font-medium text-bark/60 tracking-wide" for="mensaje">Mensaje (opcional)</label>
+                <textarea id="mensaje" rows="3" placeholder="Cuéntanos un poco más..."
+                  class="bg-cream border border-mist rounded-xl px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-sage/30 focus:border-sage transition placeholder:text-bark/30 resize-none"></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary text-center w-full mt-1">
+                Enviar solicitud
+              </button>
+              <p class="text-xs text-bark/40 text-center">Te contactamos en menos de 24h. Sin compromiso.</p>
+            </form>
+
+            <!-- Success state (hidden) -->
+            <div id="form-success" class="hidden flex-col items-center gap-4 py-8 text-center">
+              <div class="w-14 h-14 rounded-full bg-sage/20 flex items-center justify-center">
+                <svg class="w-7 h-7 text-sage" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <h3 class="font-serif text-xl font-semibold">¡Mensaje enviado!</h3>
+              <p class="text-bark/55 text-sm">Te contestamos en menos de 24 horas. ¡Hasta pronto!</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══════════════════════════════════════════
+       FOOTER
+  ═══════════════════════════════════════════ -->
+  <footer class="bg-bark text-cream py-12">
+    <div class="max-w-6xl mx-auto px-5">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+
+        <!-- Brand -->
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-full bg-cream flex items-center justify-center">
+              <span class="text-bark font-serif text-sm font-bold">CJ</span>
+            </div>
+            <span class="font-serif text-base font-semibold">Cristina Jiménez</span>
+          </div>
+          <p class="text-cream/50 text-sm leading-relaxed">Centro de belleza y bienestar en Barcelona. Más de 20 años transformando cuerpos y vidas.</p>
+        </div>
+
+        <!-- Links -->
+        <div class="flex flex-col gap-3">
+          <p class="text-xs font-medium tracking-widest uppercase text-cream/40 mb-1">Navegación</p>
+          <a href="#sobre-mi"  class="text-cream/60 text-sm hover:text-cream transition-colors">Sobre mí</a>
+          <a href="#servicios" class="text-cream/60 text-sm hover:text-cream transition-colors">Servicios</a>
+          <a href="#galeria"   class="text-cream/60 text-sm hover:text-cream transition-colors">Galería</a>
+          <a href="#contacto"  class="text-cream/60 text-sm hover:text-cream transition-colors">Contacto</a>
+        </div>
+
+        <!-- Contacto -->
+        <div class="flex flex-col gap-3">
+          <p class="text-xs font-medium tracking-widest uppercase text-cream/40 mb-1">Contacto</p>
+          <a href="tel:687749378" class="text-cream/60 text-sm hover:text-cream transition-colors">687 749 378</a>
+          <p class="text-cream/60 text-sm">Av. Mare de Déu de Montserrat, 154<br/>Barcelona</p>
+          <a href="https://www.instagram.com/cristinajimenez_estetica" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 text-cream/60 text-sm hover:text-cream transition-colors">
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            @cristinajimenez_estetica
+          </a>
+        </div>
+
+      </div>
+
+      <div class="border-t border-cream/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-cream/30 text-xs">
+        <p>&copy; 2025 Cristina Jiménez · Belleza & Bienestar</p>
+        <p>Demo · Diseño web por <span class="text-cream/50">web-site-demo</span></p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const bar1 = document.getElementById('bar1');
+    const bar2 = document.getElementById('bar2');
+    const bar3 = document.getElementById('bar3');
+    let menuOpen = false;
+
+    menuBtn.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('hidden', !menuOpen);
+      bar1.style.transform = menuOpen ? 'rotate(45deg) translate(5px, 5px)' : '';
+      bar2.style.opacity  = menuOpen ? '0' : '1';
+      bar3.style.transform = menuOpen ? 'rotate(-45deg) translate(4px, -4px)' : '';
+      bar3.style.width    = menuOpen ? '24px' : '16px';
+    });
+
+    function closeMenu() {
+      menuOpen = false;
+      mobileMenu.classList.add('hidden');
+      bar1.style.transform = '';
+      bar2.style.opacity   = '1';
+      bar3.style.transform = '';
+      bar3.style.width     = '16px';
+    }
+
+    // Form submit (demo)
+    function handleSubmit(e) {
+      e.preventDefault();
+      const form = e.target;
+      const success = document.getElementById('form-success');
+      form.classList.add('hidden');
+      success.classList.remove('hidden');
+      success.classList.add('flex');
+    }
+  </script>
+
+</body>
+</html>
