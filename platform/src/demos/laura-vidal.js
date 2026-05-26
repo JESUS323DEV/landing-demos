@@ -168,6 +168,7 @@ export default {
       textoPie: '✅ ¡Gracias! Reserva hecha.',
       camposActivos: { nombre: true, apellidos: false, telefono: true, email: true, personas: true, fecha: true, hora: true, mensaje: true },
       mensajeTemplate: '{encabezado}\n\n👤 Nombre: {nombre}\n📞 Teléfono: {telefono}\n👥 Personas: {personas}\n🕐 Hora: {hora}\n📅 Día: {dia}\n{mensajeExtra}\n{pie}',
+      slug: 'estetica',
     },
   },
   footer: {
