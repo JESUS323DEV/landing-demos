@@ -23,6 +23,11 @@ export default {
       },
     },
   },
+  social: [
+    { platform: 'instagram', href: 'https://instagram.com/intistreetfood' },
+    { platform: 'tiktok',    href: 'https://tiktok.com/@intistreetfood' },
+    { platform: 'whatsapp',  href: 'https://wa.me/34612334789' },
+  ],
   sections: ['hero', 'about', 'services', 'menu', 'delivery', 'reviews', 'contact'],
   nav: {
     initials: 'IS',
@@ -49,11 +54,11 @@ export default {
       { value: '+500',   label: 'reseñas' },
     ],
     images: [
-      { emoji: '🍗', label: 'Brasa',   bg: 'linear-gradient(135deg, #C8005A22, #C8005A55)' },
-      { emoji: '🍋', label: 'Ceviche', bg: 'linear-gradient(135deg, #00B4A622, #00B4A655)' },
-      { emoji: '🍳', label: 'Chaufa',  bg: 'linear-gradient(135deg, #FFB80022, #FFB80055)' },
-      { emoji: '🌶',  label: 'Ají',    bg: 'linear-gradient(135deg, #C8005A22, #C8005A44)' },
-      { emoji: '🇵🇪', label: 'Perú',  bg: 'linear-gradient(135deg, #00B4A622, #00B4A633)' },
+      { src: 'https://images.unsplash.com/photo-1712579733874-c3a79f0f9d12?w=600&h=900&fit=crop&q=80', label: 'Brasa',   bg: 'linear-gradient(135deg, #C8005A22, #C8005A55)' },
+      { src: 'https://images.unsplash.com/photo-1533658266890-8bd362930725?w=400&h=400&fit=crop&q=80', label: 'Ceviche', bg: 'linear-gradient(135deg, #00B4A622, #00B4A655)' },
+      { src: 'https://images.unsplash.com/photo-1551326844-4df70f78d0e9?w=400&h=400&fit=crop&q=80', label: 'Chaufa',  bg: 'linear-gradient(135deg, #FFB80022, #FFB80055)' },
+      { src: 'https://images.unsplash.com/photo-1599987662084-97832741bfa2?w=400&h=400&fit=crop&q=80', label: 'Ají',    bg: 'linear-gradient(135deg, #C8005A22, #C8005A44)' },
+      { src: 'https://images.unsplash.com/photo-1535399831218-d5bd36d1a6b3?w=400&h=400&fit=crop&q=80', label: 'Perú',  bg: 'linear-gradient(135deg, #00B4A622, #00B4A633)' },
     ],
   },
   about: {

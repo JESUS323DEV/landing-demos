@@ -56,10 +56,14 @@ function HeroImages({ images }) {
           className={`rounded-2xl overflow-hidden relative group cursor-pointer ${i === 0 ? 'row-span-2' : ''}`}
           style={{ background: img.bg ?? 'var(--demo-surface)' }}
         >
-          <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 opacity-60 group-hover:opacity-100 transition-opacity">
-            {img.emoji && <span className={i === 0 ? 'text-4xl' : 'text-2xl'}>{img.emoji}</span>}
-            {img.label && <span className="text-xs tracking-widest uppercase text-demo-text/60">{img.label}</span>}
-          </div>
+          {img.src ? (
+            <img src={img.src} alt={img.label ?? ''} className="absolute inset-0 w-full h-full object-cover" />
+          ) : (
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 opacity-60 group-hover:opacity-100 transition-opacity">
+              {img.emoji && <span className={i === 0 ? 'text-4xl' : 'text-2xl'}>{img.emoji}</span>}
+              {img.label && <span className="text-xs tracking-widest uppercase text-demo-text/60">{img.label}</span>}
+            </div>
+          )}
         </div>
       ))}
     </div>
@@ -158,8 +162,10 @@ function HeroSplit({ config }) {
         {config.images?.length > 0 && (
           <div className="md:hidden grid grid-cols-3 gap-2 mt-2">
             {config.images.slice(0, 3).map((img, i) => (
-              <div key={i} className="aspect-square rounded-xl" style={{ background: img.bg ?? 'var(--demo-surface)' }}>
-                {img.emoji && (
+              <div key={i} className="aspect-square rounded-xl overflow-hidden relative" style={{ background: img.bg ?? 'var(--demo-surface)' }}>
+                {img.src ? (
+                  <img src={img.src} alt={img.label ?? ''} className="w-full h-full object-cover" />
+                ) : img.emoji && (
                   <div className="w-full h-full flex items-center justify-center">
                     <span className="text-2xl opacity-60">{img.emoji}</span>
                   </div>

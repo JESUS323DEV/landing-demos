@@ -30,10 +30,13 @@ export default function GallerySection({ config }) {
               {config.images.map((img, i) => (
                 <div
                   key={i}
-                  className="rounded-xl aspect-square flex items-end p-3 overflow-hidden"
+                  className="rounded-xl aspect-square overflow-hidden relative"
                   style={{ background: img.bg ?? GRADIENTS[i % GRADIENTS.length] }}
                 >
-                  <span className="font-demo-body text-demo-text/60 text-xs">0{i + 1}</span>
+                  {img.src && <img src={img.src} alt={img.alt ?? ''} className="absolute inset-0 w-full h-full object-cover" />}
+                  <div className="absolute bottom-0 inset-x-0 p-3">
+                    <span className="font-demo-body text-white/70 text-xs drop-shadow">0{i + 1}</span>
+                  </div>
                 </div>
               ))}
             </div>
@@ -47,10 +50,13 @@ export default function GallerySection({ config }) {
                 return (
                   <div
                     key={i}
-                    className={`rounded-xl overflow-hidden flex items-end p-4 ${spanClass}`}
+                    className={`rounded-xl overflow-hidden relative ${spanClass}`}
                     style={{ background: img.bg ?? GRADIENTS[i % GRADIENTS.length] }}
                   >
-                    <span className="font-demo-body text-demo-text/60 text-xs">0{i + 1}</span>
+                    {img.src && <img src={img.src} alt={img.alt ?? ''} className="absolute inset-0 w-full h-full object-cover" />}
+                    <div className="absolute bottom-0 inset-x-0 p-4">
+                      <span className="font-demo-body text-white/70 text-xs drop-shadow">0{i + 1}</span>
+                    </div>
                   </div>
                 )
               })}

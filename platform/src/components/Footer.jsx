@@ -1,3 +1,5 @@
+import { SocialLinks } from './SocialIcons'
+
 export default function Footer({ demo }) {
   const f = demo.footer
   if (!f) return null
@@ -98,7 +100,8 @@ export default function Footer({ demo }) {
           <p className="font-demo-body text-xs opacity-90" style={{ color: textCol }}>
             {f.copy ?? `© ${new Date().getFullYear()} ${demo.name}`}
           </p>
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-5 flex-wrap justify-center sm:justify-end">
+            <SocialLinks social={demo.social} size="sm" muted />
             {legal.map((l, i) => (
               <a
                 key={i}

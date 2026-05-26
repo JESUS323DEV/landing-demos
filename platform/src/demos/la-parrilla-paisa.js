@@ -23,6 +23,11 @@ export default {
       },
     },
   },
+  social: [
+    { platform: 'instagram', href: 'https://instagram.com/laparrillapaisa.bcn' },
+    { platform: 'facebook',  href: 'https://facebook.com/laparrillapaisa' },
+    { platform: 'whatsapp',  href: 'https://wa.me/34634210987' },
+  ],
   sections: ['hero', 'about', 'services', 'menu', 'delivery', 'contact'],
   nav: {
     initials: 'LPP',

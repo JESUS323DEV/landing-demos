@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { SocialLinks } from './SocialIcons'
 
 export default function Navbar({ demo }) {
   const [scrolled, setScrolled] = useState(false)
@@ -54,15 +55,18 @@ export default function Navbar({ demo }) {
           ))}
         </ul>
 
-        {/* Desktop CTA */}
-        {demo.nav?.cta && (
-          <a
-            href={demo.nav.cta.href}
-            className="hidden md:inline-block font-demo-body text-xs font-semibold px-5 py-2.5 rounded-full bg-demo-primary text-demo-bg hover:opacity-90 transition-opacity tracking-wide"
-          >
-            {demo.nav.cta.label}
-          </a>
-        )}
+        {/* Desktop: redes sociales + CTA */}
+        <div className="hidden md:flex items-center gap-3">
+          <SocialLinks social={demo.social} size="sm" />
+          {demo.nav?.cta && (
+            <a
+              href={demo.nav.cta.href}
+              className="font-demo-body text-xs font-semibold px-5 py-2.5 rounded-full bg-demo-primary text-demo-bg hover:opacity-90 transition-opacity tracking-wide"
+            >
+              {demo.nav.cta.label}
+            </a>
+          )}
+        </div>
 
         {/* Mobile hamburger */}
         <button onClick={() => setOpen(o => !o)} className="md:hidden p-2 flex flex-col gap-1.5" aria-label="Menu">
@@ -92,6 +96,11 @@ export default function Navbar({ demo }) {
                 >
                   {demo.nav.cta.label}
                 </a>
+              </li>
+            )}
+            {demo.social?.length > 0 && (
+              <li className="pt-2 border-t border-demo-primary/10">
+                <SocialLinks social={demo.social} size="md" muted />
               </li>
             )}
           </ul>

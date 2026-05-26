@@ -23,6 +23,11 @@ export default {
       },
     },
   },
+  social: [
+    { platform: 'instagram', href: 'https://instagram.com/dulcelima.madrid' },
+    { platform: 'tiktok',    href: 'https://tiktok.com/@dulcelima.madrid' },
+    { platform: 'whatsapp',  href: 'https://wa.me/34613515064' },
+  ],
   sections: ['hero', 'about', 'services', 'menu', 'recipes', 'contact'],
   nav: {
     initials: 'DL',
@@ -50,11 +55,11 @@ export default {
       { value: '+200',   label: 'pedidos al mes' },
     ],
     images: [
-      { emoji: '🎂', label: 'Tortas',    bg: 'linear-gradient(135deg, #C4507A22, #C4507A55)' },
-      { emoji: '🍮', label: 'Postres',   bg: 'linear-gradient(135deg, #C4882A22, #C4882A55)' },
-      { emoji: '🍪', label: 'Alfajores', bg: 'linear-gradient(135deg, #C4507A22, #C4507A44)' },
-      { emoji: '🧁', label: 'Cupcakes',  bg: 'linear-gradient(135deg, #C4882A22, #C4882A44)' },
-      { emoji: '🍫', label: 'Trufas',    bg: 'linear-gradient(135deg, #C4507A22, #C4507A33)' },
+      { src: 'https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=600&h=900&fit=crop&q=80', label: 'Tortas',    bg: 'linear-gradient(135deg, #C4507A22, #C4507A55)' },
+      { src: 'https://images.unsplash.com/photo-1624000961428-eeece184988b?w=400&h=400&fit=crop&q=80', label: 'Postres',   bg: 'linear-gradient(135deg, #C4882A22, #C4882A55)' },
+      { src: 'https://images.unsplash.com/photo-1517400847543-fd27a32c8d12?w=400&h=400&fit=crop&q=80', label: 'Alfajores', bg: 'linear-gradient(135deg, #C4507A22, #C4507A44)' },
+      { src: 'https://images.unsplash.com/photo-1486427944299-d1955d23e34d?w=400&h=400&fit=crop&q=80', label: 'Cupcakes',  bg: 'linear-gradient(135deg, #C4882A22, #C4882A44)' },
+      { src: 'https://images.unsplash.com/photo-1549007994-cb92caebd54b?w=400&h=400&fit=crop&q=80',   label: 'Trufas',    bg: 'linear-gradient(135deg, #C4507A22, #C4507A33)' },
     ],
   },
   about: {

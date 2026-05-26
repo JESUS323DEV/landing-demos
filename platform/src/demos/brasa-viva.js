@@ -23,6 +23,11 @@ export default {
       },
     },
   },
+  social: [
+    { platform: 'instagram', href: 'https://instagram.com/brasaviva.bcn' },
+    { platform: 'tiktok',    href: 'https://tiktok.com/@brasaviva.bcn' },
+    { platform: 'facebook',  href: 'https://facebook.com/brasavivabcn' },
+  ],
   sections: ['hero', 'about', 'menu', 'delivery', 'reviews', 'contact'],
   nav: {
     initials: 'BV',

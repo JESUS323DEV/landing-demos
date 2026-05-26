@@ -23,6 +23,10 @@ export default {
       },
     },
   },
+  social: [
+    { platform: 'instagram', href: 'https://instagram.com/selvaclubebcn' },
+    { platform: 'tiktok',    href: 'https://tiktok.com/@selvaclubebcn' },
+  ],
   sections: ['hero', 'about', 'cta', 'contact'],
   nav: {
     initials: '🌿',

@@ -1,4 +1,28 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+
+function TurnoYaWidget({ widgetConfig }) {
+  useEffect(() => {
+    if (!window.process) window.process = { env: { NODE_ENV: 'production' } }
+    if (!document.getElementById('reservarq-css')) {
+      const link = document.createElement('link')
+      link.id = 'reservarq-css'
+      link.rel = 'stylesheet'
+      link.href = 'https://turnoya-demo.netlify.app/reservaq.css'
+      document.head.appendChild(link)
+    }
+    if (!document.getElementById('reservarq-js')) {
+      const script = document.createElement('script')
+      script.id = 'reservarq-js'
+      script.src = 'https://turnoya-demo.netlify.app/reservaq.js'
+      document.body.appendChild(script)
+    }
+  }, [])
+  return (
+    <div className="md:max-h-[580px] md:overflow-y-auto rounded-3xl border border-demo-primary/10">
+      <div id="reservaq" data-config={JSON.stringify(widgetConfig)} />
+    </div>
+  )
+}
 
 export default function ContactSection({ config }) {
   const [form, setForm] = useState({ name: '', email: '', message: '' })
@@ -57,8 +81,10 @@ export default function ContactSection({ config }) {
             </div>
           </div>
 
-          {/* Map or Form card */}
-          {config.map ? (
+          {/* Map, Widget or Form card */}
+          {config.widget ? (
+            <TurnoYaWidget widgetConfig={config.widget} />
+          ) : config.map ? (
             <div className="rounded-3xl overflow-hidden border border-demo-primary/10 h-[420px]">
               <iframe
                 src={config.map.embedUrl}
