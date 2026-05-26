@@ -1,0 +1,158 @@
+export default {
+  slug: 'brasa-viva',
+  name: 'Brasa Viva',
+  tagline: 'Pollos a la Brasa · Barcelona',
+  category: 'Pollería',
+  theme: {
+    colors: {
+      bg:      '#0D0D0D',
+      surface: '#1A1009',
+      primary: '#E8620A',
+      accent:  '#F5A623',
+      text:    '#FFF8F0',
+      muted:   '#a07050',
+    },
+    fonts: {
+      heading: {
+        family: '"Oswald", sans-serif',
+        google: 'https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap',
+      },
+      body: {
+        family: '"Source Sans 3", system-ui, sans-serif',
+        google: 'https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@300;400;600&display=swap',
+      },
+    },
+  },
+  sections: ['hero', 'about', 'menu', 'delivery', 'reviews', 'contact'],
+  nav: {
+    initials: 'BV',
+    subtitle: 'Pollos a la Brasa',
+    transparent: true,
+    cta: { label: 'Pedir ahora', href: '#delivery' },
+    links: [
+      { label: 'Nosotros', href: '#about' },
+      { label: 'Carta',    href: '#menu' },
+      { label: 'Pedidos',  href: '#delivery' },
+      { label: 'Contacto', href: '#contact' },
+    ],
+  },
+  hero: {
+    layout: 'bottom',
+    badge: 'Sant Joan Despi, Barcelona',
+    titleAccent: 'El pollo',
+    title: 'que lo cambia todo.',
+    description: 'A la brasa, con su punto justo. Jugoso por dentro, crujiente por fuera. Hecho como se ha hecho siempre, con fuego de verdad.',
+    cta: { label: 'Pedir por WhatsApp', href: 'https://wa.me/34612458723' },
+    ctaSecondary: { label: 'Ver la carta', href: '#menu' },
+    stats: [
+      { value: '+8 años', label: 'en la brasa' },
+      { value: '4.8 ★',   label: 'valoración media' },
+      { value: '+300',    label: 'reseñas' },
+    ],
+  },
+  about: {
+    label: 'Nuestra historia',
+    title: 'Nació en Sant Joan Despi,',
+    titleHighlight: 'lo prueba toda Barcelona.',
+    paragraphs: [
+      'Empezamos en 2016 con una brasa, una receta familiar y la convicción de que Barcelona merecía un pollo de verdad. Sin trucos, sin atajos. La madera, el fuego y el tiempo hacen el trabajo.',
+      'Nuestro adobo lleva tres generaciones perfeccionándose: ajo, pimentón ahumado, especias de la tierra y unas horas de reposo que marcan la diferencia.',
+    ],
+    features: [
+      { icon: '🍗', title: '100% pollo fresco diario',      description: 'Sin congelados. Cada mañana llega el pollo fresco del día.', dark: false },
+      { icon: '🪵', title: 'Brasa de leña, no eléctrica',   description: 'La diferencia entre un pollo del montón y el nuestro está en el fuego.', dark: true },
+      { icon: '🚫', title: 'Sin colorantes ni conservantes', description: 'Producto limpio. El sabor lo dan los ingredientes, no los aditivos.', dark: false },
+      { icon: '⏱',  title: 'Marinado 12 horas',            description: 'Nuestro adobo familiar necesita tiempo. Y el tiempo se nota.', dark: false },
+    ],
+    badge: { value: 'Hecho', label: 'a diario · sin congelados' },
+    imagePlaceholder: 'Foto del local / equipo',
+  },
+  menu: {
+    label: 'Lo que hacemos',
+    title: 'Nuestra carta',
+    subtitle: 'Precios orientativos. Consulta disponibilidad y combos por WhatsApp.',
+    tabs: [
+      {
+        label: 'Pollos',
+        layout: 'cards',
+        items: [
+          { name: 'Pollo entero a la brasa', price: '9,90€',  description: 'Nuestro clásico. Marinado 12 horas, asado lentamente sobre brasa de encina.' },
+          { name: 'Medio pollo',             price: '5,50€',  description: 'Para quien quiere lo justo. El mismo sabor, la mitad de cantidad.' },
+          { name: 'Cuarto de pollo',         price: '3,50€',  description: 'Muslo o pechuga, a elegir. Crujiente por fuera, jugoso por dentro.', badge: 'Bestseller' },
+          { name: 'Alitas a la brasa',       price: '7,90€',  description: 'Ración de 8 alitas. Con salsa de la casa o barbacoa ahumada.' },
+          { name: 'Pollo XL familiar',       price: '17,90€', description: 'Pollo grande para 3-4 personas. Ideal para llevar a casa los fines de semana.' },
+          { name: 'Brocheta de pollo',       price: '4,90€',  description: 'Pechuga en brocheta con pimiento y cebolla. Directo de la brasa.' },
+        ],
+      },
+      {
+        label: 'Combos',
+        layout: 'cards',
+        items: [
+          { name: 'Combo Duo',     price: '13,90€', description: 'Medio pollo + patatas fritas + 2 bebidas. Para dos sin complicaciones.', badge: 'Ahorra 2€' },
+          { name: 'Combo Familia', price: '24,90€', description: 'Pollo entero + patatas grandes + ensalada + 4 bebidas.', badge: 'Ahorra 4€' },
+          { name: 'Combo Solo',    price: '7,90€',  description: 'Cuarto de pollo + patatas + bebida. El menú del día que nunca falla.' },
+        ],
+      },
+      {
+        label: 'Guarniciones',
+        layout: 'simple',
+        items: [
+          { name: 'Patatas fritas',       price: '2,50€', description: 'Corte grueso, fritas al momento.' },
+          { name: 'Arroz con verduras',   price: '2,90€', description: 'Salteado en wok, suave y sabroso.' },
+          { name: 'Ensalada mixta',       price: '2,90€', description: 'Lechuga, tomate, cebolla y olivas.' },
+          { name: 'Pan de la casa',       price: '1,00€', description: 'Rebanadas de pan rústico tostado.' },
+          { name: 'Salsa de la casa',     price: '0,90€', description: 'Receta secreta. Pídela, no te arrepentirás.' },
+          { name: 'Cebolla caramelizada', price: '2,20€', description: 'Lenta, dulce. Combina con todo.' },
+        ],
+      },
+      {
+        label: 'Bebidas',
+        layout: 'simple',
+        items: [
+          { name: 'Refrescos 33cl',  price: '1,50€', description: 'Coca-Cola, Fanta, agua con gas.' },
+          { name: 'Agua 50cl',       price: '1,20€', description: 'Con o sin gas.' },
+          { name: 'Cerveza 33cl',    price: '2,20€', description: 'Estrella Damm bien fría.' },
+          { name: 'Limonada casera', price: '2,50€', description: 'Hecha aquí, sin botella.' },
+        ],
+      },
+    ],
+  },
+  delivery: {
+    label: 'Pídelo donde quieras',
+    title: 'Tu pollo, cuando y como quieras.',
+    subtitle: 'Puedes recogerlo en local, pedir por WhatsApp o pedirlo a domicilio por las apps de siempre.',
+    channels: [
+      { name: 'WhatsApp', logo: 'WA', color: '#25D366', description: 'Mándanos tu pedido y lo tenemos listo.', cta: '612 45 87 23', href: 'https://wa.me/34612458723' },
+      { name: 'Glovo',    logo: 'G',  color: '#FFC244', description: 'Entrega en 25-35 min en Sant Joan Despi.', cta: 'Busca Brasa Viva' },
+      { name: 'Uber Eats', logo: 'UE', color: '#06C167', description: 'Pedido sencillo, entrega rápida.', cta: 'Busca Brasa Viva' },
+    ],
+    info: [
+      { icon: '⚡', label: 'Entrega rápida',  value: 'En 25-35 min' },
+      { icon: '🛒', label: 'Recogida gratis', value: 'Ven al local' },
+      { icon: '🕐', label: 'Horario',          value: 'Lu-Ju 12-22 · Vi-Do 12-23' },
+    ],
+  },
+  reviews: {
+    label: 'Lo que dicen',
+    rating: '4.8',
+    subtitle: 'Basado en +300 reseñas de Google y Tripadvisor',
+    items: [
+      { quote: 'El mejor pollo a la brasa que he probado en Barcelona. Lo de la salsa de la casa es un nivel aparte. Ya voy cada semana.', author: 'Marc T.', location: 'Sant Joan Despi' },
+      { quote: 'Pedimos el combo familia para 4 y quedamos todos muy contentos. Llegó caliente y el pollo estaba brutalmente jugoso. Repetiré seguro.', author: 'Laura S.', location: 'Cornellà de Llobregat' },
+      { quote: 'Probé las alitas a la brasa por recomendación de un amigo. Vaya descubrimiento. El adobo tiene algo especial, no sé qué llevan pero está buenísimo.', author: 'Raúl M.', location: "L'Hospitalet de Llobregat" },
+    ],
+  },
+  contact: {
+    label: 'Encuéntranos',
+    title: 'Ven a buscar tu pollo.',
+    subtitle: null,
+    phone: '612 45 87 23',
+    email: 'hola@brasaviva.es',
+    address: 'Carrer de les Brases, 14 · Sant Joan Despi, Barcelona',
+    hours: 'Lu - Ju: 12:00 - 22:00 · Vi - Do: 12:00 - 23:00',
+  },
+  footer: {
+    dark: false,
+    copy: 'Brasa Viva © 2024. Sant Joan Despi, Barcelona.',
+  },
+}

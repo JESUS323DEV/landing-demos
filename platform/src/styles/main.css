@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+/* Demo theme defaults — overridden per demo via JS */
+:root {
+  --demo-bg: #ffffff;
+  --demo-surface: #f5f5f5;
+  --demo-primary: #000000;
+  --demo-accent: #444444;
+  --demo-text: #111111;
+  --demo-muted: #888888;
+  --demo-heading-font: system-ui, sans-serif;
+  --demo-body-font: system-ui, sans-serif;
+}
+
+/* Register CSS vars as Tailwind tokens — resolved at render time, not build time */
+@theme inline {
+  --color-demo-bg: var(--demo-bg);
+  --color-demo-surface: var(--demo-surface);
+  --color-demo-primary: var(--demo-primary);
+  --color-demo-accent: var(--demo-accent);
+  --color-demo-text: var(--demo-text);
+  --color-demo-muted: var(--demo-muted);
+  --font-demo-heading: var(--demo-heading-font);
+  --font-demo-body: var(--demo-body-font);
+}
