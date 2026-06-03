@@ -1,51 +1,74 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
-function TurnoYaWidget({ widgetConfig }) {
-  useEffect(() => {
-    if (!window.process) window.process = { env: { NODE_ENV: 'production' } }
-    if (!document.getElementById('reservarq-css')) {
-      const link = document.createElement('link')
-      link.id = 'reservarq-css'
-      link.rel = 'stylesheet'
-      link.href = 'https://turnoya-demo.netlify.app/reservaq.css'
-      document.head.appendChild(link)
-    }
-    if (!document.getElementById('reservarq-js')) {
-      const script = document.createElement('script')
-      script.id = 'reservarq-js'
-      script.src = 'https://turnoya-demo.netlify.app/reservaq.js'
-      document.body.appendChild(script)
-    }
-  }, [])
+function ReservaqMockup({ sent, onSubmit }) {
+  const inp = 'w-full bg-demo-bg border border-demo-primary/20 rounded-xl text-demo-text font-demo-body text-sm px-4 py-3 outline-none focus:border-demo-primary transition-colors placeholder:text-demo-muted/40'
+
+  if (sent) {
+    return (
+      <div className="flex flex-col items-center gap-4 py-10 text-center">
+        <div className="w-14 h-14 rounded-full bg-demo-primary/15 flex items-center justify-center">
+          <span className="text-2xl text-demo-primary">✓</span>
+        </div>
+        <h3 className="font-demo-heading text-demo-primary text-2xl">Solicitud enviada</h3>
+        <p className="font-demo-body text-demo-muted text-sm">Te contactamos en menos de 24h.</p>
+      </div>
+    )
+  }
+
   return (
-    <div className="md:max-h-[580px] md:overflow-y-auto rounded-3xl border border-demo-primary/10">
-      <div id="reservaq" data-config={JSON.stringify(widgetConfig)} />
-    </div>
+    <form onSubmit={onSubmit} className="flex flex-col gap-4">
+      <p className="font-demo-body text-demo-muted text-xs uppercase tracking-widest">Tus datos</p>
+
+      <div className="grid grid-cols-2 gap-3">
+        <input type="text"   placeholder="Nombre"    required className={inp} />
+        <input type="tel"    placeholder="Teléfono"  required className={inp} />
+      </div>
+      <input type="email" placeholder="Email" required className={inp} />
+
+      <p className="font-demo-body text-demo-muted text-xs uppercase tracking-widest mt-1">Fecha y hora</p>
+      <div className="grid grid-cols-2 gap-3">
+        <div className={`${inp} flex items-center gap-2 cursor-pointer`}>
+          <span className="text-demo-primary text-base">📅</span>
+          <span className="text-demo-muted/60">dd / mm / aaaa</span>
+        </div>
+        <div className={`${inp} flex items-center gap-2 cursor-pointer`}>
+          <span className="text-demo-primary text-base">🕐</span>
+          <span className="text-demo-muted/60">Selecciona hora</span>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 gap-3">
+        <div>
+          <p className="font-demo-body text-demo-muted text-xs uppercase tracking-widest mb-2">Personas</p>
+          <select className={inp}>
+            {[1,2,3,4,5,6].map(n => <option key={n}>{n} {n === 1 ? 'persona' : 'personas'}</option>)}
+          </select>
+        </div>
+      </div>
+
+      <textarea placeholder="Mensaje (opcional)" rows={3} className={`${inp} resize-none`} />
+
+      <button
+        type="submit"
+        className="font-demo-body bg-demo-primary text-demo-bg text-sm font-semibold py-3.5 rounded-full hover:opacity-90 transition-opacity mt-1"
+      >
+        Reservar
+      </button>
+      <p className="font-demo-body text-demo-muted text-xs text-center">
+        Powered by <span className="font-semibold text-demo-primary">Reservarq</span>
+      </p>
+    </form>
   )
 }
 
 export default function ContactSection({ config }) {
-  const [form, setForm] = useState({ name: '', email: '', message: '' })
   const [sent, setSent] = useState(false)
 
-  function handleSubmit(e) {
-    e.preventDefault()
-    setSent(true)
-  }
-
-  const inputClass = 'w-full bg-demo-bg border border-demo-primary/20 rounded-xl text-demo-text font-demo-body text-sm px-4 py-3 outline-none focus:border-demo-primary transition-colors placeholder:text-demo-muted/50'
-
-  const INFO_ICONS = {
-    phone:   '📞',
-    email:   '✉️',
-    address: '📍',
-    hours:   '🕐',
-  }
-
+  const INFO_ICONS = { phone: '📞', email: '✉️', address: '📍', hours: '🕐' }
   const infoRows = [
-    { key: 'phone',   label: 'Telefono',  value: config.phone },
+    { key: 'phone',   label: 'Teléfono',  value: config.phone },
     { key: 'email',   label: 'Email',     value: config.email },
-    { key: 'address', label: 'Direccion', value: config.address },
+    { key: 'address', label: 'Dirección', value: config.address },
     { key: 'hours',   label: 'Horario',   value: config.hours },
   ].filter(r => r.value)
 
@@ -65,7 +88,6 @@ export default function ContactSection({ config }) {
             {config.subtitle && (
               <p className="font-demo-body text-demo-muted text-base leading-relaxed">{config.subtitle}</p>
             )}
-
             <div className="flex flex-col gap-5 mt-2">
               {infoRows.map(row => (
                 <div key={row.key} className="flex items-start gap-4">
@@ -81,60 +103,20 @@ export default function ContactSection({ config }) {
             </div>
           </div>
 
-          {/* Map, Widget or Form card */}
-          {config.widget ? (
-            <TurnoYaWidget widgetConfig={config.widget} />
-          ) : config.map ? (
+          {/* Mapa o formulario */}
+          {config.map ? (
             <div className="rounded-3xl overflow-hidden border border-demo-primary/10 h-[420px]">
               <iframe
                 src={config.map.embedUrl}
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                loading="lazy"
-                title="Ubicacion"
+                width="100%" height="100%"
+                style={{ border: 0 }} loading="lazy" title="Ubicacion"
               />
             </div>
           ) : (
-          <div className="bg-demo-surface rounded-3xl p-7 md:p-9 border border-demo-primary/10">
-            {sent ? (
-              <div className="flex flex-col items-center gap-4 py-8 text-center">
-                <div className="w-14 h-14 rounded-full bg-demo-primary/20 flex items-center justify-center">
-                  <span className="text-2xl">✓</span>
-                </div>
-                <h3 className="font-demo-heading text-demo-primary text-2xl">Mensaje enviado</h3>
-                <p className="font-demo-body text-demo-muted text-sm">Te contactamos pronto.</p>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                <input
-                  type="text" placeholder="Tu nombre"
-                  value={form.name} onChange={e => setForm(f => ({ ...f, name: e.target.value }))}
-                  required className={inputClass}
-                />
-                <input
-                  type="email" placeholder="Tu email"
-                  value={form.email} onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
-                  required className={inputClass}
-                />
-                <textarea
-                  placeholder="Tu mensaje"
-                  value={form.message} onChange={e => setForm(f => ({ ...f, message: e.target.value }))}
-                  rows={5} required
-                  className={`${inputClass} resize-none`}
-                />
-                <button
-                  type="submit"
-                  className="font-demo-body bg-demo-primary text-demo-bg text-sm font-semibold py-3.5 rounded-full hover:opacity-90 transition-opacity mt-1"
-                >
-                  Enviar mensaje
-                </button>
-                <p className="font-demo-body text-demo-muted text-xs text-center">
-                  Te respondemos en menos de 24h.
-                </p>
-              </form>
-            )}
-          </div>
+            <div className="bg-demo-surface rounded-3xl p-7 md:p-9 border border-demo-primary/10">
+              <p className="font-demo-heading text-demo-text text-xl mb-6">Reservas</p>
+              <ReservaqMockup sent={sent} onSubmit={e => { e.preventDefault(); setSent(true) }} />
+            </div>
           )}
 
         </div>
