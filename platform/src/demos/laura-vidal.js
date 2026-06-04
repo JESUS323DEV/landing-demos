@@ -41,22 +41,16 @@ export default {
   },
 
   hero: {
-    layout: 'split',
-    badge: 'Centro de Belleza · Barcelona',
-    title: 'Más de 20 años',
-    titleHighlight: 'cuidando tu bienestar',
-    description: 'Tratamientos corporales y faciales personalizados en el corazón de Barcelona. Tecnología LPG, HIFU corporal y depilación láser con resultados reales.',
-    cta: { label: 'Pedir cita', href: '#contact' },
+    layout: 'editorial',
+    title: 'Tu piel,',
+    titleHighlight: 'tu mejor versión.',
+    description: 'Tratamientos faciales y corporales personalizados con tecnología avanzada y resultados naturales.',
+    cta: { label: 'Reservar cita', href: '#contact' },
     ctaSecondary: { label: 'Ver tratamientos', href: '#services' },
-    stats: [
-      { value: '20+', label: 'años de exp.' },
-      { value: '594', label: 'seguidoras' },
-      { value: 'LPG', label: 'autorizado' },
-    ],
     images: [
-      { src: 'https://images.unsplash.com/photo-1552693673-1bf958298935?w=600&h=900&fit=crop&q=80', label: 'Foto 01', bg: 'linear-gradient(135deg,#EAE4DC,#D4B896)' },
-      { src: 'https://images.unsplash.com/photo-1516815989420-9cb5ef0fce78?w=400&h=400&fit=crop&q=80', label: 'Foto 02', bg: 'linear-gradient(135deg,#E8EEE9,#B8CBBC)' },
-      { src: 'https://images.unsplash.com/photo-1695527081827-fdbc4e77be9b?w=400&h=400&fit=crop&q=80', label: 'Foto 03', bg: 'linear-gradient(135deg,#EDE8E1,#C9B8A2)' },
+      { src: 'https://images.unsplash.com/photo-1552693673-1bf958298935?w=1400&h=1800&fit=crop&q=85', label: 'Tratamiento facial' },
+      { src: 'https://images.unsplash.com/photo-1516815989420-9cb5ef0fce78?w=1400&h=1800&fit=crop&q=85', label: 'Sala de tratamientos' },
+      { src: 'https://images.unsplash.com/photo-1695527081827-fdbc4e77be9b?w=1400&h=1800&fit=crop&q=85', label: 'Zona bienestar' },
     ],
   },
 

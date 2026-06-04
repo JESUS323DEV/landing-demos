@@ -4,9 +4,6 @@ export default function ServicesSection({ config }) {
   return (
     <section id="services" className="py-24 bg-demo-surface">
       <div className="max-w-6xl mx-auto px-6">
-        {config.label && (
-          <p className="font-demo-body text-demo-primary text-xs tracking-[0.2em] uppercase mb-3">{config.label}</p>
-        )}
         <h2 className="font-demo-heading text-demo-text text-4xl md:text-5xl mb-16">{config.title}</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {config.items.map((item, i) => (
@@ -28,10 +25,6 @@ function ServicesCards({ config }) {
       <div className="max-w-6xl mx-auto px-5">
 
         <div className="text-center mb-14 flex flex-col gap-3 items-center">
-          {config.label && (
-            <span className="font-demo-body text-demo-primary text-xs font-bold tracking-[0.2em] uppercase">{config.label}</span>
-          )}
-
           <h2 className="font-demo-heading text-demo-text text-3xl md:text-5xl">{config.title}</h2>
           {config.subtitle && (
             <p className="font-demo-body text-demo-muted max-w-md text-base">{config.subtitle}</p>

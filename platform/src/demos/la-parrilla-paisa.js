@@ -42,14 +42,22 @@ export default {
     ],
   },
   hero: {
-    layout: 'centered',
-    dark: true,
-    badge: 'Cocina Paisa en Barcelona',
+    layout: 'immersive',
     title: 'El sabor de Colombia',
     titleHighlight: 'en tu mesa',
     description: 'Asados a la brasa, bandeja paisa y los platos más auténticos de Antioquia. En el corazón de Poblenou, Barcelona.',
     cta: { label: 'Pedir ahora', href: '#delivery' },
     ctaSecondary: { label: 'Ver menú', href: '#menu' },
+    images: [
+      { src: 'https://images.unsplash.com/photo-1558030137-a56c1b004fa3?w=900&h=800&fit=crop&q=80', label: 'Asado a la brasa' },
+      { src: 'https://images.unsplash.com/photo-1632158930341-46604b637a0f?w=900&h=800&fit=crop&q=80', label: 'Parrilla' },
+      { src: 'https://images.unsplash.com/photo-1611354609291-69aba96e45df?w=900&h=800&fit=crop&q=80', label: 'Brasa' },
+    ],
+    features: [
+      { icon: '🔥', title: 'Brasa de verdad',    description: 'Sabor auténtico que se siente' },
+      { icon: '🍽️', title: 'Recetas originales', description: 'Tradición paisa desde el corazón' },
+      { icon: '❤️', title: 'Hecho con pasión',   description: 'Ingredientes frescos y de calidad' },
+    ],
   },
 
   about: {

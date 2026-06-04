@@ -3,12 +3,6 @@ export default function CTASection({ config }) {
     <section id="cta" className="relative py-20 lg:py-28 bg-demo-bg overflow-hidden">
       <div className="relative z-10 max-w-5xl mx-auto px-5 md:px-9">
 
-        {config.label && (
-          <span className="block text-xs font-semibold tracking-[.18em] uppercase text-demo-primary mb-3 text-center">
-            {config.label}
-          </span>
-        )}
-
         <h2 className="font-demo-heading text-4xl md:text-5xl lg:text-6xl text-demo-text mb-4 text-center">
           {config.title}
         </h2>

@@ -19,9 +19,6 @@ export default function DeliverySection({ config }) {
       <div className="absolute bottom-0 left-0 w-64 h-64 opacity-5 pointer-events-none" style={{ background: 'var(--demo-accent)', filter: 'blur(100px)', borderRadius: '50%' }} />
 
       <div className="relative z-10 max-w-4xl mx-auto px-5 text-center">
-        {config.label && (
-          <p className={`font-demo-body text-xs tracking-[0.2em] uppercase font-bold mb-4 ${labelColor}`}>{config.label}</p>
-        )}
         <h2 className={`font-demo-heading text-3xl md:text-5xl mb-4 ${titleColor}`}>{config.title}</h2>
         {config.subtitle && (
           <p className={`font-demo-body text-base md:text-lg max-w-xl mx-auto mb-12 ${subtitleColor}`}>{config.subtitle}</p>

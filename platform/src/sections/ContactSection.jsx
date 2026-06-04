@@ -79,9 +79,6 @@ export default function ContactSection({ config }) {
 
           {/* Info */}
           <div className="flex flex-col gap-6">
-            {config.label && (
-              <span className="font-demo-body text-demo-primary text-xs tracking-[0.2em] uppercase">{config.label}</span>
-            )}
             <h2 className="font-demo-heading text-demo-text text-3xl md:text-4xl leading-tight">
               {config.title}
             </h2>

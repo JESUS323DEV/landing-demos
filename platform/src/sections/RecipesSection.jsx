@@ -9,10 +9,7 @@ export default function RecipesSection({ config }) {
 
         {/* Header */}
         <div className="text-center mb-12">
-          {config.label && (
-            <span className="font-demo-body text-demo-primary text-xs tracking-[0.2em] uppercase font-semibold">{config.label}</span>
-          )}
-          <h2 className="font-demo-heading text-demo-text text-3xl md:text-5xl leading-tight mt-3">
+          <h2 className="font-demo-heading text-demo-text text-3xl md:text-5xl leading-tight">
             {config.title}
           </h2>
           {config.subtitle && (

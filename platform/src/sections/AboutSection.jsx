@@ -8,10 +8,6 @@ export default function AboutSection({ config }) {
 
           {/* Texto */}
           <div className={`flex flex-col gap-5 ${config.flip ? 'md:order-2' : ''}`}>
-            {config.label && (
-              <span className="font-demo-body text-demo-primary text-xs tracking-[0.2em] uppercase font-semibold">{config.label}</span>
-            )}
-
             <h2 className="font-demo-heading text-demo-text text-3xl md:text-5xl leading-tight">
               {config.title}
               {config.titleHighlight && (

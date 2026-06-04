@@ -9,9 +9,6 @@ export default function MenuTabsSection({ config }) {
       <div className="max-w-6xl mx-auto px-5">
         {/* Header */}
         <div className="text-center mb-12">
-          {config.label && (
-            <p className="font-demo-body text-demo-primary text-xs tracking-[0.2em] uppercase font-bold mb-3">{config.label}</p>
-          )}
           <h2 className="font-demo-heading text-demo-text text-3xl md:text-5xl">{config.title}</h2>
           {config.subtitle && (
             <p className="font-demo-body text-demo-muted text-base mt-3 max-w-md mx-auto">{config.subtitle}</p>

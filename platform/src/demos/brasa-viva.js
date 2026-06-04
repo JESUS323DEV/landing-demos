@@ -5,12 +5,12 @@ export default {
   category: 'Pollería',
   theme: {
     colors: {
-      bg:      '#0D0D0D',
-      surface: '#1A1009',
-      primary: '#E8620A',
-      accent:  '#F5A623',
-      text:    '#FFF8F0',
-      muted:   '#a07050',
+      bg:      '#F5F0E8',
+      surface: '#EDE8DE',
+      primary: '#8B1A1A',
+      accent:  '#2C3A2C',
+      text:    '#1A2A1A',
+      muted:   '#6B7A6B',
     },
     fonts: {
       heading: {
@@ -32,7 +32,7 @@ export default {
   nav: {
     initials: 'BV',
     subtitle: 'Pollos a la Brasa',
-    transparent: true,
+    transparent: false,
     cta: { label: 'Pedir ahora', href: '#delivery' },
     links: [
       { label: 'Nosotros', href: '#about' },
@@ -42,17 +42,24 @@ export default {
     ],
   },
   hero: {
-    layout: 'bottom',
-    badge: 'Sant Joan Despi, Barcelona',
+    layout: 'showcase',
+    badge: '🔥 A la brasa, con fuego de verdad',
     titleAccent: 'El pollo',
-    title: 'que lo cambia todo.',
+    title: 'que lo ',
+    titleHighlight: 'cambia',
+    titleSuffix: ' todo.',
     description: 'A la brasa, con su punto justo. Jugoso por dentro, crujiente por fuera. Hecho como se ha hecho siempre, con fuego de verdad.',
     cta: { label: 'Pedir por WhatsApp', href: 'https://wa.me/34612458723' },
     ctaSecondary: { label: 'Ver la carta', href: '#menu' },
     stats: [
-      { value: '+8 años', label: 'en la brasa' },
-      { value: '4.8 ★',   label: 'valoración media' },
-      { value: '+300',    label: 'reseñas' },
+      { icon: '🔥', value: '+8 años', label: 'en la brasa' },
+      { icon: '⭐', value: '4.8',     label: 'valoración media' },
+      { icon: '👥', value: '+300',    label: 'reseñas' },
+    ],
+    images: [
+      { src: 'https://images.unsplash.com/photo-1712579733874-c3a79f0f9d12?w=900&h=700&fit=crop&q=80', label: 'Pollo a la brasa' },
+      { src: 'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=900&h=700&fit=crop&q=80', label: 'Brasa' },
+      { src: 'https://images.unsplash.com/photo-1727280376746-b89107a5b0df?w=900&h=700&fit=crop&q=80', label: 'Alitas' },
     ],
   },
   about: {

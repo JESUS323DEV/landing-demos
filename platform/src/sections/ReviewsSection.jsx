@@ -3,9 +3,6 @@ export default function ReviewsSection({ config }) {
     <section id="reviews" className="py-20 bg-demo-bg">
       <div className="max-w-6xl mx-auto px-5">
         <div className="text-center mb-10">
-          {config.label && (
-            <p className="font-demo-body text-demo-primary text-xs tracking-[0.2em] uppercase font-bold mb-3">{config.label}</p>
-          )}
           {config.rating && (
             <h2 className="font-demo-heading text-demo-text text-4xl">
               {config.rating} <span className="text-demo-accent">★★★★★</span>
