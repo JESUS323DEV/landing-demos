@@ -79,7 +79,7 @@ function ServicesCards({ config }) {
           ))}
 
           {config.ctaCard && (
-            <div className="bg-demo-accent rounded-2xl p-6 flex flex-col justify-between gap-6">
+            <div className={`${config.ctaCard.tone === 'primary' ? 'bg-demo-primary' : 'bg-demo-accent'} rounded-2xl p-6 flex flex-col justify-between gap-6`}>
               <div className="flex flex-col gap-3">
                 {config.ctaCard.label && (
                   <span className="font-demo-body text-demo-bg/60 text-xs font-medium tracking-widest uppercase">{config.ctaCard.label}</span>
@@ -90,7 +90,7 @@ function ServicesCards({ config }) {
               {config.ctaCard.button && (
                 <a
                   href={config.ctaCard.button.href}
-                  className="inline-block font-demo-body border border-demo-bg text-demo-bg text-xs px-5 py-3 rounded-full text-center hover:bg-demo-bg hover:text-demo-accent transition-colors"
+                  className={`inline-block font-demo-body border border-demo-bg text-demo-bg text-xs px-5 py-3 rounded-full text-center hover:bg-demo-bg transition-colors ${config.ctaCard.tone === 'primary' ? 'hover:text-demo-primary' : 'hover:text-demo-accent'}`}
                 >
                   {config.ctaCard.button.label}
                 </a>

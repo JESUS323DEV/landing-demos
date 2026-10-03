@@ -20,7 +20,7 @@ export default function AboutSection({ config }) {
               <p key={i} className="font-demo-body text-demo-muted text-base leading-relaxed">{p}</p>
             ))}
 
-            {/* Feature pills (Selva Club style) */}
+            {/* Feature pills (estilo píldoras) */}
             {config.pills && (
               <div className="flex flex-col gap-3 mt-2">
                 {config.pills.map((pill, i) => (
@@ -97,7 +97,10 @@ function ImageCol({ config }) {
         className="aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl flex items-center justify-center"
         style={{ background: `linear-gradient(135deg, var(--demo-surface) 0%, color-mix(in srgb, var(--demo-primary) 20%, var(--demo-surface)) 100%)` }}
       >
-        <span className="font-demo-body text-demo-muted text-sm opacity-40">{config.imagePlaceholder ?? 'Foto del local'}</span>
+        {config.image?.src
+          ? <img src={config.image.src} alt={config.image.alt ?? ''} className="w-full h-full object-cover" />
+          : <span className="font-demo-body text-demo-muted text-sm opacity-40">{config.imagePlaceholder ?? 'Foto del local'}</span>
+        }
       </div>
       {config.badge && (
         <div className="absolute -bottom-5 -left-5 bg-demo-primary text-demo-bg rounded-2xl p-5 shadow-2xl">

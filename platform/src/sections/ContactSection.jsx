@@ -1,7 +1,8 @@
 import Icon from '../components/Icon'
 import { useState } from 'react'
 
-function ReservaqMockup({ sent, onSubmit }) {
+/* form (opcional): { title, button, message, people: false } */
+function ReservaqMockup({ sent, onSubmit, form = {} }) {
   const inp = 'w-full bg-demo-bg border border-demo-primary/20 rounded-xl text-demo-text font-demo-body text-sm px-4 py-3 outline-none focus:border-demo-primary transition-colors placeholder:text-demo-muted/40'
 
   if (sent) {
@@ -38,22 +39,24 @@ function ReservaqMockup({ sent, onSubmit }) {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-3">
-        <div>
-          <p className="font-demo-body text-demo-muted text-xs uppercase tracking-widest mb-2">Personas</p>
-          <select className={inp}>
-            {[1,2,3,4,5,6].map(n => <option key={n}>{n} {n === 1 ? 'persona' : 'personas'}</option>)}
-          </select>
+      {form.people !== false && (
+        <div className="grid grid-cols-2 gap-3">
+          <div>
+            <p className="font-demo-body text-demo-muted text-xs uppercase tracking-widest mb-2">Personas</p>
+            <select className={inp}>
+              {[1,2,3,4,5,6].map(n => <option key={n}>{n} {n === 1 ? 'persona' : 'personas'}</option>)}
+            </select>
+          </div>
         </div>
-      </div>
+      )}
 
-      <textarea placeholder="Mensaje (opcional)" rows={3} className={`${inp} resize-none`} />
+      <textarea placeholder={form.message ?? 'Mensaje (opcional)'} rows={3} className={`${inp} resize-none`} />
 
       <button
         type="submit"
         className="font-demo-body bg-demo-primary text-demo-bg text-sm font-semibold py-3.5 rounded-full hover:opacity-90 transition-opacity mt-1"
       >
-        Reservar
+        {form.button ?? 'Reservar'}
       </button>
       <p className="font-demo-body text-demo-muted text-xs text-center">
         Powered by <span className="font-semibold text-demo-primary">Reservarq</span>
@@ -112,8 +115,8 @@ export default function ContactSection({ config }) {
             </div>
           ) : (
             <div className="bg-demo-surface rounded-3xl p-7 md:p-9 border border-demo-primary/10">
-              <p className="font-demo-heading text-demo-text text-xl mb-6">Reservas</p>
-              <ReservaqMockup sent={sent} onSubmit={e => { e.preventDefault(); setSent(true) }} />
+              <p className="font-demo-heading text-demo-text text-xl mb-6">{config.form?.title ?? 'Reservas'}</p>
+              <ReservaqMockup sent={sent} form={config.form} onSubmit={e => { e.preventDefault(); setSent(true) }} />
             </div>
           )}
 
