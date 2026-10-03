@@ -1,6 +1,6 @@
 export default {
-  slug: 'el-sabor-de-casa',
-  name: 'El Sabor de Casa',
+  slug: 'el-pollastre-d-horta',
+  name: "El Pollastre d'Horta",
   tagline: 'Pollastres a l\'Ast · Barcelona',
   category: 'Menjars preparats',
   tier: 'base',
@@ -27,7 +27,7 @@ export default {
   social: [],
   sections: ['hero', 'about', 'menu', 'order', 'contact'],
   nav: {
-    initials: 'ESC',
+    initials: 'EPH',
     subtitle: 'Pollastres a l\'Ast',
     transparent: false,
     cta: { label: 'Fes la comanda', href: '#order' },
@@ -59,7 +59,7 @@ export default {
     title: 'Cuina casolana',
     titleHighlight: 'al cor d\'Horta-Guinardó',
     paragraphs: [
-      'El Sabor de Casa porta anys al barri oferint menjar per emportar de tota la vida. El pollastre a l\'ast amanit amb romaní és la nostra carta de presentació, però la cuina casolana de cada dia és el que ens fa tornar-hi.',
+      'El Pollastre d\'Horta porta anys al barri oferint menjar per emportar de tota la vida. El pollastre a l\'ast amanit amb romaní és la nostra carta de presentació, però la cuina casolana de cada dia és el que ens fa tornar-hi.',
       'Cap cap de setmana falta la cua per recollir el pollastre. Preparem cada plat com a casa, sense presses, amb els ingredients de sempre.',
     ],
     features: [
@@ -128,6 +128,6 @@ export default {
   },
   footer: {
     dark: true,
-    copy: 'El Sabor de Casa © 2026. Horta-Guinardó, Barcelona.',
+    copy: 'El Pollastre d\'Horta © 2026. Horta-Guinardó, Barcelona.',
   },
 }

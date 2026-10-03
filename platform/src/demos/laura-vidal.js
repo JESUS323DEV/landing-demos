@@ -1,6 +1,6 @@
 export default {
-  slug: 'laura-vidal',
-  name: 'Laura Vidal',
+  slug: 'aura-estetica',
+  name: 'Aura Estética',
   tagline: 'Belleza & Bienestar · Barcelona',
   category: 'Centro de Estética',
   tier: 'custom',
@@ -25,12 +25,12 @@ export default {
     },
   },
   social: [
-    { platform: 'instagram', href: 'https://instagram.com/lauravidal.estetica' },
-    { platform: 'tiktok',    href: 'https://tiktok.com/@lauravidal.estetica' },
+    { platform: 'instagram', href: 'https://instagram.com/auraestetica' },
+    { platform: 'tiktok',    href: 'https://tiktok.com/@auraestetica' },
   ],
   sections: ['hero', 'about', 'services', 'gallery', 'contact'],
   nav: {
-    initials: 'LV',
+    initials: 'AE',
     subtitle: 'Estética',
     cta: { label: 'Reservar cita', href: '#contact' },
     links: [
@@ -59,8 +59,8 @@ export default {
     label: 'Sobre el centro',
     title: 'Donde la ciencia y el bienestar se encuentran',
     paragraphs: [
-      'Soy Laura Vidal, especialista en belleza y cuidado personal con más de dos décadas de experiencia. En mi centro del Carrer de Provença combino las últimas tecnologías con un enfoque totalmente personalizado.',
-      'Cada cuerpo es diferente. Por eso diseño planes adaptados a tus objetivos, tu ritmo y tus necesidades reales. Sin promesas vacías, con resultados visibles.',
+      'En Aura Estética somos especialistas en belleza y cuidado personal con más de dos décadas de experiencia. En nuestro centro del Carrer de Provença combinamos las últimas tecnologías con un enfoque totalmente personalizado.',
+      'Cada cuerpo es diferente. Por eso diseñamos planes adaptados a tus objetivos, tu ritmo y tus necesidades reales. Sin promesas vacías, con resultados visibles.',
     ],
     features: [
       { icon: '✅', title: '+20 años de experiencia', description: 'Formación continua y dominio de las técnicas más avanzadas del sector.', dark: false },
@@ -108,7 +108,7 @@ export default {
     title: 'Da el primer paso hacia tu mejor versión',
     subtitle: 'Primera consulta gratuita. Te contactamos en menos de 24h.',
     phone: '612 345 678',
-    email: 'hola@lauravidal.es',
+    email: 'hola@auraestetica.es',
     address: 'Carrer de Provença, 87 · Barcelona',
     hours: 'Lu - Vi · 9:00 - 20:00 · Sa · 10:00 - 15:00',
   },
@@ -133,6 +133,6 @@ export default {
         info: ['612 345 678', 'Carrer de Provença, 87', 'Barcelona'],
       },
     ],
-    copy: '© 2026 Laura Vidal · Belleza & Bienestar',
+    copy: '© 2026 Aura Estética · Belleza & Bienestar',
   },
 }
