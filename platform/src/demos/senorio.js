@@ -7,12 +7,12 @@ export default {
   group: 'inmersivo',
   theme: {
     colors: {
-      bg:      '#08060A',
-      surface: '#120D18',
-      primary: '#B8261A',
-      accent:  '#C9870A',
-      text:    '#F0EBE3',
-      muted:   '#7A6C60',
+      bg:      '#F6EDE0',
+      surface: '#EBDDC8',
+      primary: '#C2502E',
+      accent:  '#5B6B3A',
+      text:    '#33211A',
+      muted:   '#7A6757',
     },
     fonts: {
       heading: {
@@ -44,21 +44,16 @@ export default {
     ],
   },
   hero: {
-    layout: 'bold',
+    layout: 'banner',
     title: 'Sabor',
     titleHighlight: 'que no se olvida.',
     description: 'Ceviche, lomo saltado y los platos más auténticos de Lima y Cusco. Cocina peruana de verdad en el corazón de El Born.',
     cta:          { label: 'Reservar por WhatsApp', href: 'https://wa.me/34625348917' },
     ctaSecondary: { label: 'Ver la carta', href: '#menu' },
     images: [
-      { src: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=900&h=800&fit=crop&q=80', label: 'Ceviche clásico' },
-      { src: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=900&h=800&fit=crop&q=80', label: 'Plato principal' },
-      { src: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&h=800&fit=crop&q=80', label: 'Interior' },
-    ],
-    features: [
-      { icon: 'fish', title: 'Pescado fresco del día',    description: 'Del mercado a tu plato. Sin congelados, sin atajos.' },
-      { icon: 'flame', title: 'Ají traído de Perú',        description: 'Amarillo, panca y rocoto originales. El sabor que no se replica.' },
-      { icon: 'handshake', title: 'Tres generaciones de receta', description: 'La cocina de la abuela, sin trampa ni cartón.' },
+      { src: 'https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=1800&h=1000&fit=crop&q=80', label: 'Ceviche clásico' },
+      { src: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1800&h=1000&fit=crop&q=80', label: 'Plato principal' },
+      { src: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1800&h=1000&fit=crop&q=80', label: 'Interior' },
     ],
     quickInfo: [
       { icon: 'map-pin', label: 'Dirección', value: 'Carrer de la Ribera, 19 · El Born, Barcelona' },
@@ -214,7 +209,7 @@ export default {
   },
 
   footer: {
-    dark: true,
+    dark: false,
     columns: [
       {
         brand: true,

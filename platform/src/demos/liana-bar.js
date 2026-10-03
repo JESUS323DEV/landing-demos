@@ -42,10 +42,10 @@ export default {
   },
   hero: {
     layout: 'split',
-    imageStyle: 'background',
+    imageStyle: 'neon',
     badge: 'Coctelería de autor',
     title: 'Noches',
-    titleGlow: 'de selva.',
+    titleGlow: 'de selva',
     description: 'Coctelería de autor en un rincón verde y a media luz, en pleno corazón de Barcelona. Ven a probar algo distinto.',
     cta: { label: 'Reservar mesa', href: '#contact' },
     ctaSecondary: { label: 'Conocer el bar', href: '#about' },

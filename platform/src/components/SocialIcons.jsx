@@ -22,14 +22,16 @@ const ICONS = {
   ),
 }
 
-export function SocialLinks({ social, size = 'sm', muted = false }) {
+export function SocialLinks({ social, size = 'sm', muted = false, light = false }) {
   if (!social?.length) return null
 
   const dim   = size === 'sm' ? 'w-4 h-4' : 'w-5 h-5'
   const wrap  = size === 'sm'
     ? 'w-8 h-8 rounded-full flex items-center justify-center hover:bg-demo-primary/10 transition-colors'
     : 'w-9 h-9 rounded-full flex items-center justify-center hover:bg-demo-primary/10 transition-colors'
-  const color = muted ? 'text-demo-muted hover:text-demo-primary' : 'text-demo-primary/70 hover:text-demo-primary'
+  const color = light
+    ? 'text-white/85 hover:text-white'
+    : muted ? 'text-demo-muted hover:text-demo-primary' : 'text-demo-primary/70 hover:text-demo-primary'
 
   return (
     <div className="flex items-center gap-1">

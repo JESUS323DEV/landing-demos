@@ -2,7 +2,7 @@ import Icon from '../../components/Icon'
 import useSlideshow from './useSlideshow'
 import { CTAButtons, StatsRow, HeroImages } from './shared'
 
-/* imageStyle: (por defecto) cuadrícula | 'staggered' escalonado | 'stack' pila de fotos | 'background' foto de fondo */
+/* imageStyle: (por defecto) cuadrícula | 'staggered' escalonado | 'stack' pila de fotos | 'neon' foto de fondo con titular de neón centrado */
 
 function ImgBox({ img, className = '', style }) {
   return (
@@ -54,10 +54,10 @@ function StackedImages({ images }) {
   )
 }
 
-function SplitText({ config, dark = false }) {
+function SplitText({ config }) {
   return (
     <div className="flex flex-col items-start gap-5">
-      <h1 className={`font-demo-heading leading-none text-[clamp(3rem,10vw,6rem)] ${dark ? 'text-white' : 'text-demo-text'}`}>
+      <h1 className="font-demo-heading text-demo-text leading-none text-[clamp(3rem,10vw,6rem)]">
         {config.title}
         {config.titleGlow && (
           <><br /><em className="not-italic text-demo-primary">{config.titleGlow}</em></>
@@ -66,20 +66,23 @@ function SplitText({ config, dark = false }) {
       {config.subtitle && (
         <p className="font-demo-body text-demo-primary text-base md:text-lg">{config.subtitle}</p>
       )}
-      <p className={`font-demo-body text-base leading-relaxed max-w-md ${dark ? 'text-white/70' : 'text-demo-muted'}`}>{config.description}</p>
-      <CTAButtons config={config} dark={dark} />
-      <StatsRow stats={config.stats} dark={dark} />
+      <p className="font-demo-body text-demo-muted text-base leading-relaxed max-w-md">{config.description}</p>
+      <CTAButtons config={config} />
+      <StatsRow stats={config.stats} />
     </div>
   )
 }
 
-/* Foto a pantalla completa de fondo, oscurecida, con el texto encima */
-function SplitBackground({ config }) {
+/* Foto a pantalla completa oscurecida y titular centrado con efecto de neón */
+function SplitNeon({ config }) {
   const images = config.images ?? []
   const [idx, setIdx] = useSlideshow(images.length, 5000)
+  const glow = '0 0 4px color-mix(in srgb, var(--demo-primary) 70%, white), 0 0 18px var(--demo-primary), 0 0 48px var(--demo-primary)'
+  // Contorno oscuro pegado a la letra, por fuera (se pinta detrás del relleno), para que se separe de la foto
+  const outline = { WebkitTextStroke: '6px #000', paintOrder: 'stroke fill' }
 
   return (
-    <section id="hero" className="relative overflow-hidden bg-demo-bg min-h-[680px] md:min-h-[760px] flex items-center">
+    <section id="hero" className="relative overflow-hidden bg-demo-bg min-h-[700px] md:min-h-[800px] flex items-center justify-center">
       {images.map((img, i) => (
         <div key={i} className={`absolute inset-0 transition-opacity duration-[1500ms] ${i === idx ? 'opacity-100' : 'opacity-0'}`}>
           {img.src
@@ -88,12 +91,25 @@ function SplitBackground({ config }) {
           }
         </div>
       ))}
-      <div className="absolute inset-0 bg-gradient-to-r from-demo-bg via-demo-bg/75 to-demo-bg/20" />
-      <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-demo-bg to-transparent" />
+      <div className="absolute inset-0 bg-demo-bg/60" />
+      <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 20%, var(--demo-bg) 95%)' }} />
 
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-5 pt-28 pb-20">
-        <div className="max-w-xl">
-          <SplitText config={config} dark />
+      <div className="relative z-10 w-full max-w-4xl mx-auto px-5 pt-28 pb-24 flex flex-col items-center text-center">
+        {config.badge && (
+          <p className="font-demo-body text-white/70 text-xs uppercase tracking-[0.4em] mb-6">{config.badge}</p>
+        )}
+        <h1 className="font-demo-heading uppercase leading-[0.88] text-[clamp(4.5rem,15vw,12rem)]">
+          <span className="block text-white" style={{ ...outline, textShadow: '0 0 14px color-mix(in srgb, var(--demo-primary) 45%, transparent)' }}>{config.title}</span>
+          {config.titleGlow && (
+            <span className="block text-demo-primary" style={{ ...outline, textShadow: glow }}>{config.titleGlow}</span>
+          )}
+        </h1>
+        <p className="font-demo-body text-white/75 text-base md:text-lg leading-relaxed max-w-md mt-8">{config.description}</p>
+        <div className="flex justify-center mt-8">
+          <CTAButtons config={config} dark />
+        </div>
+        <div className="flex justify-center mt-12">
+          <StatsRow stats={config.stats} dark />
         </div>
       </div>
 
@@ -112,7 +128,7 @@ function SplitBackground({ config }) {
 
 /* ── Split (text left, image grid right) ── */
 export default function HeroSplit({ config }) {
-  if (config.imageStyle === 'background') return <SplitBackground config={config} />
+  if (config.imageStyle === 'neon') return <SplitNeon config={config} />
 
   const images = config.images ?? []
 

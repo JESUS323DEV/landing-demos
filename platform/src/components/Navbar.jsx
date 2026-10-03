@@ -39,7 +39,7 @@ export default function Navbar({ demo }) {
           <div>
             <p className={`font-demo-heading text-sm leading-tight tracking-wide ${textColor}`}>{demo.name}</p>
             {demo.nav?.subtitle && (
-              <p className="text-demo-primary text-xs tracking-widest uppercase leading-none">{demo.nav.subtitle}</p>
+              <p className={`text-xs tracking-widest uppercase leading-none ${overlayActive ? 'text-white/80' : 'text-demo-primary'}`}>{demo.nav.subtitle}</p>
             )}
           </div>
         </a>
@@ -57,7 +57,7 @@ export default function Navbar({ demo }) {
 
         {/* Desktop: redes sociales + CTA */}
         <div className="hidden md:flex items-center gap-3">
-          <SocialLinks social={demo.social} size="sm" />
+          <SocialLinks social={demo.social} size="sm" light={overlayActive} />
           {demo.nav?.cta && (
             <a
               href={demo.nav.cta.href}
