@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import { useLayoutEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { getDemoBySlug } from '../demos'
 import { applyTheme, resetTheme } from '../lib/applyTheme'
@@ -36,7 +36,7 @@ export default function DemoPage() {
   const { slug } = useParams()
   const demo = getDemoBySlug(slug)
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!demo) return
     applyTheme(demo.theme)
     return () => resetTheme()

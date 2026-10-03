@@ -6,6 +6,7 @@ import HeroImmersive  from './hero/HeroImmersive'
 import HeroShowcase   from './hero/HeroShowcase'
 import HeroBold       from './hero/HeroBold'
 import HeroGalleryTop from './hero/HeroGalleryTop'
+import HeroCover      from './hero/HeroCover'
 
 const LAYOUTS = {
   centered:      HeroCentered,
@@ -16,9 +17,10 @@ const LAYOUTS = {
   showcase:      HeroShowcase,
   bold:          HeroBold,
   'gallery-top': HeroGalleryTop,
+  cover:         HeroCover,
 }
 
-/* layout: 'centered' (default) | 'split' | 'bottom' | 'editorial' | 'immersive' | 'showcase' | 'bold' | 'gallery-top' */
+/* layout: 'centered' (default) | 'split' | 'bottom' | 'editorial' | 'immersive' | 'showcase' | 'bold' | 'gallery-top' | 'cover' */
 export default function HeroSection({ config }) {
   const Layout = LAYOUTS[config.layout] ?? HeroCentered
   return <Layout config={config} />

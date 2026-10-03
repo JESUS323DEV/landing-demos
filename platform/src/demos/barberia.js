@@ -51,7 +51,21 @@ export default {
   },
 
   hero: {
-    layout: 'editorial',
+    layout: 'cover',
+    masthead: 'Navaja & Tijera',
+    kicker: 'Barbería clásica · Barcelona',
+    meta: ['Desde 2012', 'Con cita previa'],
+    coverLines: {
+      left: [
+        { kicker: 'Pelo',  title: 'Corte clásico',    note: 'Tijera o máquina · 15 €' },
+        { kicker: 'Barba', title: 'Arreglo de barba', note: 'Perfilado y toalla caliente · 10 €' },
+      ],
+      right: [
+        { kicker: 'Navaja',  title: 'Afeitado clásico', note: 'Espuma y toalla caliente · 14 €' },
+        { kicker: 'Combo',   title: 'Corte + barba',    note: 'La sesión completa · 22 €' },
+        { kicker: 'Horario', title: 'Ma - Sa',          note: '10:00 - 20:00 · Con cita previa' },
+      ],
+    },
     title: 'El corte,',
     titleHighlight: 'bien hecho.',
     description: 'Barbería clásica en Barcelona. Corte, barba y afeitado con navaja, sin prisas y con cita previa.',

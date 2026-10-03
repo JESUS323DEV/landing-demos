@@ -49,7 +49,7 @@ const STEPS = [
 const wa = (text) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`
 
 /* ── Previsualización viva: carga la demo real y la escala al ancho disponible ── */
-function ScaledFrame({ slug, width, height, title, fixed = false, frameClass = 'pointer-events-none', className = '' }) {
+function ScaledFrame({ slug, width, height, title, fixed = false, frameClass = 'pointer-events-none', bgClass = 'bg-white', className = '' }) {
   const ref = useRef(null)
   const [scale, setScale] = useState(0.3)
 
@@ -64,7 +64,7 @@ function ScaledFrame({ slug, width, height, title, fixed = false, frameClass = '
   }, [width])
 
   return (
-    <div ref={ref} className={`relative overflow-hidden bg-white ${className}`} style={{ height: height * scale }}>
+    <div ref={ref} className={`relative overflow-hidden ${bgClass} ${className}`} style={{ height: height * scale }}>
       <iframe
         src={`/demo/${slug}${fixed ? '?preview' : ''}`}
         title={title}
@@ -127,7 +127,6 @@ function Hero() {
     return () => clearInterval(id)
   }, [auto, featured.length])
 
-  const current = featured[idx]
 
   return (
     <section id="top" className="relative overflow-hidden">
@@ -156,15 +155,24 @@ function Hero() {
         {/* Móvil con la demo real, se puede tocar y hacer scroll en pantallas grandes */}
         <div className="mx-auto w-full max-w-[290px] lg:max-w-[310px]">
           <div className="rounded-[2.6rem] bg-[#14130F] p-2.5 shadow-[0_40px_80px_-30px_rgba(20,19,15,0.55)]">
-            <div className="overflow-hidden rounded-[2.1rem]">
-              <ScaledFrame
-                key={current.slug}
-                slug={current.slug}
-                width={390}
-                height={800}
-                title={`Demo ${current.name}`}
-                frameClass="pointer-events-none lg:pointer-events-auto"
-              />
+            {/* Las demos se cargan todas a la vez y se cambia cuál se ve con un fundido, así no hay parpadeo al cambiar */}
+            <div className="relative aspect-[390/800] overflow-hidden rounded-[2.1rem] bg-[#14130F]">
+              {featured.map((d, i) => (
+                <div
+                  key={d.slug}
+                  aria-hidden={i !== idx}
+                  className={`absolute inset-0 transition-opacity duration-700 ${i === idx ? 'opacity-100 z-10' : 'opacity-0 pointer-events-none'}`}
+                >
+                  <ScaledFrame
+                    slug={d.slug}
+                    width={390}
+                    height={800}
+                    title={`Demo ${d.name}`}
+                    bgClass="bg-[#14130F]"
+                    frameClass={i === idx ? 'pointer-events-none lg:pointer-events-auto' : 'pointer-events-none'}
+                  />
+                </div>
+              ))}
             </div>
           </div>
           <div className="mt-6 flex items-center justify-center gap-2">
