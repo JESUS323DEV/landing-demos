@@ -78,8 +78,8 @@ export default function Navbar({ demo }) {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-demo-bg/98 backdrop-blur-md border-t border-demo-primary/10">
-          <ul className="px-5 py-5 flex flex-col gap-5">
+        <div className="md:hidden fixed top-16 left-0 right-0 h-[calc(100vh-4rem)] bg-demo-bg overflow-y-auto z-40">
+          <ul className="px-5 py-8 flex flex-col gap-6">
             {demo.nav.links.map(link => (
               <li key={link.href}>
                 <a href={link.href} onClick={() => setOpen(false)} className="text-demo-text text-base font-demo-body">

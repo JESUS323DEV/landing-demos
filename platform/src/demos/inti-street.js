@@ -3,6 +3,7 @@ export default {
   name: 'Inti Street Food',
   tagline: 'Street Food Peruano · Madrid',
   category: 'Street Food',
+  tier: 'base',
   theme: {
     colors: {
       bg:      '#FFFFFF',

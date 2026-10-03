@@ -3,6 +3,7 @@ export default {
   name: 'Laura Vidal',
   tagline: 'Belleza & Bienestar · Barcelona',
   category: 'Centro de Estética',
+  tier: 'custom',
   theme: {
     colors: {
       bg:      '#F7F3EE',

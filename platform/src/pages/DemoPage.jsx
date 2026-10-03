@@ -15,6 +15,7 @@ import {
   CTASection,
   ContactSection,
   RecipesSection,
+  OrderFormSection,
 } from '../sections'
 
 const SECTION_MAP = {
@@ -28,6 +29,7 @@ const SECTION_MAP = {
   cta:      CTASection,
   contact:  ContactSection,
   recipes:  RecipesSection,
+  order:    OrderFormSection,
 }
 
 export default function DemoPage() {

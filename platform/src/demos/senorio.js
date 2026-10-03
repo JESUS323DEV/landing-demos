@@ -3,6 +3,7 @@ export default {
   name: 'Señorío',
   tagline: 'Cocina Peruana · Barcelona',
   category: 'Restaurante',
+  tier: 'custom',
   theme: {
     colors: {
       bg:      '#08060A',

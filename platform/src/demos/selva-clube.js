@@ -3,6 +3,7 @@ export default {
   name: 'Selva Clube BCN',
   tagline: 'Private Social Club · Barcelona',
   category: 'Club Privado',
+  tier: 'base',
   theme: {
     colors: {
       bg:      '#0a0a0a',

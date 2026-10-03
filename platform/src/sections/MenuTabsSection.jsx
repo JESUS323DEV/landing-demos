@@ -16,7 +16,7 @@ export default function MenuTabsSection({ config }) {
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-2 overflow-x-auto pb-3 mb-8 justify-start md:justify-center scrollbar-none" style={{ scrollbarWidth: 'none' }}>
+        <div className="flex flex-wrap gap-2 mb-8 justify-center">
           {config.tabs.map((t, i) => (
             <button
               key={i}

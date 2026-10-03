@@ -3,6 +3,7 @@ export default {
   name: 'Dulce Lima',
   tagline: 'Repostería Peruana · Madrid',
   category: 'Repostería',
+  tier: 'base',
   theme: {
     colors: {
       bg:      '#ffffff',

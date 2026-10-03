@@ -3,6 +3,7 @@ export default {
   name: 'Brasa Viva',
   tagline: 'Pollos a la Brasa · Barcelona',
   category: 'Pollería',
+  tier: 'base',
   theme: {
     colors: {
       bg:      '#F5F0E8',

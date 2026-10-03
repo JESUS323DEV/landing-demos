@@ -3,6 +3,7 @@ export default {
   name: 'La Parrilla Paisa',
   tagline: 'Cocina Colombiana · Barcelona',
   category: 'Restaurante',
+  tier: 'custom',
   theme: {
     colors: {
       bg: '#FFF8EF',
