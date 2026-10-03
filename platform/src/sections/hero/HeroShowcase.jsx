@@ -1,3 +1,4 @@
+import Icon from '../../components/Icon'
 import useSlideshow from './useSlideshow'
 
 /* ── Showcase (fondo claro, texto izquierda, imagen redondeada derecha, stats) ── */
@@ -47,7 +48,7 @@ export default function HeroShowcase({ config }) {
                 <div key={i} className="flex items-center gap-3">
                   {s.icon && (
                     <div className="w-10 h-10 rounded-full bg-demo-primary/10 flex items-center justify-center flex-shrink-0">
-                      <span className="text-base">{s.icon}</span>
+                      <Icon name={s.icon} size={18} className="text-demo-primary" />
                     </div>
                   )}
                   <div>

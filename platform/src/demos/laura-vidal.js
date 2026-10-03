@@ -4,6 +4,7 @@ export default {
   tagline: 'Belleza & Bienestar · Barcelona',
   category: 'Centro de Estética',
   tier: 'custom',
+  group: 'editorial',
   theme: {
     colors: {
       bg:      '#F7F3EE',
@@ -63,10 +64,10 @@ export default {
       'Cada cuerpo es diferente. Por eso diseñamos planes adaptados a tus objetivos, tu ritmo y tus necesidades reales. Sin promesas vacías, con resultados visibles.',
     ],
     features: [
-      { icon: '✅', title: '+20 años de experiencia', description: 'Formación continua y dominio de las técnicas más avanzadas del sector.', dark: false },
-      { icon: '⚡', title: 'Tecnología LPG',          description: 'Centro autorizado por LPG, líder mundial en tratamientos corporales.', dark: true },
-      { icon: '💛', title: 'Trato personalizado',     description: 'Planes 100% adaptados a tu cuerpo, tus objetivos y tu momento de vida.', dark: false },
-      { icon: '📍', title: 'Barcelona centro',        description: 'Carrer de Provença, 87. Fácil acceso en transporte público.', dark: false },
+      { icon: 'circle-check', title: '+20 años de experiencia', description: 'Formación continua y dominio de las técnicas más avanzadas del sector.', dark: false },
+      { icon: 'zap', title: 'Tecnología LPG',          description: 'Centro autorizado por LPG, líder mundial en tratamientos corporales.', dark: true },
+      { icon: 'heart', title: 'Trato personalizado',     description: 'Planes 100% adaptados a tu cuerpo, tus objetivos y tu momento de vida.', dark: false },
+      { icon: 'map-pin', title: 'Barcelona centro',        description: 'Carrer de Provença, 87. Fácil acceso en transporte público.', dark: false },
     ],
     cta: { label: 'Conoce tu plan', href: '#contact' },
   },

@@ -1,3 +1,4 @@
+import Icon from '../components/Icon'
 /* Sección "nosotros" — layout 2 columnas: texto+stats | imagen/features */
 export default function AboutSection({ config }) {
   const sectionBg = config.bg ?? 'bg-demo-surface'
@@ -24,7 +25,7 @@ export default function AboutSection({ config }) {
               <div className="flex flex-col gap-3 mt-2">
                 {config.pills.map((pill, i) => (
                   <div key={i} className="flex items-start gap-3.5 p-4 bg-demo-bg border border-demo-primary/10 rounded-2xl hover:border-demo-primary/30 transition-colors">
-                    <span className="text-xl flex-shrink-0 mt-0.5">{pill.icon}</span>
+                    <Icon name={pill.icon} size={20} className="flex-shrink-0 mt-0.5 text-demo-primary" />
                     <div>
                       <strong className="block text-demo-text text-sm font-semibold mb-0.5">{pill.title}</strong>
                       <p className="text-demo-muted text-sm font-demo-body">{pill.description}</p>
@@ -79,7 +80,7 @@ function FeatureCards({ features }) {
           }`}
         >
           <div className={`w-10 h-10 rounded-full flex items-center justify-center ${f.dark ? 'bg-demo-bg/15' : 'bg-demo-primary/10'}`}>
-            <span className="text-xl">{f.icon}</span>
+            <Icon name={f.icon} size={20} className={f.dark ? 'text-demo-bg' : 'text-demo-primary'} />
           </div>
           <h3 className={`font-demo-heading text-lg ${f.dark ? '' : 'text-demo-text'}`}>{f.title}</h3>
           <p className={`font-demo-body text-sm leading-relaxed ${f.dark ? 'opacity-70' : 'text-demo-muted'}`}>{f.description}</p>

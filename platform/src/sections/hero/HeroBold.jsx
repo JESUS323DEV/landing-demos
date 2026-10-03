@@ -1,3 +1,4 @@
+import Icon from '../../components/Icon'
 import useSlideshow from './useSlideshow'
 import { MobileSlideshow, FeatureBar } from './shared'
 
@@ -91,7 +92,7 @@ export default function HeroBold({ config }) {
           <div className="grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
             {config.quickInfo.map((item, i) => (
               <div key={i} className="flex items-center gap-3 px-7 py-4">
-                <span className="text-demo-primary text-base flex-shrink-0">{item.icon}</span>
+                <Icon name={item.icon} size={16} className="text-demo-primary flex-shrink-0" />
                 <div>
                   <p className="font-demo-body text-demo-text/40 text-[10px] uppercase tracking-widest leading-none mb-1">{item.label}</p>
                   <p className="font-demo-body text-demo-text text-sm">{item.value}</p>

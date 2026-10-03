@@ -6,6 +6,10 @@ const TIERS = [
     key: 'custom',
     title: 'A medida',
     description: 'Hero propio y diseño personalizado para la marca.',
+    groups: [
+      { key: 'editorial', title: 'Editorial' },
+      { key: 'inmersivo', title: 'Inmersivo' },
+    ],
   },
   {
     key: 'base',
@@ -36,6 +40,14 @@ function DemoCard({ demo }) {
   )
 }
 
+function DemoGrid({ demos }) {
+  return (
+    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {demos.map(demo => <DemoCard key={demo.slug} demo={demo} />)}
+    </div>
+  )
+}
+
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-gray-950 text-white px-6 py-16">
@@ -51,9 +63,16 @@ export default function HomePage() {
             <section key={tier.key} className="mb-14">
               <h2 className="text-2xl font-semibold">{tier.title}</h2>
               <p className="text-gray-500 text-sm mt-1 mb-6">{tier.description}</p>
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                {items.map(demo => <DemoCard key={demo.slug} demo={demo} />)}
-              </div>
+              {tier.groups ? tier.groups.map(group => {
+                const groupItems = items.filter(d => d.group === group.key)
+                if (!groupItems.length) return null
+                return (
+                  <div key={group.key} className="mb-8 last:mb-0">
+                    <h3 className="text-gray-400 text-xs uppercase tracking-widest mb-3">{group.title}</h3>
+                    <DemoGrid demos={groupItems} />
+                  </div>
+                )
+              }) : <DemoGrid demos={items} />}
             </section>
           )
         })}

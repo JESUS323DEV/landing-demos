@@ -1,0 +1,63 @@
+import {
+  Armchair, Ban, Baby, CakeSlice, Calendar, ChefHat, CircleCheck, CircleParking, Citrus, Clock,
+  Cookie, CookingPot, Drumstick, Euro, Fish, Flag, Flame, Flower2, Grape, Handshake, HandHeart, Heart,
+  Leaf, Lock, Mail, MapPin, MessageCircle, Moon, Package, PawPrint, Phone, Rabbit, Scissors,
+  ShoppingCart, Slice, Soup, Sparkles, Sprout, Star, Timer, Trophy, TriangleAlert, TreePine,
+  Users, Utensils, Zap,
+} from 'lucide-react'
+
+/* Registro de iconos disponibles en las configs de las demos (icon: 'flame'). */
+const ICONS = {
+  'armchair': Armchair,
+  'ban': Ban,
+  'baby': Baby,
+  'cake-slice': CakeSlice,
+  'calendar': Calendar,
+  'chef-hat': ChefHat,
+  'circle-check': CircleCheck,
+  'circle-parking': CircleParking,
+  'citrus': Citrus,
+  'clock': Clock,
+  'cookie': Cookie,
+  'cooking-pot': CookingPot,
+  'drumstick': Drumstick,
+  'euro': Euro,
+  'fish': Fish,
+  'flag': Flag,
+  'flame': Flame,
+  'flower': Flower2,
+  'grape': Grape,
+  'handshake': Handshake,
+  'hand-heart': HandHeart,
+  'heart': Heart,
+  'leaf': Leaf,
+  'lock': Lock,
+  'mail': Mail,
+  'map-pin': MapPin,
+  'message-circle': MessageCircle,
+  'moon': Moon,
+  'package': Package,
+  'paw-print': PawPrint,
+  'phone': Phone,
+  'rabbit': Rabbit,
+  'scissors': Scissors,
+  'shopping-cart': ShoppingCart,
+  'slice': Slice,
+  'soup': Soup,
+  'sparkles': Sparkles,
+  'sprout': Sprout,
+  'star': Star,
+  'timer': Timer,
+  'trophy': Trophy,
+  'triangle-alert': TriangleAlert,
+  'tree-pine': TreePine,
+  'users': Users,
+  'utensils': Utensils,
+  'zap': Zap,
+}
+
+export default function Icon({ name, size = 20, strokeWidth = 1.75, className }) {
+  const Component = ICONS[name]
+  if (!Component) return null
+  return <Component size={size} strokeWidth={strokeWidth} className={className} aria-hidden="true" />
+}

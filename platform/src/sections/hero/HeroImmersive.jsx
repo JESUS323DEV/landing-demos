@@ -1,3 +1,4 @@
+import Icon from '../../components/Icon'
 import useSlideshow from './useSlideshow'
 import { MobileSlideshow, FeatureBar } from './shared'
 
@@ -19,7 +20,7 @@ export default function HeroImmersive({ config }) {
               {img.src
                 ? <img src={img.src} alt={img.label ?? ''} className="w-full h-full object-cover" />
                 : <div className="w-full h-full flex items-center justify-center" style={{ background: img.bg ?? 'rgba(255,255,255,0.04)' }}>
-                    {img.emoji && <span className="text-8xl opacity-15">{img.emoji}</span>}
+                    {img.icon && <Icon name={img.icon} size={96} strokeWidth={1} className="opacity-15 text-white" />}
                   </div>
               }
             </div>

@@ -1,3 +1,4 @@
+import Icon from '../components/Icon'
 import { useState } from 'react'
 
 function ReservaqMockup({ sent, onSubmit }) {
@@ -28,11 +29,11 @@ function ReservaqMockup({ sent, onSubmit }) {
       <p className="font-demo-body text-demo-muted text-xs uppercase tracking-widest mt-1">Fecha y hora</p>
       <div className="grid grid-cols-2 gap-3">
         <div className={`${inp} flex items-center gap-2 cursor-pointer`}>
-          <span className="text-demo-primary text-base">📅</span>
+          <Icon name="calendar" size={18} className="text-demo-primary" />
           <span className="text-demo-muted/60">dd / mm / aaaa</span>
         </div>
         <div className={`${inp} flex items-center gap-2 cursor-pointer`}>
-          <span className="text-demo-primary text-base">🕐</span>
+          <Icon name="clock" size={18} className="text-demo-primary" />
           <span className="text-demo-muted/60">Selecciona hora</span>
         </div>
       </div>
@@ -64,7 +65,7 @@ function ReservaqMockup({ sent, onSubmit }) {
 export default function ContactSection({ config }) {
   const [sent, setSent] = useState(false)
 
-  const INFO_ICONS = { phone: '📞', email: '✉️', address: '📍', hours: '🕐' }
+  const INFO_ICONS = { phone: 'phone', email: 'mail', address: 'map-pin', hours: 'clock' }
   const infoRows = [
     { key: 'phone',   label: 'Teléfono',  value: config.phone },
     { key: 'email',   label: 'Email',     value: config.email },
@@ -89,7 +90,7 @@ export default function ContactSection({ config }) {
               {infoRows.map(row => (
                 <div key={row.key} className="flex items-start gap-4">
                   <div className="w-11 h-11 rounded-xl bg-demo-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <span className="text-lg">{INFO_ICONS[row.key]}</span>
+                    <Icon name={INFO_ICONS[row.key]} size={20} className="text-demo-primary" />
                   </div>
                   <div>
                     <p className="font-demo-body text-demo-muted text-xs uppercase tracking-widest mb-1">{row.label}</p>

@@ -1,3 +1,4 @@
+import Icon from '../../components/Icon'
 export function CTAButtons({ config, dark }) {
   return (
     <div className="flex flex-col sm:flex-row gap-3">
@@ -50,7 +51,7 @@ export function HeroImages({ images }) {
             <img src={img.src} alt={img.label ?? ''} className="absolute inset-0 w-full h-full object-cover" />
           ) : (
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 opacity-60 group-hover:opacity-100 transition-opacity">
-              {img.emoji && <span className={i === 0 ? 'text-4xl' : 'text-2xl'}>{img.emoji}</span>}
+              {img.icon && <Icon name={img.icon} size={i === 0 ? 40 : 28} className="text-demo-text" />}
               {img.label && <span className="text-xs tracking-widest uppercase text-demo-text/60">{img.label}</span>}
             </div>
           )}
@@ -80,7 +81,7 @@ export function FeatureBar({ features, className, titleClass, descClass }) {
         {features.map((f, i) => (
           <div key={i} className={`flex items-center gap-4 px-7 py-5 ${i > 0 ? 'sm:border-l border-t sm:border-t-0 border-white/10' : ''}`}>
             <div className="w-11 h-11 rounded-full border border-demo-primary/50 flex items-center justify-center flex-shrink-0">
-              <span className="text-xl">{f.icon}</span>
+              <Icon name={f.icon} size={20} className="text-demo-primary" />
             </div>
             <div>
               <p className={`font-demo-body text-xs font-bold uppercase tracking-[0.15em] mb-0.5 ${titleClass}`}>{f.title}</p>

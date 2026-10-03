@@ -1,3 +1,4 @@
+import Icon from '../components/Icon'
 export default function CTASection({ config }) {
   return (
     <section id="cta" className="relative py-20 lg:py-28 bg-demo-bg overflow-hidden">
@@ -17,7 +18,7 @@ export default function CTASection({ config }) {
                 key={i}
                 className="relative p-7 bg-demo-surface border border-white/[.07] rounded-2xl overflow-hidden hover:border-demo-primary/30 hover:-translate-y-1 transition-all"
               >
-                <div className="text-[1.6rem] mb-3">{step.icon}</div>
+                <div className="mb-3 text-demo-primary"><Icon name={step.icon} size={26} /></div>
                 <div
                   className="font-demo-heading text-[2.5rem] text-demo-primary/20 absolute top-4 right-5 leading-none"
                   aria-hidden="true"
@@ -33,7 +34,7 @@ export default function CTASection({ config }) {
 
         {config.notice && (
           <div className="flex gap-3 items-start bg-demo-accent/5 border border-demo-accent/15 rounded-2xl p-4 md:p-5 mb-8">
-            <span className="text-base flex-shrink-0">⚠️</span>
+            <Icon name="triangle-alert" size={18} className="flex-shrink-0 text-demo-primary" />
             <p className="font-demo-body text-[.82rem] text-demo-muted leading-relaxed">{config.notice}</p>
           </div>
         )}

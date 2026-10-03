@@ -1,3 +1,4 @@
+import Icon from '../../components/Icon'
 import { CTAButtons, StatsRow, HeroImages } from './shared'
 
 /* ── Split (text left, image grid right) ── */
@@ -36,9 +37,9 @@ export default function HeroSplit({ config }) {
               <div key={i} className="aspect-square rounded-xl overflow-hidden relative" style={{ background: img.bg ?? 'var(--demo-surface)' }}>
                 {img.src ? (
                   <img src={img.src} alt={img.label ?? ''} className="w-full h-full object-cover" />
-                ) : img.emoji && (
+                ) : img.icon && (
                   <div className="w-full h-full flex items-center justify-center">
-                    <span className="text-2xl opacity-60">{img.emoji}</span>
+                    <Icon name={img.icon} size={28} className="opacity-60 text-demo-text" />
                   </div>
                 )}
               </div>

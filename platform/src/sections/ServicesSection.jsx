@@ -1,3 +1,4 @@
+import Icon from '../components/Icon'
 export default function ServicesSection({ config }) {
   if (config.layout === 'cards') return <ServicesCards config={config} />
 
@@ -8,7 +9,7 @@ export default function ServicesSection({ config }) {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {config.items.map((item, i) => (
             <div key={i} className="flex flex-col gap-4">
-              <span className="text-4xl leading-none">{item.icon}</span>
+              <Icon name={item.icon} size={36} strokeWidth={1.5} className="text-demo-primary" />
               <h3 className="font-demo-heading text-demo-text text-xl">{item.title}</h3>
               <p className="font-demo-body text-demo-muted text-sm leading-relaxed">{item.description}</p>
             </div>

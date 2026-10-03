@@ -1,5 +1,4 @@
 import useSlideshow from './useSlideshow'
-import { MobileSlideshow } from './shared'
 
 /* ── Editorial (texto izquierda, imagen derecha con corte diagonal) ── */
 export default function HeroEditorial({ config }) {
@@ -8,11 +7,40 @@ export default function HeroEditorial({ config }) {
 
   return (
     <section id="hero" className="relative bg-demo-bg overflow-hidden">
-      <div className="relative flex  items-center min-h-[600px] md:min-h-[680px]">
+
+      {/* Móvil: imagen a todo el ancho con corte diagonal arriba, texto debajo */}
+      <div className="md:hidden relative pt-16">
+        <div
+          className="relative h-[54svh] min-h-[340px] max-h-[520px]"
+          style={{ clipPath: 'polygon(0 18%, 100% 0, 100% 100%, 0 100%)' }}
+        >
+          {images.map((img, i) => (
+            <div key={i} className={`absolute inset-0 transition-opacity duration-1000 ${i === idx ? 'opacity-100' : 'opacity-0'}`}>
+              {img.src
+                ? <img src={img.src} alt={img.label ?? ''} className="w-full h-full object-cover" />
+                : <div className="w-full h-full" style={{ background: img.bg ?? 'var(--demo-surface)' }} />
+              }
+            </div>
+          ))}
+        </div>
+        {images.length > 1 && (
+          <div className="absolute bottom-5 right-8 flex items-center gap-2">
+            {images.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setIdx(i)} aria-label={`Ir a la imagen ${i + 1}`}
+                className={`h-[3px] rounded-full transition-all duration-500 ${i === idx ? 'w-8 bg-demo-primary' : 'w-3 bg-demo-primary/30'}`}
+              />
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div className="relative flex items-center md:min-h-[680px]">
 
         {/* Texto */}
-        <div className="relative z-10 w-full md:w-[50%] xl:mx-25 px-8 md:px-14 lg:px-24 pt-28 pb-8 md:pb-20 flex flex-col justify-center">
-          <h1 className="font-demo-heading text-demo-text leading-[1.05] text-[clamp(2.6rem,5vw,4.5rem)] mb-5">
+        <div className="relative z-10 w-full md:w-[50%] xl:mx-25 px-8 md:px-14 lg:px-24 pt-8 md:pt-28 pb-12 md:pb-20 flex flex-col justify-center items-center text-center md:items-start md:text-left">
+          <h1 className="font-demo-heading text-demo-text leading-[1.05] text-[3.4rem] md:text-[clamp(2.6rem,5vw,4.5rem)] mb-5">
             {config.title}
             {config.titleHighlight && (
               <><br /><em className="not-italic text-demo-primary">{config.titleHighlight}</em></>
@@ -21,11 +49,11 @@ export default function HeroEditorial({ config }) {
               <><br /><em className="not-italic text-demo-primary">{config.titleGlow}</em></>
             )}
           </h1>
-          <p className="font-demo-body text-demo-muted text-base leading-relaxed max-w-xs mb-8">
+          <p className="font-demo-body text-demo-muted text-lg md:text-base leading-relaxed max-w-sm md:max-w-xs mb-8">
             {config.description}
           </p>
 
-          <div className="flex gap-3">
+          <div className="flex gap-3 justify-center md:justify-start">
             <a href={config.cta.href} className="border rounded-full p-3 bg-demo-primary text-demo-bg text-sm font-semibold tracking-wide hover:opacity-90 transition-opacity text-center">
               {config.cta.label}
             </a>
@@ -37,7 +65,7 @@ export default function HeroEditorial({ config }) {
           </div>
 
           {images.length > 1 && (
-            <div className="flex items-center gap-2 mt-10">
+            <div className="hidden md:flex items-center gap-2 mt-10">
               {images.map((_, i) => (
                 <button
                   key={i}
@@ -69,9 +97,6 @@ export default function HeroEditorial({ config }) {
         </div>
 
       </div>
-
-      {/* Móvil: imagen debajo del texto */}
-      <MobileSlideshow images={images} idx={idx} />
     </section>
   )
 }

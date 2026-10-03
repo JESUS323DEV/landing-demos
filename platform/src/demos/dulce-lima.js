@@ -73,10 +73,10 @@ export default {
       'Desde nuestro obrador en Alcorcón elaboramos cada pieza a mano, sin prisas y sin atajos. Porque un buen dulce no se fabrica, se cuida.',
     ],
     features: [
-      { icon: '🤲', title: 'Todo hecho a mano',         description: 'Ninguna pieza sale de una máquina. Cada dulce lo trabajamos desde cero en nuestro obrador.', dark: false },
-      { icon: '🇵🇪', title: 'Recetas peruanas auténticas', description: 'Mazamorra, suspiro, alfajores de maicena. Recetas de Lima que no cambiamos por nada.', dark: true },
-      { icon: '🌿', title: 'Ingredientes frescos',       description: 'Sin conservantes, sin colorantes artificiales. Lo que no usaríamos en casa, no lo usamos aquí.', dark: false },
-      { icon: '📦', title: 'Pedidos personalizados',     description: 'Tortas de encargo, mesas dulces y cajas regalo. Cuéntanos qué necesitas.', dark: false },
+      { icon: 'hand-heart', title: 'Todo hecho a mano',         description: 'Ninguna pieza sale de una máquina. Cada dulce lo trabajamos desde cero en nuestro obrador.', dark: false },
+      { icon: 'flag', title: 'Recetas peruanas auténticas', description: 'Mazamorra, suspiro, alfajores de maicena. Recetas de Lima que no cambiamos por nada.', dark: true },
+      { icon: 'leaf', title: 'Ingredientes frescos',       description: 'Sin conservantes, sin colorantes artificiales. Lo que no usaríamos en casa, no lo usamos aquí.', dark: false },
+      { icon: 'package', title: 'Pedidos personalizados',     description: 'Tortas de encargo, mesas dulces y cajas regalo. Cuéntanos qué necesitas.', dark: false },
     ],
     badge: { value: 'Lima', label: 'en cada bocado' },
     imagePlaceholder: 'Foto del obrador o los productos',
@@ -157,7 +157,7 @@ export default {
     items: [
       {
         name: 'Suspiro a la Limeña',
-        emoji: '🍮',
+        icon: 'cake-slice',
         description: 'El postre más icónico del Perú. Cremoso, dulce y con un toque de oporto.',
         time: '35 min',
         difficulty: 'Fácil',
@@ -183,7 +183,7 @@ export default {
       },
       {
         name: 'Alfajores de Maicena',
-        emoji: '🍪',
+        icon: 'cookie',
         description: 'Tiernos, que se deshacen en la boca. Rellenos de manjar blanco casero.',
         time: '50 min',
         difficulty: 'Fácil',
@@ -211,7 +211,7 @@ export default {
       },
       {
         name: 'Mazamorra Morada',
-        emoji: '🍇',
+        icon: 'grape',
         description: 'Postre tradicional peruano de maíz morado. Suave, aromático y lleno de color.',
         time: '45 min',
         difficulty: 'Media',

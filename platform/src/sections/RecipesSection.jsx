@@ -1,3 +1,4 @@
+import Icon from '../components/Icon'
 import { useState } from 'react'
 
 export default function RecipesSection({ config }) {
@@ -32,8 +33,8 @@ export default function RecipesSection({ config }) {
                   onClick={() => setOpen(isOpen ? null : i)}
                   className="w-full text-left px-6 py-5 flex items-center gap-5 hover:bg-demo-primary/5 transition-colors"
                 >
-                  {recipe.emoji && (
-                    <span className="text-3xl flex-shrink-0">{recipe.emoji}</span>
+                  {recipe.icon && (
+                    <Icon name={recipe.icon} size={30} className="flex-shrink-0 text-demo-primary" />
                   )}
                   <div className="flex-1 min-w-0">
                     <h3 className="font-demo-heading text-demo-text text-xl leading-tight">{recipe.name}</h3>
@@ -42,7 +43,7 @@ export default function RecipesSection({ config }) {
                   <div className="hidden sm:flex items-center gap-4 flex-shrink-0">
                     {recipe.time && (
                       <span className="font-demo-body text-demo-muted text-xs flex items-center gap-1.5">
-                        <span>⏱</span> {recipe.time}
+                        <Icon name="timer" size={14} /> {recipe.time}
                       </span>
                     )}
                     {recipe.difficulty && (
@@ -62,10 +63,10 @@ export default function RecipesSection({ config }) {
                     {/* Mobile meta */}
                     <div className="flex sm:hidden gap-3 mt-4 mb-5">
                       {recipe.time && (
-                        <span className="font-demo-body text-demo-muted text-xs flex items-center gap-1">⏱ {recipe.time}</span>
+                        <span className="font-demo-body text-demo-muted text-xs flex items-center gap-1"><Icon name="timer" size={14} /> {recipe.time}</span>
                       )}
                       {recipe.servings && (
-                        <span className="font-demo-body text-demo-muted text-xs flex items-center gap-1">🍽 {recipe.servings}</span>
+                        <span className="font-demo-body text-demo-muted text-xs flex items-center gap-1"><Icon name="utensils" size={14} /> {recipe.servings}</span>
                       )}
                       {recipe.difficulty && (
                         <span className="font-demo-body text-xs px-2.5 py-0.5 rounded-full bg-demo-primary/10 text-demo-primary font-medium">{recipe.difficulty}</span>
@@ -76,7 +77,7 @@ export default function RecipesSection({ config }) {
                       {/* Ingredientes */}
                       <div>
                         <h4 className="font-demo-heading text-demo-text text-base mb-3 flex items-center gap-2">
-                          <span>🛒</span> Ingredientes
+                          <Icon name="shopping-cart" size={16} className="text-demo-primary" /> Ingredientes
                           {recipe.servings && (
                             <span className="font-demo-body text-demo-muted text-xs font-normal ml-1">({recipe.servings})</span>
                           )}
@@ -94,7 +95,7 @@ export default function RecipesSection({ config }) {
                       {/* Preparación */}
                       <div>
                         <h4 className="font-demo-heading text-demo-text text-base mb-3 flex items-center gap-2">
-                          <span>👩‍🍳</span> Preparación
+                          <Icon name="chef-hat" size={16} className="text-demo-primary" /> Preparación
                         </h4>
                         <ol className="flex flex-col gap-3">
                           {recipe.steps.map((step, j) => (

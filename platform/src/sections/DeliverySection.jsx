@@ -1,3 +1,4 @@
+import Icon from '../components/Icon'
 export default function DeliverySection({ config }) {
   const dark = config.dark ?? false
 
@@ -37,7 +38,9 @@ export default function DeliverySection({ config }) {
                 className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:scale-105 transition-transform"
                 style={{ backgroundColor: ch.color }}
               >
-                <span className="text-white font-black text-lg">{ch.logo}</span>
+                {ch.icon
+                  ? <Icon name={ch.icon} size={26} className="text-white" />
+                  : <span className="text-white font-black text-lg">{ch.logo}</span>}
               </div>
               <h3 className={`font-demo-heading text-lg mb-2 ${chNameColor}`}>{ch.name}</h3>
               <p className={`font-demo-body text-sm ${chDescColor}`}>{ch.description}</p>
@@ -54,7 +57,7 @@ export default function DeliverySection({ config }) {
                   className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
                   style={{ background: dark ? 'rgba(196,135,42,0.2)' : 'color-mix(in srgb, var(--demo-primary) 15%, transparent)' }}
                 >
-                  <span className="text-lg">{row.icon}</span>
+                  <Icon name={row.icon} size={20} className="text-demo-primary" />
                 </div>
                 <div className="text-left">
                   <p className={`font-demo-body text-sm font-semibold ${infoLabel}`}>{row.label}</p>

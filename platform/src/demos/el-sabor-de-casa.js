@@ -40,7 +40,7 @@ export default {
   },
   hero: {
     layout: 'showcase',
-    badge: '🔥 A l\'ast, com sempre',
+    badge: 'A l\'ast, com sempre',
     titleAccent: 'El pollastre',
     title: 'que fa ',
     titleHighlight: 'olor',
@@ -63,10 +63,10 @@ export default {
       'Cap cap de setmana falta la cua per recollir el pollastre. Preparem cada plat com a casa, sense presses, amb els ingredients de sempre.',
     ],
     features: [
-      { icon: '🐔', title: 'Pollastre a l\'ast amb romaní', description: 'Cruixent per fora, sucós per dins. El més demanat del local.', dark: false },
-      { icon: '🐇', title: 'Conill a l\'ast sota comanda', description: 'Si el vols, només cal demanar-lo amb antelació.', dark: true },
-      { icon: '🍲', title: 'Plats casolans cada dia', description: 'Croquetes, canelons, mandonguilles, cua de bou i molt més.', dark: false },
-      { icon: '💶', title: 'Menú entre setmana', description: 'Dos plats a un preu molt ajustat, de dilluns a divendres.', dark: false },
+      { icon: 'drumstick', title: 'Pollastre a l\'ast amb romaní', description: 'Cruixent per fora, sucós per dins. El més demanat del local.', dark: false },
+      { icon: 'rabbit', title: 'Conill a l\'ast sota comanda', description: 'Si el vols, només cal demanar-lo amb antelació.', dark: true },
+      { icon: 'soup', title: 'Plats casolans cada dia', description: 'Croquetes, canelons, mandonguilles, cua de bou i molt més.', dark: false },
+      { icon: 'euro', title: 'Menú entre setmana', description: 'Dos plats a un preu molt ajustat, de dilluns a divendres.', dark: false },
     ],
     imagePlaceholder: 'Façana del local',
   },

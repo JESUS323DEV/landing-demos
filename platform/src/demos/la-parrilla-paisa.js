@@ -4,6 +4,7 @@ export default {
   tagline: 'Cocina Colombiana · Barcelona',
   category: 'Restaurante',
   tier: 'custom',
+  group: 'inmersivo',
   theme: {
     colors: {
       bg: '#FFF8EF',
@@ -55,9 +56,9 @@ export default {
       { src: 'https://images.unsplash.com/photo-1611354609291-69aba96e45df?w=900&h=800&fit=crop&q=80', label: 'Brasa' },
     ],
     features: [
-      { icon: '🔥', title: 'Brasa de verdad',    description: 'Sabor auténtico que se siente' },
-      { icon: '🍽️', title: 'Recetas originales', description: 'Tradición paisa desde el corazón' },
-      { icon: '❤️', title: 'Hecho con pasión',   description: 'Ingredientes frescos y de calidad' },
+      { icon: 'flame', title: 'Brasa de verdad',    description: 'Sabor auténtico que se siente' },
+      { icon: 'utensils', title: 'Recetas originales', description: 'Tradición paisa desde el corazón' },
+      { icon: 'heart', title: 'Hecho con pasión',   description: 'Ingredientes frescos y de calidad' },
     ],
   },
 
@@ -164,9 +165,9 @@ export default {
       { name: 'Glovo',     logo: 'G',  color: '#FFC244', description: 'Entrega en 30-45 min.', cta: 'Pedir ahora' },
     ],
     info: [
-      { icon: '⚡', label: 'Entrega rápida', value: 'En 30 a 45 min' },
-      { icon: '🛒', label: 'Pedido mínimo',  value: 'Desde 15 €' },
-      { icon: '🕐', label: 'Horario reparto', value: '12:00 a 23:00' },
+      { icon: 'zap', label: 'Entrega rápida', value: 'En 30 a 45 min' },
+      { icon: 'shopping-cart', label: 'Pedido mínimo',  value: 'Desde 15 €' },
+      { icon: 'clock', label: 'Horario reparto', value: '12:00 a 23:00' },
     ],
   },
   contact: {

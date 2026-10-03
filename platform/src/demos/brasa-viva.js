@@ -44,7 +44,7 @@ export default {
   },
   hero: {
     layout: 'showcase',
-    badge: '🔥 A la brasa, con fuego de verdad',
+    badge: 'A la brasa, con fuego de verdad',
     titleAccent: 'El pollo',
     title: 'que lo ',
     titleHighlight: 'cambia',
@@ -53,9 +53,9 @@ export default {
     cta: { label: 'Pedir por WhatsApp', href: 'https://wa.me/34612458723' },
     ctaSecondary: { label: 'Ver la carta', href: '#menu' },
     stats: [
-      { icon: '🔥', value: '+8 años', label: 'en la brasa' },
-      { icon: '⭐', value: '4.8',     label: 'valoración media' },
-      { icon: '👥', value: '+300',    label: 'reseñas' },
+      { icon: 'flame', value: '+8 años', label: 'en la brasa' },
+      { icon: 'star', value: '4.8',     label: 'valoración media' },
+      { icon: 'users', value: '+300',    label: 'reseñas' },
     ],
     images: [
       { src: 'https://images.unsplash.com/photo-1712579733874-c3a79f0f9d12?w=900&h=700&fit=crop&q=80', label: 'Pollo a la brasa' },
@@ -72,10 +72,10 @@ export default {
       'Nuestro adobo lleva tres generaciones perfeccionándose: ajo, pimentón ahumado, especias de la tierra y unas horas de reposo que marcan la diferencia.',
     ],
     features: [
-      { icon: '🍗', title: '100% pollo fresco diario',      description: 'Sin congelados. Cada mañana llega el pollo fresco del día.', dark: false },
-      { icon: '🪵', title: 'Brasa de leña, no eléctrica',   description: 'La diferencia entre un pollo del montón y el nuestro está en el fuego.', dark: true },
-      { icon: '🚫', title: 'Sin colorantes ni conservantes', description: 'Producto limpio. El sabor lo dan los ingredientes, no los aditivos.', dark: false },
-      { icon: '⏱',  title: 'Marinado 12 horas',            description: 'Nuestro adobo familiar necesita tiempo. Y el tiempo se nota.', dark: false },
+      { icon: 'drumstick', title: '100% pollo fresco diario',      description: 'Sin congelados. Cada mañana llega el pollo fresco del día.', dark: false },
+      { icon: 'tree-pine', title: 'Brasa de leña, no eléctrica',   description: 'La diferencia entre un pollo del montón y el nuestro está en el fuego.', dark: true },
+      { icon: 'ban', title: 'Sin colorantes ni conservantes', description: 'Producto limpio. El sabor lo dan los ingredientes, no los aditivos.', dark: false },
+      { icon: 'timer',  title: 'Marinado 12 horas',            description: 'Nuestro adobo familiar necesita tiempo. Y el tiempo se nota.', dark: false },
     ],
     badge: { value: 'Hecho', label: 'a diario · sin congelados' },
     imagePlaceholder: 'Foto del local / equipo',
@@ -140,9 +140,9 @@ export default {
       { name: 'Uber Eats', logo: 'UE', color: '#06C167', description: 'Pedido sencillo, entrega rápida.', cta: 'Busca Brasa Viva' },
     ],
     info: [
-      { icon: '⚡', label: 'Entrega rápida',  value: 'En 25-35 min' },
-      { icon: '🛒', label: 'Recogida gratis', value: 'Ven al local' },
-      { icon: '🕐', label: 'Horario',          value: 'Lu-Ju 12-22 · Vi-Do 12-23' },
+      { icon: 'zap', label: 'Entrega rápida',  value: 'En 25-35 min' },
+      { icon: 'shopping-cart', label: 'Recogida gratis', value: 'Ven al local' },
+      { icon: 'clock', label: 'Horario',          value: 'Lu-Ju 12-22 · Vi-Do 12-23' },
     ],
   },
   reviews: {

@@ -4,6 +4,7 @@ export default {
   tagline: 'Cocina Peruana · Barcelona',
   category: 'Restaurante',
   tier: 'custom',
+  group: 'inmersivo',
   theme: {
     colors: {
       bg:      '#08060A',
@@ -55,14 +56,14 @@ export default {
       { src: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=900&h=800&fit=crop&q=80', label: 'Interior' },
     ],
     features: [
-      { icon: '🐟', title: 'Pescado fresco del día',    description: 'Del mercado a tu plato. Sin congelados, sin atajos.' },
-      { icon: '🌶️', title: 'Ají traído de Perú',        description: 'Amarillo, panca y rocoto originales. El sabor que no se replica.' },
-      { icon: '🤝', title: 'Tres generaciones de receta', description: 'La cocina de la abuela, sin trampa ni cartón.' },
+      { icon: 'fish', title: 'Pescado fresco del día',    description: 'Del mercado a tu plato. Sin congelados, sin atajos.' },
+      { icon: 'flame', title: 'Ají traído de Perú',        description: 'Amarillo, panca y rocoto originales. El sabor que no se replica.' },
+      { icon: 'handshake', title: 'Tres generaciones de receta', description: 'La cocina de la abuela, sin trampa ni cartón.' },
     ],
     quickInfo: [
-      { icon: '📍', label: 'Dirección', value: 'Carrer de la Ribera, 19 · El Born, Barcelona' },
-      { icon: '📞', label: 'Teléfono',  value: '+34 625 348 917' },
-      { icon: '🕐', label: 'Horario',   value: 'Mar - Dom: 13:00-16:00 / 20:00-23:30 · Lu: cerrado' },
+      { icon: 'map-pin', label: 'Dirección', value: 'Carrer de la Ribera, 19 · El Born, Barcelona' },
+      { icon: 'phone', label: 'Teléfono',  value: '+34 625 348 917' },
+      { icon: 'clock', label: 'Horario',   value: 'Mar - Dom: 13:00-16:00 / 20:00-23:30 · Lu: cerrado' },
     ],
   },
 
@@ -75,10 +76,10 @@ export default {
       'Nuestro ceviche lleva el ají amarillo que traemos directamente de Perú. El lomo saltado se hace con solomillo fresco y salsa de soya oscura, igual que en casa. No hay atajos en nuestra cocina.',
     ],
     features: [
-      { icon: '🐟', title: 'Pescado fresco cada mañana', description: 'Compramos en la lonja. Si no hay buen pescado, no hay ceviche ese día.', dark: false },
-      { icon: '🌶️', title: 'Ají importado de Perú',      description: 'Amarillo, panca, rocoto. La trilogía que define la cocina peruana.', dark: true  },
-      { icon: '🍋', title: 'Limón de Murcia, no de bote', description: 'El leche de tigre se hace al momento, con limón recién exprimido.',    dark: false },
-      { icon: '🪴', title: 'Sin colorantes ni espesantes', description: 'La cremosidad del ají de gallina viene del pan y la leche. Solo eso.', dark: false },
+      { icon: 'fish', title: 'Pescado fresco cada mañana', description: 'Compramos en la lonja. Si no hay buen pescado, no hay ceviche ese día.', dark: false },
+      { icon: 'flame', title: 'Ají importado de Perú',      description: 'Amarillo, panca, rocoto. La trilogía que define la cocina peruana.', dark: true  },
+      { icon: 'citrus', title: 'Limón de Murcia, no de bote', description: 'El leche de tigre se hace al momento, con limón recién exprimido.',    dark: false },
+      { icon: 'sprout', title: 'Sin colorantes ni espesantes', description: 'La cremosidad del ají de gallina viene del pan y la leche. Solo eso.', dark: false },
     ],
     badge: { value: '20+', label: 'platos de cocina peruana auténtica' },
     imagePlaceholder: 'Foto del local / equipo',
