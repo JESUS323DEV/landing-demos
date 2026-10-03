@@ -44,6 +44,8 @@ export default {
   },
   hero: {
     layout: 'showcase',
+    imageStyle: 'circle',
+    sticker: { value: '12 h', label: 'de marinado' },
     badge: 'A la brasa, con fuego de verdad',
     titleAccent: 'El pollo',
     title: 'que lo ',

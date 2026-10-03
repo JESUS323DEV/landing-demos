@@ -43,6 +43,7 @@ export default {
   },
   hero: {
     layout: 'split',
+    imageStyle: 'staggered',
     badge: 'Street Food Peruano en Madrid',
     title: 'Brasa,',
     titleGlow: 'ceviche y chaufa.',

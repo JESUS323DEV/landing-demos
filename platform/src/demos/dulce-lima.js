@@ -44,6 +44,7 @@ export default {
   },
   hero: {
     layout: 'split',
+    imageStyle: 'stack',
     badge: 'Repostería Peruana en Madrid',
     title: 'Dulces que',
     titleGlow: 'saben a Lima.',

@@ -49,7 +49,7 @@ const STEPS = [
 const wa = (text) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`
 
 /* ── Previsualización viva: carga la demo real y la escala al ancho disponible ── */
-function ScaledFrame({ slug, width, height, title, frameClass = 'pointer-events-none', className = '' }) {
+function ScaledFrame({ slug, width, height, title, fixed = false, frameClass = 'pointer-events-none', className = '' }) {
   const ref = useRef(null)
   const [scale, setScale] = useState(0.3)
 
@@ -66,7 +66,7 @@ function ScaledFrame({ slug, width, height, title, frameClass = 'pointer-events-
   return (
     <div ref={ref} className={`relative overflow-hidden bg-white ${className}`} style={{ height: height * scale }}>
       <iframe
-        src={`/demo/${slug}`}
+        src={`/demo/${slug}${fixed ? '?preview' : ''}`}
         title={title}
         loading="lazy"
         tabIndex={-1}
@@ -191,7 +191,7 @@ function DemoCard({ demo }) {
   return (
     <Link to={`/demo/${demo.slug}`} className="group block">
       <div className="overflow-hidden rounded-xl border border-[#14130F]/10 bg-white shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl">
-        <ScaledFrame slug={demo.slug} width={1280} height={800} title={`Vista previa de ${demo.name}`} />
+        <ScaledFrame slug={demo.slug} width={1280} height={800} title={`Vista previa de ${demo.name}`} fixed />
       </div>
       <div className="mt-3 flex items-start justify-between gap-3">
         <div>

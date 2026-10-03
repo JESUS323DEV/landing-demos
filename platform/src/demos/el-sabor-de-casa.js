@@ -40,6 +40,7 @@ export default {
   },
   hero: {
     layout: 'showcase',
+    imageStyle: 'polaroid',
     badge: 'A l\'ast, com sempre',
     titleAccent: 'El pollastre',
     title: 'que fa ',
@@ -49,9 +50,9 @@ export default {
     cta: { label: 'Fes la comanda', href: '#order' },
     ctaSecondary: { label: 'Veure la carta', href: '#menu' },
     images: [
-      { src: 'https://images.unsplash.com/photo-1712579733874-c3a79f0f9d12?w=900&h=700&fit=crop&q=80', label: 'Pollastre a l\'ast' },
-      { src: 'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=900&h=700&fit=crop&q=80', label: 'A la brasa' },
-      { src: 'https://images.unsplash.com/photo-1727280376746-b89107a5b0df?w=900&h=700&fit=crop&q=80', label: 'Cruixent' },
+      { src: 'https://images.pexels.com/photos/25391590/pexels-photo-25391590.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop', label: "Pollastres a l'ast" },
+      { src: 'https://images.pexels.com/photos/27643001/pexels-photo-27643001.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop', label: "Cruixent per fora" },
+      { src: 'https://images.pexels.com/photos/13458086/pexels-photo-13458086.jpeg?auto=compress&cs=tinysrgb&w=800&h=1000&fit=crop', label: "Sempre a la brasa" },
     ],
   },
   about: {
