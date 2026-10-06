@@ -16,6 +16,7 @@ const TIERS = [
     groups: [
       { key: 'editorial', title: 'Editorial' },
       { key: 'inmersivo', title: 'Inmersivo' },
+      { key: 'interactivo', title: 'Interactivo' },
     ],
   },
   {
@@ -49,9 +50,28 @@ const STEPS = [
 const wa = (text) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`
 
 /* ── Previsualización viva: carga la demo real y la escala al ancho disponible ── */
-function ScaledFrame({ slug, width, height, title, fixed = false, frameClass = 'pointer-events-none', bgClass = 'bg-white', className = '' }) {
+function ScaledFrame({ slug, width, height, title, fixed = false, lazyMount = false, frameClass = 'pointer-events-none', bgClass = 'bg-white', className = '' }) {
   const ref = useRef(null)
   const [scale, setScale] = useState(0.3)
+  const [visible, setVisible] = useState(!lazyMount)
+
+  // Con lazyMount la demo solo se carga cuando la tarjeta está cerca de entrar en pantalla
+  useEffect(() => {
+    if (!lazyMount || visible) return
+    const el = ref.current
+    if (!el || !('IntersectionObserver' in window)) {
+      setVisible(true)
+      return
+    }
+    const io = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setVisible(true)
+        io.disconnect()
+      }
+    }, { rootMargin: '300px' })
+    io.observe(el)
+    return () => io.disconnect()
+  }, [lazyMount, visible])
 
   useEffect(() => {
     const el = ref.current
@@ -65,14 +85,16 @@ function ScaledFrame({ slug, width, height, title, fixed = false, frameClass = '
 
   return (
     <div ref={ref} className={`relative overflow-hidden ${bgClass} ${className}`} style={{ height: height * scale }}>
-      <iframe
-        src={`/demo/${slug}${fixed ? '?preview' : ''}`}
-        title={title}
-        loading="lazy"
-        tabIndex={-1}
-        className={`absolute top-0 left-0 border-0 ${frameClass}`}
-        style={{ width, height, transform: `scale(${scale})`, transformOrigin: 'top left' }}
-      />
+      {visible && (
+        <iframe
+          src={`/demo/${slug}${fixed ? '?preview' : ''}`}
+          title={title}
+          loading="lazy"
+          tabIndex={-1}
+          className={`absolute top-0 left-0 border-0 ${frameClass}`}
+          style={{ width, height, transform: `scale(${scale})`, transformOrigin: 'top left' }}
+        />
+      )}
     </div>
   )
 }
@@ -132,7 +154,7 @@ function Hero() {
     <section id="top" className="relative overflow-hidden">
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-5 pb-20 pt-32 lg:grid-cols-[1.15fr_1fr] lg:pb-28 lg:pt-36">
         <div>
-          <p className="mb-6 text-xs uppercase tracking-[0.25em] text-[#6B675D]">Webs para negocios locales</p>
+          <p className="mb-6 text-xs uppercase tracking-[0.25em] text-[#6B675D]">Diseño web para negocios locales en Barcelona</p>
           <h1 className="font-serif text-[clamp(3.2rem,8vw,6.5rem)] leading-[0.95] tracking-tight">
             Tu negocio,<br />con una web<br /><em className="italic">que se nota.</em>
           </h1>
@@ -197,18 +219,20 @@ function Hero() {
 
 function DemoCard({ demo }) {
   return (
+    <article>
     <Link to={`/demo/${demo.slug}`} className="group block">
       <div className="overflow-hidden rounded-xl border border-[#14130F]/10 bg-white shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl">
-        <ScaledFrame slug={demo.slug} width={1280} height={800} title={`Vista previa de ${demo.name}`} fixed />
+        <ScaledFrame slug={demo.slug} width={1280} height={800} title={`Vista previa de ${demo.name}`} fixed lazyMount />
       </div>
       <div className="mt-3 flex items-start justify-between gap-3">
         <div>
-          <p className="text-base font-medium">{demo.name}</p>
+          <h4 className="text-base font-medium">{demo.name}</h4>
           <p className="text-sm text-[#6B675D]">{demo.category}</p>
         </div>
         <ArrowUpRight size={18} strokeWidth={1.5} className="mt-1 text-[#6B675D] transition-colors group-hover:text-[#14130F]" />
       </div>
     </Link>
+    </article>
   )
 }
 
@@ -264,7 +288,7 @@ function Plans() {
 
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {PLANS.map((plan, i) => (
-            <div
+            <article
               key={plan.title}
               className={`flex flex-col rounded-2xl border p-8 md:p-10 ${
                 i === 1 ? 'border-[#14130F] bg-[#14130F] text-[#F4F1EA]' : 'border-[#14130F]/15 bg-white'
@@ -282,7 +306,7 @@ function Plans() {
               <div className="mt-10">
                 <WhatsAppButton text={plan.message} dark={i !== 1}>Consultar</WhatsAppButton>
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>
@@ -296,15 +320,15 @@ function Steps() {
       <div className="mx-auto max-w-6xl px-5">
         <h2 className="font-serif text-5xl tracking-tight md:text-6xl">Cómo trabajo</h2>
         <p className="mt-4 max-w-lg text-[#6B675D]">Un proceso claro, sin complicaciones.</p>
-        <div className="mt-12 grid gap-10 md:grid-cols-3">
+        <ol className="mt-12 grid gap-10 md:grid-cols-3">
           {STEPS.map(s => (
-            <div key={s.n} className="border-t border-[#14130F] pt-5">
+            <li key={s.n} className="border-t border-[#14130F] pt-5">
               <p className="font-serif text-3xl text-[#6B675D]">{s.n}</p>
               <h3 className="mt-6 text-lg font-medium">{s.title}</h3>
               <p className="mt-2 text-[#6B675D] leading-relaxed">{s.text}</p>
-            </div>
+            </li>
           ))}
-        </div>
+        </ol>
       </div>
     </section>
   )
@@ -344,11 +368,13 @@ export default function HomePage() {
     <div className="bg-[#F4F1EA] text-[#14130F]" style={{ fontFamily: '"Inter", system-ui, sans-serif' }}>
       <style>{`.font-serif { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; }`}</style>
       <Nav />
-      <Hero />
-      <Works />
-      <Plans />
-      <Steps />
-      <FinalCTA />
+      <main>
+        <Hero />
+        <Works />
+        <Plans />
+        <Steps />
+        <FinalCTA />
+      </main>
       <Footer />
     </div>
   )
