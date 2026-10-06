@@ -4,6 +4,8 @@ import { getDemoBySlug } from '../demos'
 import { applyTheme, resetTheme } from '../lib/applyTheme'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
+import DemoPager from '../components/DemoPager'
+import DemoHomeButton from '../components/DemoHomeButton'
 import {
   HeroSection,
   AboutSection,
@@ -36,6 +38,11 @@ export default function DemoPage() {
   const { slug } = useParams()
   const demo = getDemoBySlug(slug)
 
+  // Cada demo se abre desde arriba, aunque vengas de una portada con scroll
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0)
+  }, [slug])
+
   useLayoutEffect(() => {
     if (!demo) return
     applyTheme(demo.theme)
@@ -61,6 +68,8 @@ export default function DemoPage() {
         return <Section key={key} config={demo[key]} />
       })}
       <Footer demo={demo} />
+      <DemoPager demo={demo} />
+      <DemoHomeButton slug={demo.slug} />
     </div>
   )
 }

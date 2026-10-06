@@ -23,3 +23,11 @@
   --font-demo-heading: var(--demo-heading-font);
   --font-demo-body: var(--demo-body-font);
 }
+
+/* Pantalla de transición entre grupos de demos (DemoPager) */
+@keyframes fadeInOut {
+  0%   { opacity: 0; }
+  25%  { opacity: 1; }
+  75%  { opacity: 1; }
+  100% { opacity: 0; }
+}
