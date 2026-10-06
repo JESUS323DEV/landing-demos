@@ -5,8 +5,8 @@ import { demoSequence, groupOf, GROUPS } from '../demos/sequence'
 import useAutoHide from '../lib/useAutoHide'
 
 /* Flechas para pasar de una demo a otra, solo en móvil (por debajo de lg).
-   - Atrás está bloqueado en la primera demo de cada grupo.
-   - Adelante cruza al grupo siguiente con una pantalla corta de transición.
+   - Atrás solo está bloqueado en la primera demo de todas.
+   - Atrás y adelante cruzan de grupo con una pantalla corta de transición.
    - Se desvanecen solas (useAutoHide) para no estorbar a la demo.
    No se muestra dentro de un iframe (vistas previas de la portada). */
 export default function DemoPager({ demo }) {
@@ -22,20 +22,20 @@ export default function DemoPager({ demo }) {
 
   const prev = demoSequence[i - 1]
   const next = demoSequence[i + 1]
-  const canGoBack = prev && groupOf(prev) === groupOf(demo)
+  const canGoBack = Boolean(prev)
   const canGoNext = Boolean(next)
 
   const go = slug => navigate(`/demo/${slug}`)
 
-  const goNext = () => {
-    if (!next || transition) return
-    if (groupOf(next) === groupOf(demo)) {
-      go(next.slug)
+  const goTo = target => {
+    if (!target || transition) return
+    if (groupOf(target) === groupOf(demo)) {
+      go(target.slug)
       return
     }
     // Cambio de grupo: pantalla de transición, luego navega y la quita
-    setTransition(GROUPS.find(g => g.key === groupOf(next)))
-    setTimeout(() => go(next.slug), 900)
+    setTransition(GROUPS.find(g => g.key === groupOf(target)))
+    setTimeout(() => go(target.slug), 900)
     setTimeout(() => setTransition(null), 1600)
   }
 
@@ -47,7 +47,7 @@ export default function DemoPager({ demo }) {
   return (
     <>
       <button
-        onClick={() => canGoBack && go(prev.slug)}
+        onClick={() => goTo(prev)}
         disabled={!canGoBack}
         aria-label="Demo anterior"
         className={`${arrow} left-2 ${state(canGoBack)}`}
@@ -55,7 +55,7 @@ export default function DemoPager({ demo }) {
         <ChevronLeft size={20} />
       </button>
       <button
-        onClick={goNext}
+        onClick={() => goTo(next)}
         disabled={!canGoNext}
         aria-label="Demo siguiente"
         className={`${arrow} right-2 ${state(canGoNext)}`}

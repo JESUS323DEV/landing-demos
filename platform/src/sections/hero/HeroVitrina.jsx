@@ -1,9 +1,45 @@
+import useSlideshow from './useSlideshow'
 import { CTAButtons } from './shared'
 
-/* ── Vitrina: cabecera editorial y una fila de productos como carta de vitrina ──
-   config: kicker, meta, title, titleHighlight, description, shelfLabel, products[{ name, price, image }], cta, ctaSecondary */
+/* ── Vitrina: cabecera editorial y dos escaparates que van cambiando de producto, con su nombre ──
+   config: kicker, meta, title, titleHighlight, description, shelfLabel, products[{ name, image }], cta, ctaSecondary */
+
+// Un escaparate: apila todas las fotos y los nombres y deja visible solo el del producto activo
+function Slot({ products, active, className = '' }) {
+  return (
+    <div className={className}>
+      <div className="relative aspect-[3/4] overflow-hidden bg-demo-surface">
+        {products.map((p, i) => (
+          <img
+            key={i}
+            src={p.image}
+            alt={p.name}
+            className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 ${i === active ? 'opacity-100' : 'opacity-0'}`}
+          />
+        ))}
+      </div>
+      <div className="relative mt-3 h-6">
+        {products.map((p, i) => (
+          <p
+            key={i}
+            className={`absolute inset-0 text-center font-demo-heading text-base leading-6 text-demo-text transition-opacity duration-1000 ${i === active ? 'opacity-100' : 'opacity-0'}`}
+          >
+            {p.name}
+          </p>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default function HeroVitrina({ config }) {
-  const products = config.products ?? []
+  const products = (config.products ?? []).filter(p => p.image)
+  const [step] = useSlideshow(products.length, 3400)
+
+  // Cada paso avanza dos productos: los dos escaparates cambian a la vez
+  const n = Math.max(products.length, 1)
+  const first = (step * 2) % n
+  const second = (step * 2 + 1) % n
 
   return (
     <section id="hero" className="relative bg-demo-bg overflow-hidden pt-20 pb-14 md:pb-20">
@@ -36,26 +72,10 @@ export default function HeroVitrina({ config }) {
               <span className="h-px flex-1 bg-demo-text/20" />
             </div>
           )}
-          <ul className="grid grid-cols-2 md:grid-cols-5 gap-x-4 gap-y-8">
-            {products.map((p, i) => (
-              <li key={i} className="group last:col-span-2 md:last:col-span-1 md:even:mt-10">
-                <div className="relative overflow-hidden bg-demo-surface aspect-[3/4] max-md:group-last:aspect-[16/10]">
-                  {p.image && (
-                    <img
-                      src={p.image}
-                      alt={p.name}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  )}
-                </div>
-                <div className="flex items-baseline gap-2 mt-3">
-                  <span className="font-demo-heading text-demo-text text-lg leading-tight">{p.name}</span>
-                  <span className="flex-1 border-b border-dotted border-demo-text/30 translate-y-[-3px]" />
-                  <span className="font-demo-body text-demo-primary text-sm font-medium whitespace-nowrap">{p.price}</span>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <div className="mx-auto grid max-w-2xl grid-cols-2 gap-4 md:gap-8">
+            <Slot products={products} active={first} />
+            <Slot products={products} active={second} className="md:mt-12" />
+          </div>
         </div>
 
         <div className="flex justify-center mt-12 md:mt-16">

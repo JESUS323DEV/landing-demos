@@ -40,7 +40,7 @@ export default function HeroEditorial({ config }) {
 
         {/* Texto */}
         <div className="relative z-10 w-full md:w-[50%] xl:mx-25 px-8 md:px-14 lg:px-24 pt-8 md:pt-28 pb-12 md:pb-20 flex flex-col justify-center items-center text-center md:items-start md:text-left">
-          <h1 className="font-demo-heading text-demo-text leading-[1.05] text-[3.4rem] md:text-[clamp(2.6rem,5vw,4.5rem)] mb-5">
+          <h1 className="w-full text-left font-demo-heading text-demo-text leading-[1.05] text-[3.4rem] md:text-[clamp(2.6rem,5vw,4.5rem)] mb-5">
             {config.title}
             {config.titleHighlight && (
               <><br /><em className="not-italic text-demo-primary">{config.titleHighlight}</em></>
