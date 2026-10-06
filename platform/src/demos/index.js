@@ -10,7 +10,8 @@ import senorio from './senorio'
 import elSaborDeCasa from './el-sabor-de-casa'
 import barberia from './barberia'
 import caramela from './caramela'
-export const demos = [lauraVidal, animaTattoo, senorio, lianaBar, barberia, caramela, brasaViva, intiStreet, dulceLima, elSaborDeCasa]
+import brote from './brote'
+export const demos = [lauraVidal, animaTattoo, senorio, lianaBar, barberia, caramela, brote, brasaViva, intiStreet, dulceLima, elSaborDeCasa]
 
 export function getDemoBySlug(slug) {
   return demos.find(d => d.slug === slug) ?? null
