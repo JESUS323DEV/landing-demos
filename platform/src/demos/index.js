@@ -9,7 +9,8 @@ import senorio from './senorio'
 // import atenciaHomes from './atencia-homes' // oculta
 import elSaborDeCasa from './el-sabor-de-casa'
 import barberia from './barberia'
-export const demos = [lauraVidal, animaTattoo, senorio, lianaBar, barberia, brasaViva, intiStreet, dulceLima, elSaborDeCasa]
+import caramela from './caramela'
+export const demos = [lauraVidal, animaTattoo, senorio, lianaBar, barberia, caramela, brasaViva, intiStreet, dulceLima, elSaborDeCasa]
 
 export function getDemoBySlug(slug) {
   return demos.find(d => d.slug === slug) ?? null
