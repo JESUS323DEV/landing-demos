@@ -8,6 +8,7 @@ import HeroGalleryTop from './hero/HeroGalleryTop'
 import HeroCover      from './hero/HeroCover'
 import HeroBanner     from './hero/HeroBanner'
 import HeroVitrina    from './hero/HeroVitrina'
+import HeroFullbleed  from './hero/HeroFullbleed'
 import HeroTiras      from './hero/HeroTiras'
 
 const LAYOUTS = {
@@ -21,10 +22,11 @@ const LAYOUTS = {
   cover:         HeroCover,
   banner:        HeroBanner,
   vitrina:       HeroVitrina,
+  fullbleed:     HeroFullbleed,
   tiras:         HeroTiras,
 }
 
-/* layout: 'centered' (default) | 'split' | 'bottom' | 'editorial' | 'immersive' | 'showcase' | 'gallery-top' | 'cover' | 'banner' | 'vitrina' | 'tiras' */
+/* layout: 'centered' (default) | 'split' | 'bottom' | 'editorial' | 'immersive' | 'showcase' | 'gallery-top' | 'cover' | 'banner' | 'vitrina' | 'tiras' | 'fullbleed' */
 export default function HeroSection({ config }) {
   const Layout = LAYOUTS[config.layout] ?? HeroCentered
   return <Layout config={config} />

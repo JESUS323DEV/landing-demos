@@ -4,6 +4,7 @@ import { demos } from './index'
 export const GROUPS = [
   { key: 'editorial', title: 'Editorial', blurb: 'Tipografía y composición de revista.' },
   { key: 'inmersivo', title: 'Inmersivo', blurb: 'Foto a pantalla completa y mucho carácter.' },
+  { key: 'interactivo', title: 'Interactivo', blurb: 'La web responde: pulsas y cambia.' },
   { key: 'base',      title: 'Base',      blurb: 'Estructura probada, adaptada a cada marca.' },
 ]
 
