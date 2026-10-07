@@ -1,10 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
 import { CTAButtons } from './shared'
 import { SocialIcon } from '../../components/SocialIcons'
 
 /* ── Rueda: una mesa giratoria con los elementos sobre un disco de color ──
-   Al elegir uno, o al pasar con las flechas o deslizando, la rueda gira y lo deja en primer plano.
+   Al elegir uno o al deslizar, la rueda gira y lo deja en primer plano.
    El elemento activo queda arriba en móvil y a la izquierda de la rueda en escritorio.
    config: kicker, title, titleHighlight, description, cta, ctaSecondary, hub (texto del centro),
            dishes[{ name, description, src, price?, color?, badge?, highlight? }]
@@ -56,13 +55,14 @@ export default function HeroRueda({ config }) {
   }
 
   const wheelAngle = (desktop ? 270 : 0) - pos * step
-  const discColor = dishes[idx]?.color
+  const accentOf = d => d?.accent ?? d?.color
+  const discColor = accentOf(dishes[idx])
   const hasHighlights = dishes.some(d => d.highlight)
 
   return (
-    <section id="hero" className="relative flex min-h-[100svh] flex-col overflow-hidden bg-demo-bg lg:grid lg:min-h-[820px] lg:grid-cols-[44%_1fr] lg:grid-rows-2">
-      {/* Titular. En móvil va solo arriba para que la rueda se vea en la primera pantalla */}
-      <div className="relative z-10 px-5 pt-[5.5rem] lg:self-end lg:pl-[max(2rem,7vw)] lg:pr-0 lg:pt-28">
+    <section id="hero" className="relative flex min-h-[100svh] flex-col overflow-hidden bg-demo-bg pt-[4.5rem] lg:grid lg:px-[max(0px,calc((100vw_-_1400px)/2))] lg:pt-0 lg:min-h-[820px] lg:grid-cols-[44%_1fr] lg:grid-rows-2">
+      {/* Titular. En móvil va debajo de la rueda, que queda pegada al menú */}
+      <div className="relative z-10 order-2 px-5 pt-6 lg:order-none lg:col-start-1 lg:row-start-1 lg:self-end lg:pl-[max(2rem,min(7vw,98px))] lg:pr-0 lg:pt-28">
         {config.kicker && (
           <p className="mb-4 font-demo-body text-[11px] uppercase tracking-[0.3em] text-demo-accent">{config.kicker}</p>
         )}
@@ -77,7 +77,7 @@ export default function HeroRueda({ config }) {
                     key={i}
                     aria-hidden={i !== idx}
                     className={`col-start-1 row-start-1 transition-[opacity,color] duration-700 ${i === idx ? 'opacity-100' : 'opacity-0'}`}
-                    style={{ color: d.color ?? 'var(--demo-primary)' }}
+                    style={{ color: accentOf(d) ?? 'var(--demo-primary)' }}
                   >
                     {d.highlight}
                   </span>
@@ -93,7 +93,7 @@ export default function HeroRueda({ config }) {
 
       {/* Rueda: el disco es de color y los elementos van sobre él */}
       <div
-        className="relative min-h-[340px] flex-1 overflow-hidden [--d:168px] [--r:190px] lg:absolute lg:inset-y-0 lg:right-0 lg:min-h-0 lg:w-[62%] lg:flex-none lg:[--d:clamp(180px,19vw,260px)] lg:[--r:clamp(210px,23vw,300px)]"
+        className="relative order-1 min-h-[340px] overflow-hidden lg:order-none [--d:168px] [--r:190px] lg:absolute lg:inset-y-0 lg:right-0 lg:min-h-0 lg:w-[calc(min(62vw,868px)_+_max(0px,calc((100vw_-_1400px)/2)))] lg:flex-none lg:[--d:clamp(180px,19vw,260px)] lg:[--r:clamp(210px,23vw,300px)]"
         onTouchStart={e => { touchX.current = e.touches[0].clientX }}
         onTouchEnd={e => {
           if (touchX.current === null) return
@@ -102,17 +102,25 @@ export default function HeroRueda({ config }) {
           if (Math.abs(dx) > 40) move(dx < 0 ? 1 : -1)
         }}
       >
-        <div className="absolute left-1/2 top-[calc(var(--d)*0.8+var(--r))] h-0 w-0 lg:left-[78%] lg:top-1/2">
+        <div className="absolute left-1/2 top-[calc(var(--d)*0.8+var(--r))] h-0 w-0 lg:left-[calc(0.78*min(62vw,868px))] lg:top-1/2">
           <div
-            className="absolute left-0 top-0 rounded-full bg-demo-primary transition-[transform,background-color,box-shadow] duration-[900ms] ease-[cubic-bezier(0.65,0,0.25,1)]"
+            className="absolute left-0 top-0 rounded-full bg-demo-primary transition-[transform,box-shadow] duration-[900ms] ease-[cubic-bezier(0.65,0,0.25,1)]"
             style={{
               width: 'calc(var(--r) * 2 + var(--d) * 1.5)',
               height: 'calc(var(--r) * 2 + var(--d) * 1.5)',
-              backgroundColor: discColor,
               boxShadow: `0 0 120px 20px color-mix(in srgb, ${discColor ?? 'var(--demo-primary)'} 35%, transparent)`,
               transform: `translate(-50%, -50%) rotate(${wheelAngle}deg)`,
             }}
           >
+            {/* Color del disco de cada elemento (puede ser un degradado): se cruzan con un fundido */}
+            {dishes.map((d, i) => d.color && (
+              <div
+                key={i}
+                className={`absolute inset-0 rounded-full transition-opacity duration-[900ms] ${i === idx ? 'opacity-100' : 'opacity-0'}`}
+                style={{ background: d.color }}
+              />
+            ))}
+
             {/* Aros de la mesa */}
             <div
               className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-black/25"
@@ -132,7 +140,21 @@ export default function HeroRueda({ config }) {
                 transform: `translate(-50%, -50%) rotate(${-wheelAngle}deg)`,
               }}
             >
-              <span className="font-demo-heading text-xl tracking-[0.2em] text-demo-text lg:text-2xl">{config.hub}</span>
+              {dishes.some(d => d.badge) ? (
+                // Con redes sociales, el centro muestra el logo de la red activa
+                <span className="grid h-[46%] w-[46%]">
+                  {dishes.map((d, i) => d.badge && (
+                    <SocialIcon
+                      key={i}
+                      platform={d.badge}
+                      className={`col-start-1 row-start-1 h-full w-full transition-opacity duration-[900ms] ${i === idx ? 'opacity-100' : 'opacity-0'}`}
+                      style={{ color: accentOf(d) }}
+                    />
+                  ))}
+                </span>
+              ) : (
+                <span className="font-demo-heading text-xl tracking-[0.2em] text-demo-text lg:text-2xl">{config.hub}</span>
+              )}
             </div>
 
             {/* Platos */}
@@ -161,7 +183,10 @@ export default function HeroRueda({ config }) {
                       {d.src && <img src={d.src} alt={d.name} className="h-full w-full object-cover" />}
                     </span>
                     {d.badge && (
-                      <span className="absolute bottom-[4%] right-[4%] flex h-[26%] w-[26%] items-center justify-center rounded-full bg-white text-black shadow-lg ring-2 ring-demo-bg">
+                      <span
+                        className="absolute bottom-[4%] right-[4%] flex h-[26%] w-[26%] items-center justify-center rounded-full bg-demo-text text-white shadow-lg ring-2 ring-demo-bg"
+                        style={d.color ? { background: d.color } : undefined}
+                      >
                         <SocialIcon platform={d.badge} className="h-1/2 w-1/2" />
                       </span>
                     )}
@@ -174,7 +199,7 @@ export default function HeroRueda({ config }) {
       </div>
 
       {/* Elemento en primer plano, descripción y botones */}
-      <div className="relative z-10 px-5 pb-12 lg:self-start lg:pb-0 lg:pl-[max(2rem,7vw)] lg:pr-0">
+      <div className="relative z-10 order-3 px-5 pb-12 lg:order-none lg:col-start-1 lg:row-start-2 lg:self-start lg:pb-0 lg:pl-[max(2rem,min(7vw,98px))] lg:pr-0">
         {/* Todos apilados en la misma celda y se cruzan con un fundido */}
         <div className="flex items-start gap-4 border-t border-demo-text/15 pt-5 lg:max-w-md lg:pt-6" aria-live="polite">
           <div className="grid flex-1">
@@ -184,34 +209,13 @@ export default function HeroRueda({ config }) {
                 aria-hidden={i !== idx}
                 className={`col-start-1 row-start-1 transition-opacity duration-500 ${i === idx ? 'opacity-100' : 'pointer-events-none opacity-0'}`}
               >
-                <p className="font-demo-body text-[11px] uppercase tracking-[0.25em] text-demo-muted">
-                  {String(i + 1).padStart(2, '0')} / {String(n).padStart(2, '0')}
-                </p>
-                <p className="mt-1 flex items-baseline gap-3 font-demo-heading text-2xl text-demo-text">
+                <p className="flex items-baseline gap-3 font-demo-heading text-2xl text-demo-text">
                   {d.name}
                   {d.price && <span className="font-demo-body text-sm font-semibold text-demo-accent">{d.price}</span>}
                 </p>
                 <p className="mt-1 font-demo-body text-sm leading-relaxed text-demo-muted">{d.description}</p>
               </div>
             ))}
-          </div>
-          <div className="flex shrink-0 gap-2 pt-1">
-            <button
-              type="button"
-              aria-label="Plato anterior"
-              onClick={() => move(-1)}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-demo-text/25 text-demo-text transition-colors hover:bg-demo-text/10"
-            >
-              <ChevronLeft size={18} />
-            </button>
-            <button
-              type="button"
-              aria-label="Plato siguiente"
-              onClick={() => move(1)}
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-demo-text/25 text-demo-text transition-colors hover:bg-demo-text/10"
-            >
-              <ChevronRight size={18} />
-            </button>
           </div>
         </div>
 

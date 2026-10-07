@@ -53,10 +53,10 @@ export default {
     ctaSecondary: { label: 'Ver servicios', href: '#services' },
     hub: 'M',
     dishes: [
-      { name: 'Instagram', highlight: 'se ve.',       color: '#E1306C', badge: 'instagram', description: 'Un feed con estilo propio, con carruseles y reels que se reconocen.',          src: px(11843396, 500, 500) },
-      { name: 'TikTok',    highlight: 'se mueve.',    color: '#111111', badge: 'tiktok',    description: 'Vídeo corto con guion, para llegar a quien todavía no te conoce.',              src: px(10102521, 500, 500) },
-      { name: 'Facebook',  highlight: 'se encuentra.', color: '#1877F2', badge: 'facebook',  description: 'Página, grupos y anuncios para que te encuentre la gente de tu zona.',          src: px(1140825, 500, 500) },
-      { name: 'YouTube',   highlight: 'se cuenta.',   color: '#E62117', badge: 'youtube',   description: 'Vídeos más largos para explicar con calma lo que haces y cómo lo haces.',      src: px(20040022, 500, 500) },
+      { name: 'Instagram', highlight: 'se ve.',       color: 'linear-gradient(45deg, #F58529 0%, #DD2A7B 45%, #8134AF 75%, #515BD4 100%)', accent: '#DD2A7B', badge: 'instagram', description: 'Un feed con estilo propio, con carruseles y reels que se reconocen.',          src: px(11843396, 500, 500) },
+      { name: 'TikTok',    highlight: 'se mueve.',    color: '#010101', badge: 'tiktok',    description: 'Vídeo corto con guion, para llegar a quien todavía no te conoce.',              src: px(10102521, 500, 500) },
+      { name: 'Facebook',  highlight: 'se encuentra.', color: '#0866FF', badge: 'facebook',  description: 'Página, grupos y anuncios para que te encuentre la gente de tu zona.',          src: px(1140825, 500, 500) },
+      { name: 'YouTube',   highlight: 'se cuenta.',   color: '#FF0000', badge: 'youtube',   description: 'Vídeos más largos para explicar con calma lo que haces y cómo lo haces.',      src: px(20040022, 500, 500) },
     ],
   },
 

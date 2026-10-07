@@ -22,9 +22,9 @@ const ICONS = {
   ),
 }
 
-export function SocialIcon({ platform, className }) {
+export function SocialIcon({ platform, className, style }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <svg className={className} style={style} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
       {ICONS[platform]}
     </svg>
   )
