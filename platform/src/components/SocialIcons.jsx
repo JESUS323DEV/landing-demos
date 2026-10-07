@@ -22,6 +22,14 @@ const ICONS = {
   ),
 }
 
+export function SocialIcon({ platform, className }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      {ICONS[platform]}
+    </svg>
+  )
+}
+
 export function SocialLinks({ social, size = 'sm', muted = false, light = false }) {
   if (!social?.length) return null
 
