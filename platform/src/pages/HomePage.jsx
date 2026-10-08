@@ -1,77 +1,39 @@
 import { useEffect, useRef, useState } from 'react'
-import { Link } from 'react-router-dom'
-import { ArrowRight, ArrowUpRight, MessageCircle } from 'lucide-react'
+import { Link, useLocation } from 'react-router-dom'
+import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import { demos } from '../demos'
+import { BRAND, Footer, LandingShell, WhatsAppButton, wa } from '../components/landing'
+import { STYLES, TIER_TEXT, captureOf, demosOf } from '../lib/estilos'
 
 /* ── Datos editables de la portada ── */
-const BRAND = 'Tu marca'
-const WHATSAPP = '34600000000'
 const FEATURED = ['senorio', 'aura-estetica', 'navaja-y-tijera'] // demos que rotan en el móvil del hero
-
-const TIERS = [
-  {
-    key: 'custom',
-    title: 'A medida',
-    description: 'Hero propio y diseño pensado para la marca.',
-    groups: [
-      { key: 'editorial', title: 'Editorial' },
-      { key: 'inmersivo', title: 'Inmersivo' },
-      { key: 'interactivo', title: 'Interactivo' },
-    ],
-  },
-  {
-    key: 'base',
-    title: 'Base',
-    description: 'Una estructura probada, adaptada al tono y los colores de cada marca.',
-  },
-]
 
 const PLANS = [
   {
     title: 'Base',
-    text: 'Una estructura ya probada, adaptada a tu marca. Ideal si quieres una web limpia, rápida y asequible.',
-    points: ['Tus colores, tipografías y textos', 'Secciones a elegir', 'Lista en poco tiempo'],
+    text: 'Una estructura que ya funciona, adaptada a tu marca. Ideal si quieres una web limpia, rápida y asequible.',
+    points: ['Tus colores, tipografías y textos', 'Las secciones que necesites', 'Dominio, hosting y SEO básico incluidos', 'Lista en poco tiempo'],
     message: 'Hola, me interesa una web de la gama Base.',
   },
   {
     title: 'A medida',
-    text: 'Diseño propio desde el hero hasta los detalles. Pensada para diferenciarte y enseñar mejor tu negocio.',
-    points: ['Hero y estructura únicos', 'Pensada para tu sector', 'Más ajuste y más cuidado'],
+    text: 'Diseño propio desde la portada hasta el último detalle, para que tu negocio se diferencie y se vea mejor.',
+    points: ['Portada y estructura únicas', 'Pensada para tu tipo de negocio', 'Dominio, hosting y SEO básico incluidos', 'Más ajuste y más cuidado'],
     message: 'Hola, me interesa una web A medida.',
   },
 ]
 
 const STEPS = [
-  { n: '01', title: 'Hablamos', text: 'Me cuentas qué necesitas, qué quieres enseñar y cómo quieres que te contacten.' },
-  { n: '02', title: 'Te enseño tu demo', text: 'Preparo una propuesta visual con tu negocio para que la veas antes de decidir.' },
-  { n: '03', title: 'Publicamos', text: 'Ajustamos los detalles, lo dejamos todo listo y tu web sale online.' },
+  { n: '01', title: 'Hablamos', text: 'Me cuentas a qué te dedicas, qué quieres enseñar y cómo quieres que te contacten: WhatsApp, llamada o reserva.' },
+  { n: '02', title: 'Te enseño tu demo', text: 'Preparo una propuesta con tu negocio para que la veas antes de decidir.' },
+  { n: '03', title: 'Publicamos', text: 'Ajustamos los detalles, nos encargamos del dominio y del alojamiento, y tu web sale online.' },
+  { n: '04', title: 'Que te encuentren', text: 'Preparo tu web para Google: títulos, textos y velocidad. Te explico cómo ir mejorando tu posición. El SEO tarda semanas o meses, y yo te cuento cómo va.' },
 ]
 
-const wa = (text) => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(text)}`
-
 /* ── Previsualización viva: carga la demo real y la escala al ancho disponible ── */
-function ScaledFrame({ slug, width, height, title, fixed = false, lazyMount = false, frameClass = 'pointer-events-none', bgClass = 'bg-white', className = '' }) {
+function ScaledFrame({ slug, width, height, title, frameClass = 'pointer-events-none', bgClass = 'bg-white', className = '' }) {
   const ref = useRef(null)
   const [scale, setScale] = useState(0.3)
-  const [visible, setVisible] = useState(!lazyMount)
-
-  // Con lazyMount la demo solo se carga cuando la tarjeta está cerca de entrar en pantalla
-  useEffect(() => {
-    if (!lazyMount || visible) return
-    const el = ref.current
-    if (!el || !('IntersectionObserver' in window)) {
-      setVisible(true)
-      return
-    }
-    const io = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        setVisible(true)
-        io.disconnect()
-      }
-    }, { rootMargin: '300px' })
-    io.observe(el)
-    return () => io.disconnect()
-  }, [lazyMount, visible])
 
   useEffect(() => {
     const el = ref.current
@@ -85,33 +47,15 @@ function ScaledFrame({ slug, width, height, title, fixed = false, lazyMount = fa
 
   return (
     <div ref={ref} className={`relative overflow-hidden ${bgClass} ${className}`} style={{ height: height * scale }}>
-      {visible && (
-        <iframe
-          src={`/demo/${slug}${fixed ? '?preview' : ''}`}
-          title={title}
-          loading="lazy"
-          tabIndex={-1}
-          className={`absolute top-0 left-0 border-0 ${frameClass}`}
-          style={{ width, height, transform: `scale(${scale})`, transformOrigin: 'top left' }}
-        />
-      )}
+      <iframe
+        src={`/demo/${slug}`}
+        title={title}
+        loading="lazy"
+        tabIndex={-1}
+        className={`absolute top-0 left-0 border-0 ${frameClass}`}
+        style={{ width, height, transform: `scale(${scale})`, transformOrigin: 'top left' }}
+      />
     </div>
-  )
-}
-
-function WhatsAppButton({ text, children, dark = true }) {
-  return (
-    <a
-      href={wa(text)}
-      target="_blank"
-      rel="noreferrer"
-      className={`inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium transition-opacity hover:opacity-85 ${
-        dark ? 'bg-[#14130F] text-[#F4F1EA]' : 'bg-[#F4F1EA] text-[#14130F]'
-      }`}
-    >
-      <MessageCircle size={16} strokeWidth={1.75} />
-      {children}
-    </a>
   )
 }
 
@@ -121,8 +65,8 @@ function Nav() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-6">
         <a href="#top" className="font-serif text-2xl tracking-tight">{BRAND}</a>
         <nav className="hidden items-center gap-8 text-sm text-[#6B675D] md:flex">
-          <a href="#trabajos" className="hover:text-[#14130F] transition-colors">Trabajos</a>
-          <a href="#gamas" className="hover:text-[#14130F] transition-colors">Gamas</a>
+          <a href="#trabajos" className="hover:text-[#14130F] transition-colors">Ejemplos</a>
+          <a href="#gamas" className="hover:text-[#14130F] transition-colors">Opciones</a>
           <a href="#como" className="hover:text-[#14130F] transition-colors">Cómo trabajo</a>
         </nav>
         <a
@@ -159,14 +103,14 @@ function Hero() {
             Tu negocio,<br />con una web<br /><em className="italic">que se nota.</em>
           </h1>
           <p className="mt-8 max-w-md text-lg leading-relaxed text-[#6B675D]">
-            Ejemplos reales, no promesas. Ábrelos, tócalos y mira cómo quedaría la tuya.
+            Te hago la web de tu negocio y te ayudo a que la encuentren en Google. Abre los ejemplos, tócalos y mira cómo quedaría la tuya.
           </p>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
             <a
               href="#trabajos"
               className="inline-flex items-center justify-center gap-2 rounded-full border border-[#14130F]/25 px-6 py-3.5 text-sm font-medium hover:border-[#14130F] transition-colors"
             >
-              Ver trabajos <ArrowRight size={16} strokeWidth={1.75} />
+              Ver ejemplos <ArrowRight size={16} strokeWidth={1.75} />
             </a>
             <WhatsAppButton text="Hola, me gustaría hablar sobre una web para mi negocio.">
               Escríbeme por WhatsApp
@@ -217,63 +161,89 @@ function Hero() {
   )
 }
 
-function DemoCard({ demo }) {
+/* Tarjeta de un estilo: las capturas de sus demos cambian solas y "Ver más" lleva a su página */
+function StyleCard({ style, ms = 3500, wide = false }) {
+  const items = demosOf(style)
+  const [idx, setIdx] = useState(0)
+  const [paused, setPaused] = useState(false)
+
+  useEffect(() => {
+    if (paused || items.length < 2) return
+    const id = setInterval(() => setIdx(i => (i + 1) % items.length), ms)
+    return () => clearInterval(id)
+  }, [paused, items.length, ms])
+
+  if (!items.length) return null
+
   return (
     <article>
-    <Link to={`/demo/${demo.slug}`} className="group block">
-      <div className="overflow-hidden rounded-xl border border-[#14130F]/10 bg-white shadow-sm transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl">
-        <ScaledFrame slug={demo.slug} width={1280} height={800} title={`Vista previa de ${demo.name}`} fixed lazyMount />
-      </div>
-      <div className="mt-3 flex items-start justify-between gap-3">
-        <div>
-          <h4 className="text-base font-medium">{demo.name}</h4>
-          <p className="text-sm text-[#6B675D]">{demo.category}</p>
+      <Link
+        to={`/estilos/${style.key}`}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+        onFocus={() => setPaused(true)}
+        onBlur={() => setPaused(false)}
+        className={`group block ${wide ? 'lg:grid lg:grid-cols-[1.7fr_1fr] lg:items-center lg:gap-12' : ''}`}
+      >
+        <div className="relative aspect-[16/10] overflow-hidden rounded-xl border border-[#14130F]/10 bg-white shadow-sm transition-shadow duration-300 group-hover:shadow-xl">
+          {items.map((d, i) => (
+            <img
+              key={d.slug}
+              src={captureOf(d)}
+              alt={i === idx ? `Ejemplo de web: ${d.name}, ${d.category}` : ''}
+              width="1280"
+              height="800"
+              loading={i === 0 ? 'eager' : 'lazy'}
+              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-700 ${i === idx ? 'opacity-100' : 'opacity-0'}`}
+            />
+          ))}
+          <span className="absolute bottom-3 left-3 rounded-full bg-[#14130F]/75 px-3 py-1 text-xs text-[#F4F1EA]">
+            {items[idx].name}
+          </span>
+          <span className="absolute right-3 top-3 inline-flex items-center gap-1.5 rounded-full bg-[#F4F1EA] px-4 py-2 text-sm font-medium text-[#14130F] shadow-sm transition-transform duration-300 group-hover:-translate-y-0.5">
+            Ver más <ArrowUpRight size={15} strokeWidth={1.75} />
+          </span>
         </div>
-        <ArrowUpRight size={18} strokeWidth={1.5} className="mt-1 text-[#6B675D] transition-colors group-hover:text-[#14130F]" />
-      </div>
-    </Link>
+        <div className={wide ? 'mt-5 lg:mt-0' : 'mt-5'}>
+          <h4 className="font-serif text-3xl tracking-tight md:text-4xl">{style.title}</h4>
+          <p className="mt-2 leading-relaxed text-[#6B675D]">
+            <span className="font-medium text-[#14130F]">{style.name}.</span> {style.summary}
+          </p>
+        </div>
+      </Link>
     </article>
   )
 }
 
 function Works() {
+  const custom = STYLES.filter(s => s.tier === 'custom')
+  const base = STYLES.filter(s => s.tier === 'base')
+
   return (
     <section id="trabajos" className="border-t border-[#14130F]/10 py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-5">
-        <h2 className="font-serif text-5xl tracking-tight md:text-6xl">Trabajos</h2>
+        <h2 className="font-serif text-5xl tracking-tight md:text-6xl">Ejemplos de webs</h2>
         <p className="mt-4 max-w-lg text-[#6B675D]">
-          Webs de ejemplo para distintos tipos de negocio. Pulsa en cualquiera para abrirla entera.
+          Webs de ejemplo para distintos tipos de negocio, con textos inventados. Elige un estilo y míralas una por una.
         </p>
 
-        {TIERS.map(tier => {
-          const items = demos.filter(d => d.tier === tier.key)
-          if (!items.length) return null
-          return (
-            <div key={tier.key} className="mt-16">
-              <div className="mb-8 flex flex-col gap-1 border-b border-[#14130F]/10 pb-4 md:flex-row md:items-baseline md:justify-between">
-                <h3 className="font-serif text-3xl">{tier.title}</h3>
-                <p className="text-sm text-[#6B675D]">{tier.description}</p>
-              </div>
+        <div className="mt-16">
+          <div className="mb-8 flex flex-col gap-1 border-b border-[#14130F]/10 pb-4 md:flex-row md:items-baseline md:justify-between">
+            <h3 className="font-serif text-3xl">{TIER_TEXT.custom.title}</h3>
+            <p className="text-sm text-[#6B675D]">{TIER_TEXT.custom.description}</p>
+          </div>
+          <div className="grid gap-10 md:grid-cols-3 md:gap-6">
+            {custom.map((s, i) => <StyleCard key={s.key} style={s} ms={3500 + i * 600} />)}
+          </div>
+        </div>
 
-              {tier.groups ? tier.groups.map(group => {
-                const groupItems = items.filter(d => d.group === group.key)
-                if (!groupItems.length) return null
-                return (
-                  <div key={group.key} className="mb-10 last:mb-0">
-                    <p className="mb-4 text-xs uppercase tracking-[0.2em] text-[#6B675D]">{group.title}</p>
-                    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                      {groupItems.map(demo => <DemoCard key={demo.slug} demo={demo} />)}
-                    </div>
-                  </div>
-                )
-              }) : (
-                <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-                  {items.map(demo => <DemoCard key={demo.slug} demo={demo} />)}
-                </div>
-              )}
-            </div>
-          )
-        })}
+        <div className="mt-20">
+          <div className="mb-8 flex flex-col gap-1 border-b border-[#14130F]/10 pb-4 md:flex-row md:items-baseline md:justify-between">
+            <h3 className="font-serif text-3xl">{TIER_TEXT.base.title}</h3>
+            <p className="text-sm text-[#6B675D]">{TIER_TEXT.base.description}</p>
+          </div>
+          {base.map(s => <StyleCard key={s.key} style={s} ms={3200} wide />)}
+        </div>
       </div>
     </section>
   )
@@ -283,8 +253,8 @@ function Plans() {
   return (
     <section id="gamas" className="border-t border-[#14130F]/10 py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-5">
-        <h2 className="font-serif text-5xl tracking-tight md:text-6xl">Dos gamas</h2>
-        <p className="mt-4 max-w-lg text-[#6B675D]">Dos formas de tener una web profesional, según lo que necesite tu negocio.</p>
+        <h2 className="font-serif text-5xl tracking-tight md:text-6xl">Dos opciones</h2>
+        <p className="mt-4 max-w-lg text-[#6B675D]">Dos formas de tener una web profesional, según lo que necesite tu negocio. En las dos te dejo la web lista para que Google pueda encontrarla.</p>
 
         <div className="mt-12 grid gap-6 md:grid-cols-2">
           {PLANS.map((plan, i) => (
@@ -319,8 +289,8 @@ function Steps() {
     <section id="como" className="border-t border-[#14130F]/10 py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-5">
         <h2 className="font-serif text-5xl tracking-tight md:text-6xl">Cómo trabajo</h2>
-        <p className="mt-4 max-w-lg text-[#6B675D]">Un proceso claro, sin complicaciones.</p>
-        <ol className="mt-12 grid gap-10 md:grid-cols-3">
+        <p className="mt-4 max-w-lg text-[#6B675D]">Cuatro pasos claros, desde la primera conversación hasta que te encuentran en Google.</p>
+        <ol className="mt-12 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           {STEPS.map(s => (
             <li key={s.n} className="border-t border-[#14130F] pt-5">
               <p className="font-serif text-3xl text-[#6B675D]">{s.n}</p>
@@ -340,7 +310,7 @@ function FinalCTA() {
       <div className="mx-auto max-w-3xl px-5 text-center">
         <h2 className="font-serif text-5xl tracking-tight md:text-7xl">¿Hablamos de tu web?</h2>
         <p className="mx-auto mt-6 max-w-md text-lg text-[#F4F1EA]/65">
-          Cuéntame qué negocio tienes y te enseño cómo lo haría.
+          Cuéntame qué negocio tienes y te enseño cómo lo haría, y cómo conseguir que te encuentren en Google.
         </p>
         <div className="mt-10 flex justify-center">
           <WhatsAppButton text="Hola, me gustaría hablar sobre una web para mi negocio." dark={false}>
@@ -352,21 +322,17 @@ function FinalCTA() {
   )
 }
 
-function Footer() {
-  return (
-    <footer className="bg-[#14130F] pb-10 text-[#F4F1EA]/50">
-      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-3 border-t border-white/10 px-5 pt-8 text-sm sm:flex-row">
-        <span className="font-serif text-lg text-[#F4F1EA]">{BRAND}</span>
-        <span>© 2026 {BRAND}. Webs para negocios locales.</span>
-      </div>
-    </footer>
-  )
-}
-
 export default function HomePage() {
+  const { hash } = useLocation()
+
+  // Al volver desde una página de estilo con /#trabajos, baja hasta esa sección
+  useEffect(() => {
+    if (!hash) return
+    document.getElementById(hash.slice(1))?.scrollIntoView()
+  }, [hash])
+
   return (
-    <div className="bg-[#F4F1EA] text-[#14130F]" style={{ fontFamily: '"Inter", system-ui, sans-serif' }}>
-      <style>{`.font-serif { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; }`}</style>
+    <LandingShell>
       <Nav />
       <main>
         <Hero />
@@ -376,6 +342,6 @@ export default function HomePage() {
         <FinalCTA />
       </main>
       <Footer />
-    </div>
+    </LandingShell>
   )
 }
