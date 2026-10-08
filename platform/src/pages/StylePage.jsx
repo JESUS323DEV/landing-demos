@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { ArrowLeft, ArrowUpRight } from 'lucide-react'
-import { Footer, LandingShell, WhatsAppButton, BRAND } from '../components/landing'
+import { Brand, Footer, LandingShell, WhatsAppButton } from '../components/landing'
 import { TIER_TEXT, captureOf, demosOf, getStyle } from '../lib/estilos'
 import useDocumentMeta from '../lib/useDocumentMeta'
 
@@ -12,7 +12,7 @@ export default function StylePage() {
 
   useEffect(() => { window.scrollTo(0, 0) }, [key])
   useDocumentMeta(
-    style ? `${style.title} (${style.name}): diseño web para negocios locales en Barcelona` : 'Diseño web para negocios locales en Barcelona',
+    style ? `${style.title} (${style.name}): diseño web para negocios locales en Barcelona | JesúsDev` : 'JesúsDev | Diseño web para negocios locales en Barcelona',
     style ? `${style.summary} Mira los ejemplos de webs ${style.name === 'Base' ? 'de la gama Base' : `de estilo ${style.name.toLowerCase()}`} y ábrelos enteros.` : undefined,
   )
 
@@ -25,7 +25,7 @@ export default function StylePage() {
     <LandingShell>
       <header className="border-b border-[#14130F]/10">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-6">
-          <Link to="/" className="font-serif text-2xl tracking-tight">{BRAND}</Link>
+          <Link to="/" className="font-serif text-2xl tracking-tight"><Brand /></Link>
           <Link to="/#trabajos" className="inline-flex items-center gap-2 text-sm text-[#6B675D] transition-colors hover:text-[#14130F]">
             <ArrowLeft size={16} strokeWidth={1.75} /> Todos los estilos
           </Link>

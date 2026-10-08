@@ -24,6 +24,12 @@
   --font-demo-body: var(--demo-body-font);
 }
 
+/* Aparición suave de la palabra del titular de la portada al cambiar de negocio */
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: none; }
+}
+
 /* Pantalla de transición entre grupos de demos (DemoPager) */
 @keyframes fadeInOut {
   0%   { opacity: 0; }
