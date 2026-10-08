@@ -131,6 +131,27 @@ function PhoneDemo({ demo }) {
   )
 }
 
+/* Portátil con la captura de escritorio de la demo, solo en pantallas pequeñas: quien mira desde el móvil ve así cómo queda en un ordenador */
+function LaptopDemo({ demo }) {
+  return (
+    <Link to={`/demo/${demo.slug}`} aria-label={`Abrir la web ${demo.name}`} className="mx-auto block w-full max-w-[360px]">
+      <div className="rounded-t-xl border-[5px] border-b-0 border-[#14130F] bg-[#14130F]">
+        <img
+          key={demo.slug}
+          src={captureOf(demo)}
+          alt={`Ejemplo de web en ordenador: ${demo.name}, ${demo.category}`}
+          width="1280"
+          height="800"
+          className="block aspect-[16/10] w-full animate-[fadein_0.5s_ease] rounded-[2px] bg-white object-cover"
+        />
+      </div>
+      <div className="relative z-10 -mx-2 flex h-2.5 justify-center rounded-b-2xl bg-[#14130F]">
+        <span className="h-1 w-14 rounded-b-md bg-[#3a3935]" />
+      </div>
+    </Link>
+  )
+}
+
 /* Resultado de "Google": dirección, título y descripción de la web */
 function SearchResult({ demo, query }) {
   if (!demo) {
@@ -150,13 +171,13 @@ function SearchResult({ demo, query }) {
   return (
     <Link
       to={`/demo/${demo.slug}`}
-      className="group block rounded-2xl border border-[#14130F]/10 bg-white p-4 shadow-sm transition-shadow hover:shadow-lg"
+      className="group block rounded-2xl border border-[#14130F]/10 bg-white px-3 py-2.5 shadow-sm transition-shadow hover:shadow-lg lg:p-4"
     >
-      <p className="truncate text-xs text-[#6B675D]">www.{demo.slug}.es</p>
-      <p className="mt-1 text-lg font-medium leading-snug text-[#1a0dab] group-hover:underline">
+      <p className="truncate text-[11px] text-[#6B675D] lg:text-xs">www.{demo.slug}.es</p>
+      <p className="mt-0.5 text-sm font-medium leading-snug text-[#1a0dab] group-hover:underline lg:mt-1 lg:text-lg">
         {demo.name} | {demo.category} en Barcelona
       </p>
-      <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-[#6B675D]">{demo.hero?.description ?? demo.tagline}</p>
+      <p className="mt-0.5 line-clamp-1 text-xs leading-relaxed text-[#6B675D] lg:mt-1 lg:line-clamp-2 lg:text-sm">{demo.hero?.description ?? demo.tagline}</p>
     </Link>
   )
 }
@@ -202,7 +223,7 @@ function Hero() {
       type="button"
       aria-pressed={activeStyle.key === st.key}
       onClick={() => goToStyle(st.key)}
-      className={`rounded-full border px-2.5 py-2 text-xs transition-colors lg:px-4 lg:text-sm ${
+      className={`rounded-full border px-2.5 py-1.5 text-[11px] transition-colors lg:px-4 lg:py-2 lg:text-sm ${
         activeStyle.key === st.key ? 'border-[#14130F] bg-[#14130F] text-[#F4F1EA]' : 'border-[#14130F]/25 hover:border-[#14130F]'
       }`}
     >
@@ -212,41 +233,51 @@ function Hero() {
 
   return (
     <section id="top" className="relative overflow-hidden">
-      <div className="mx-auto grid max-w-6xl gap-x-12 gap-y-8 px-5 pb-16 pt-24 lg:max-w-[1180px] lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-y-0 lg:pb-24 lg:pt-36 xl:max-w-[1320px] 2xl:max-w-[1500px]">
-        <h1 className="order-1 font-serif text-[clamp(2.7rem,11.5vw,3.6rem)] leading-[0.98] tracking-tight lg:col-start-1 lg:row-start-1 lg:self-end lg:text-[clamp(3.2rem,7vw,6rem)] 2xl:text-[6.75rem]">
-          Tu <span key={noun} className="inline-block animate-[fadein_0.4s_ease]">{noun}</span>,<br />con una web<br /><em className="italic">que se nota.</em>
-        </h1>
+      <div className="mx-auto grid max-w-6xl gap-x-12 gap-y-3 px-5 pb-16 pt-[4.25rem] lg:max-w-[1180px] lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-y-0 lg:pb-24 lg:pt-36 xl:max-w-[1320px] 2xl:max-w-[1500px]">
+        {/* En móvil: primero el titular, el buscador y las pestañas, y después la web con su resultado de Google pegado debajo.
+            En escritorio el bloque desaparece y cada pieza va a su sitio de la cuadrícula */}
+        <div className="flex flex-col gap-5 lg:contents">
+          <h1 className="font-serif text-[clamp(2.6rem,13vw,3.8rem)] leading-[0.98] tracking-tight lg:col-start-1 lg:row-start-1 lg:self-end lg:text-[clamp(3.2rem,7vw,6rem)] 2xl:text-[6.75rem]">
+            Tu <span key={noun} className="inline-block animate-[fadein_0.4s_ease]">{noun}</span>,<br />con una web<br /><em className="italic">que se nota.</em>
+          </h1>
 
-        <div className="order-2 lg:col-start-1 lg:row-start-2 lg:mt-8">
-          <label htmlFor="buscador" className="mb-2 block text-sm font-medium">Escribe tu negocio y mira cómo quedaría tu web</label>
-          <div className="relative">
-            <Search size={18} strokeWidth={1.75} className="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-[#6B675D]" aria-hidden="true" />
-            <input
-              id="buscador"
-              type="search"
-              value={query}
-              onChange={e => setQuery(e.target.value)}
-              placeholder={`Por ejemplo: ${example}`}
-              autoComplete="off"
-              spellCheck="false"
-              className="h-14 w-full rounded-full border border-[#14130F]/20 bg-white pl-12 pr-5 text-base shadow-sm outline-none transition-colors placeholder:text-[#6B675D]/70 focus:border-[#14130F]"
-            />
+          <div className="lg:col-start-1 lg:row-start-2 lg:mt-8">
+            <label htmlFor="buscador" className="mb-2 block text-sm font-medium max-lg:sr-only">Escribe tu negocio y mira cómo quedaría tu web</label>
+            <div className="relative">
+              <Search size={18} strokeWidth={1.75} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[#6B675D] lg:left-5" aria-hidden="true" />
+              <input
+                id="buscador"
+                type="search"
+                value={query}
+                onChange={e => setQuery(e.target.value)}
+                placeholder={`Por ejemplo: ${example}`}
+                autoComplete="off"
+                spellCheck="false"
+                className="h-12 w-full rounded-full border border-[#14130F]/20 bg-white pl-10 pr-4 text-base shadow-sm outline-none transition-colors placeholder:text-[#6B675D]/70 focus:border-[#14130F] lg:h-14 lg:pl-12 lg:pr-5"
+              />
+            </div>
+            <div className="mt-2 flex gap-1.5 lg:mt-3 lg:gap-2">{tabs}</div>
           </div>
-          <div className="mt-3 flex gap-1.5 lg:gap-2">{tabs}</div>
+
+          <div className="lg:hidden">
+            <LaptopDemo demo={phoneDemo} />
+            <div className="relative -mt-1">
+              <SearchResult demo={demo} query={query} />
+            </div>
+          </div>
         </div>
 
-        {/* En móvil el móvil con la demo va arriba del todo y la tarjeta de Google bajo el buscador.
-            En escritorio van juntos a la derecha: el móvil y, debajo, la tarjeta */}
-        <div className="contents lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:flex lg:flex-col lg:items-center lg:gap-6">
+        {/* Escritorio: el móvil con la demo y, debajo, la tarjeta de Google */}
+        <div className="hidden lg:col-start-2 lg:row-span-3 lg:row-start-1 lg:flex lg:flex-col lg:items-center lg:gap-6">
           <div
-            className="order-first lg:order-none lg:w-full"
+            className="w-full"
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
           >
             <PhoneDemo key={phoneDemo.slug} demo={phoneDemo} />
           </div>
           <div
-            className="order-3 lg:order-none lg:w-[360px] 2xl:w-[400px]"
+            className="w-[360px] 2xl:w-[400px]"
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
           >
@@ -254,7 +285,7 @@ function Hero() {
           </div>
         </div>
 
-        <div className="order-4 lg:col-start-1 lg:row-start-3 lg:mt-10">
+        <div className="lg:col-start-1 lg:row-start-3 lg:mt-10">
           <p className="max-w-md text-lg leading-relaxed text-[#6B675D]">
             Te hago la web de tu negocio y te ayudo a que la encuentren en Google. Abre los ejemplos, tócalos y mira cómo quedaría la tuya.
           </p>
