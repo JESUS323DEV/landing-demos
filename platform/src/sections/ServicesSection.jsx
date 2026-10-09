@@ -5,7 +5,7 @@ export default function ServicesSection({ config }) {
   return (
     <section id="services" className="py-24 bg-demo-surface">
       <div className="max-w-6xl mx-auto px-6">
-        <h2 className="font-demo-heading text-demo-text text-4xl md:text-5xl mb-16">{config.title}</h2>
+        <h2 className="font-demo-heading text-demo-text text-4xl md:text-5xl mb-16 text-center md:text-left">{config.title}</h2>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {config.items.map((item, i) => (
             <div key={i} className="flex flex-col gap-4">
@@ -48,7 +48,9 @@ function ServicesCards({ config }) {
                     {item.featuredBadge}
                   </span>
                 )}
-                <span className="font-demo-body text-demo-muted text-xs opacity-30">Imagen</span>
+                {item.image?.src
+                  ? <img src={item.image.src} alt={item.image.alt ?? item.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+                  : <span className="font-demo-body text-demo-muted text-xs opacity-30">Imagen</span>}
               </div>
               <div className="p-6 flex flex-col gap-2">
                 {item.category && (

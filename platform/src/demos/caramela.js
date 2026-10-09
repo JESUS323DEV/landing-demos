@@ -29,6 +29,7 @@ export default {
   },
   social: [
     { platform: 'instagram', href: 'https://instagram.com/caramelapasteleria' },
+    { platform: 'facebook', href: 'https://facebook.com/caramelapasteleria' },
     { platform: 'whatsapp',  href: 'https://wa.me/34600000000' },
   ],
   sections: ['hero', 'about', 'services', 'gallery', 'contact'],

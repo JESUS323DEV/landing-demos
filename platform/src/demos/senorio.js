@@ -27,6 +27,7 @@ export default {
   },
   social: [
     { platform: 'instagram', href: 'https://instagram.com/senoriobcn' },
+    { platform: 'facebook', href: 'https://facebook.com/senoriobcn' },
     { platform: 'tiktok',    href: 'https://tiktok.com/@senoriobcn' },
     { platform: 'whatsapp',  href: 'https://wa.me/34625348917' },
   ],

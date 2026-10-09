@@ -16,7 +16,7 @@ export default function GallerySection({ config }) {
 
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
           <div className="flex flex-col gap-2">
-            <h2 className="font-demo-heading text-demo-text text-3xl md:text-4xl">{config.title}</h2>
+            <h2 className="font-demo-heading text-demo-text text-3xl md:text-4xl text-center md:text-left">{config.title}</h2>
           </div>
         </div>
 

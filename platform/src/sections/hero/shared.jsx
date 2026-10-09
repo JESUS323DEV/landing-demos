@@ -1,4 +1,5 @@
 import Icon from '../../components/Icon'
+
 export function CTAButtons({ config, dark }) {
   return (
     <div className="flex flex-col sm:flex-row gap-3">

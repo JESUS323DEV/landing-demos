@@ -1,8 +1,8 @@
 import Icon from '../components/Icon'
 import { useState } from 'react'
 
-/* form (opcional): { title, button, message, people: false } */
-function ReservaqMockup({ sent, onSubmit, form = {} }) {
+/* Formulario de consulta: nombre, teléfono, email, mensaje y aceptar la política. config.form.message (opcional) es el texto de ayuda del mensaje */
+function ContactForm({ sent, onSubmit, form = {} }) {
   const inp = 'w-full bg-demo-bg border border-demo-primary/20 rounded-xl text-demo-text font-demo-body text-sm px-4 py-3 outline-none focus:border-demo-primary transition-colors placeholder:text-demo-muted/40'
 
   if (sent) {
@@ -11,114 +11,97 @@ function ReservaqMockup({ sent, onSubmit, form = {} }) {
         <div className="w-14 h-14 rounded-full bg-demo-primary/15 flex items-center justify-center">
           <span className="text-2xl text-demo-primary">✓</span>
         </div>
-        <h3 className="font-demo-heading text-demo-primary text-2xl">Solicitud enviada</h3>
-        <p className="font-demo-body text-demo-muted text-sm">Te contactamos en menos de 24h.</p>
+        <h3 className="font-demo-heading text-demo-primary text-2xl">Mensaje enviado</h3>
+        <p className="font-demo-body text-demo-muted text-sm">Te respondemos en menos de 24 h.</p>
       </div>
     )
   }
 
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-4">
-      <p className="font-demo-body text-demo-muted text-xs uppercase tracking-widest">Tus datos</p>
-
-      <div className="grid grid-cols-2 gap-3">
-        <input type="text"   placeholder="Nombre"    required className={inp} />
-        <input type="tel"    placeholder="Teléfono"  required className={inp} />
+      <input type="text" placeholder="Nombre" required autoComplete="name" className={inp} />
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <input type="email" placeholder="Email" required autoComplete="email" className={inp} />
+        <input type="tel" placeholder="Teléfono" required autoComplete="tel" className={inp} />
       </div>
-      <input type="email" placeholder="Email" required className={inp} />
+      <textarea placeholder={form.message ?? 'Tu mensaje'} required rows={5} className={`${inp} resize-none`} />
 
-      <p className="font-demo-body text-demo-muted text-xs uppercase tracking-widest mt-1">Fecha y hora</p>
-      <div className="grid grid-cols-2 gap-3">
-        <div className={`${inp} flex items-center gap-2 cursor-pointer`}>
-          <Icon name="calendar" size={18} className="text-demo-primary" />
-          <span className="text-demo-muted/60">dd / mm / aaaa</span>
-        </div>
-        <div className={`${inp} flex items-center gap-2 cursor-pointer`}>
-          <Icon name="clock" size={18} className="text-demo-primary" />
-          <span className="text-demo-muted/60">Selecciona hora</span>
-        </div>
-      </div>
-
-      {form.people !== false && (
-        <div className="grid grid-cols-2 gap-3">
-          <div>
-            <p className="font-demo-body text-demo-muted text-xs uppercase tracking-widest mb-2">Personas</p>
-            <select className={inp}>
-              {[1,2,3,4,5,6].map(n => <option key={n}>{n} {n === 1 ? 'persona' : 'personas'}</option>)}
-            </select>
-          </div>
-        </div>
-      )}
-
-      <textarea placeholder={form.message ?? 'Mensaje (opcional)'} rows={3} className={`${inp} resize-none`} />
+      <label className="flex items-start gap-3 font-demo-body text-demo-muted text-xs leading-relaxed cursor-pointer">
+        <input type="checkbox" required className="mt-0.5 h-4 w-4 flex-shrink-0 accent-[var(--demo-primary)]" />
+        <span>He leído y acepto la política de privacidad.</span>
+      </label>
 
       <button
         type="submit"
         className="font-demo-body bg-demo-primary text-demo-bg text-sm font-semibold py-3.5 rounded-full hover:opacity-90 transition-opacity mt-1"
       >
-        {form.button ?? 'Reservar'}
+        Enviar
       </button>
       <p className="font-demo-body text-demo-muted text-xs text-center">
-        Powered by <span className="font-semibold text-demo-primary">Reservarq</span>
+        Powered by <span className="font-semibold text-demo-primary">Reservaq</span>
       </p>
     </form>
   )
 }
 
+// Mapa por defecto de las demos: una ubicación cualquiera de Barcelona
+const DEFAULT_MAP = 'https://maps.google.com/maps?q=Pla%C3%A7a%20de%20Catalunya%2C%20Barcelona&z=15&output=embed'
+
+// Una línea de contacto: icono pequeño y el dato al lado
+function ContactLine({ icon, children }) {
+  return (
+    <p className="flex items-start gap-3 font-demo-body text-demo-text text-base">
+      <Icon name={icon} size={20} className="mt-0.5 flex-shrink-0 text-demo-muted" />
+      <span className="min-w-0 break-words">{children}</span>
+    </p>
+  )
+}
+
+/* Primero el formulario de consulta; al lado (escritorio) o debajo (móvil), los datos de contacto, el horario y el mapa */
 export default function ContactSection({ config }) {
   const [sent, setSent] = useState(false)
-
-  const INFO_ICONS = { phone: 'phone', email: 'mail', address: 'map-pin', hours: 'clock' }
-  const infoRows = [
-    { key: 'phone',   label: 'Teléfono',  value: config.phone },
-    { key: 'email',   label: 'Email',     value: config.email },
-    { key: 'address', label: 'Dirección', value: config.address },
-    { key: 'hours',   label: 'Horario',   value: config.hours },
-  ].filter(r => r.value)
 
   return (
     <section id="contact" className="py-20 md:py-28 bg-demo-bg">
       <div className="max-w-6xl mx-auto px-5">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-start">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:items-stretch md:gap-12">
 
-          {/* Info */}
-          <div className="flex flex-col gap-6">
-            <h2 className="font-demo-heading text-demo-text text-3xl md:text-4xl leading-tight">
-              {config.title}
-            </h2>
-            {config.subtitle && (
-              <p className="font-demo-body text-demo-muted text-base leading-relaxed">{config.subtitle}</p>
-            )}
-            <div className="flex flex-col gap-5 mt-2">
-              {infoRows.map(row => (
-                <div key={row.key} className="flex items-start gap-4">
-                  <div className="w-11 h-11 rounded-xl bg-demo-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Icon name={INFO_ICONS[row.key]} size={20} className="text-demo-primary" />
-                  </div>
-                  <div>
-                    <p className="font-demo-body text-demo-muted text-xs uppercase tracking-widest mb-1">{row.label}</p>
-                    <p className="font-demo-body text-demo-text text-sm font-medium">{row.value}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
+          {/* Formulario de consulta */}
+          <div className="bg-demo-surface rounded-3xl p-7 md:p-9 border border-demo-primary/10">
+            <p className="font-demo-heading text-demo-text text-2xl mb-6 text-center md:text-left">¿Cómo te podemos ayudar?</p>
+            <ContactForm sent={sent} form={config.form} onSubmit={e => { e.preventDefault(); setSent(true) }} />
           </div>
 
-          {/* Mapa o formulario */}
-          {config.map ? (
-            <div className="rounded-3xl overflow-hidden border border-demo-primary/10 h-[420px]">
+          {/* Datos, horario y mapa */}
+          <div className="flex flex-col gap-6">
+            <div className="flex flex-col gap-3">
+              <h2 className="font-demo-heading text-demo-text text-3xl md:text-4xl leading-tight text-center md:text-left">{config.title}</h2>
+              {config.subtitle && (
+                <p className="font-demo-body text-demo-muted text-base leading-relaxed text-center md:text-left">{config.subtitle}</p>
+              )}
+            </div>
+
+            <div className="flex flex-col gap-4">
+              {config.phone && <ContactLine icon="phone">{config.phone}</ContactLine>}
+              {config.email && <ContactLine icon="mail">{config.email}</ContactLine>}
+              {config.address && <ContactLine icon="map-pin">{config.address}</ContactLine>}
+            </div>
+
+            {config.hours && (
+              <div>
+                <p className="font-demo-heading text-demo-text text-lg font-semibold mb-2">Horario</p>
+                <p className="font-demo-body text-demo-muted text-sm leading-relaxed">{config.hours}</p>
+              </div>
+            )}
+
+            <div className="relative h-64 md:h-auto md:min-h-[260px] md:flex-1 rounded-2xl overflow-hidden border border-demo-primary/10">
               <iframe
-                src={config.map.embedUrl}
-                width="100%" height="100%"
-                style={{ border: 0 }} loading="lazy" title="Ubicacion"
+                src={config.map?.embedUrl ?? DEFAULT_MAP}
+                className="absolute inset-0 h-full w-full"
+                style={{ border: 0 }} loading="lazy" title="Ubicación"
               />
             </div>
-          ) : (
-            <div className="bg-demo-surface rounded-3xl p-7 md:p-9 border border-demo-primary/10">
-              <p className="font-demo-heading text-demo-text text-xl mb-6">{config.form?.title ?? 'Reservas'}</p>
-              <ReservaqMockup sent={sent} form={config.form} onSubmit={e => { e.preventDefault(); setSent(true) }} />
-            </div>
-          )}
+          </div>
 
         </div>
       </div>

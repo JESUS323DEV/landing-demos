@@ -2,14 +2,15 @@ import Icon from '../components/Icon'
 /* Sección "nosotros" — layout 2 columnas: texto+stats | imagen/features */
 export default function AboutSection({ config }) {
   const sectionBg = config.bg ?? 'bg-demo-surface'
+  const hasImage = Boolean(config.image?.src)
   return (
     <section id="about" className={`py-20 md:py-28 ${sectionBg}`}>
       <div className="max-w-6xl mx-auto px-5">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
+        <div className={`grid grid-cols-1 gap-12 md:gap-20 items-center ${hasImage ? 'md:grid-cols-2' : 'max-w-2xl'}`}>
 
           {/* Texto */}
           <div className={`flex flex-col gap-5 ${config.flip ? 'md:order-2' : ''}`}>
-            <h2 className="font-demo-heading text-demo-text text-3xl md:text-5xl leading-tight">
+            <h2 className="font-demo-heading text-demo-text text-3xl md:text-5xl leading-tight text-center md:text-left">
               {config.title}
               {config.titleHighlight && (
                 <><br /><span className="text-demo-primary">{config.titleHighlight}</span></>
@@ -48,45 +49,22 @@ export default function AboutSection({ config }) {
             )}
 
             {config.cta && (
-              <a href={config.cta.href} className="self-start font-demo-body px-7 py-3 rounded-full bg-demo-accent text-demo-bg text-sm font-semibold mt-2 hover:opacity-90 transition-opacity">
+              <a href={config.cta.href} className="self-center md:self-start font-demo-body px-7 py-3 rounded-full bg-demo-accent text-demo-bg text-sm font-semibold mt-2 hover:opacity-90 transition-opacity">
                 {config.cta.label}
               </a>
             )}
           </div>
 
-          {/* Columna derecha: imagen o feature cards */}
-          <div className={config.flip ? 'md:order-1' : ''}>
-            {config.features ? (
-              <FeatureCards features={config.features} />
-            ) : (
+          {/* Columna derecha: la imagen, si la hay */}
+          {hasImage && (
+            <div className={config.flip ? 'md:order-1' : ''}>
               <ImageCol config={config} />
-            )}
-          </div>
+            </div>
+          )}
 
         </div>
       </div>
     </section>
-  )
-}
-
-function FeatureCards({ features }) {
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      {features.map((f, i) => (
-        <div
-          key={i}
-          className={`rounded-2xl p-6 flex flex-col gap-3 shadow-sm ${
-            f.dark ? 'bg-demo-accent text-demo-bg' : 'bg-demo-bg border border-demo-primary/10'
-          }`}
-        >
-          <div className={`w-10 h-10 rounded-full flex items-center justify-center ${f.dark ? 'bg-demo-bg/15' : 'bg-demo-primary/10'}`}>
-            <Icon name={f.icon} size={20} className={f.dark ? 'text-demo-bg' : 'text-demo-primary'} />
-          </div>
-          <h3 className={`font-demo-heading text-lg ${f.dark ? '' : 'text-demo-text'}`}>{f.title}</h3>
-          <p className={`font-demo-body text-sm leading-relaxed ${f.dark ? 'opacity-70' : 'text-demo-muted'}`}>{f.description}</p>
-        </div>
-      ))}
-    </div>
   )
 }
 

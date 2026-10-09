@@ -26,6 +26,7 @@ export default {
   },
   social: [
     { platform: 'instagram', href: 'https://instagram.com/dulcelima.madrid' },
+    { platform: 'facebook', href: 'https://facebook.com/dulcelima.madrid' },
     { platform: 'tiktok',    href: 'https://tiktok.com/@dulcelima.madrid' },
     { platform: 'whatsapp',  href: 'https://wa.me/34613515064' },
   ],

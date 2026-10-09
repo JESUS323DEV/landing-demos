@@ -29,6 +29,7 @@ export default {
   },
   social: [
     { platform: 'instagram', href: 'https://instagram.com/hinodebcn' },
+    { platform: 'facebook', href: 'https://facebook.com/hinodebcn' },
     { platform: 'tiktok',    href: 'https://tiktok.com/@hinodebcn' },
     { platform: 'whatsapp',  href: 'https://wa.me/34600000000' },
   ],

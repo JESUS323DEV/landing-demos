@@ -30,19 +30,14 @@ export default function Navbar({ demo }) {
       <div className="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
 
         {/* Logo */}
-        <a href="#hero" className="flex items-center gap-2.5">
-          <div className="w-9 h-9 rounded-full bg-demo-primary flex items-center justify-center flex-shrink-0">
+        <div className="flex min-w-0 items-center gap-2.5">
+          <a href="#hero" aria-label={demo.name} className="w-9 h-9 rounded-full bg-demo-primary flex items-center justify-center flex-shrink-0">
             <span className="font-demo-heading text-demo-bg text-sm font-bold leading-none">
               {demo.nav?.initials ?? demo.name.slice(0, 2).toUpperCase()}
             </span>
-          </div>
-          <div>
-            <p className={`font-demo-heading text-sm leading-tight tracking-wide ${textColor}`}>{demo.name}</p>
-            {demo.nav?.subtitle && (
-              <p className={`text-xs tracking-widest uppercase leading-none ${overlayActive ? 'text-white/80' : 'text-demo-primary'}`}>{demo.nav.subtitle}</p>
-            )}
-          </div>
-        </a>
+          </a>
+          <a href="#hero" className={`truncate font-demo-heading text-sm leading-tight tracking-wide ${textColor}`}>{demo.name}</a>
+        </div>
 
         {/* Desktop links */}
         <ul className="hidden md:flex items-center gap-8">
@@ -68,12 +63,15 @@ export default function Navbar({ demo }) {
           )}
         </div>
 
-        {/* Mobile hamburger */}
-        <button onClick={() => setOpen(o => !o)} className="md:hidden p-2 flex flex-col gap-1.5" aria-label="Menu">
-          <span className={`block h-0.5 w-6 transition-transform duration-200 ${hamBg} ${open ? 'translate-y-2 rotate-45' : ''}`} />
-          <span className={`block h-0.5 w-6 transition-opacity duration-200 ${hamBg} ${open ? 'opacity-0' : ''}`} />
-          <span className={`block h-0.5 w-6 transition-transform duration-200 ${hamBg} ${open ? '-translate-y-2 -rotate-45' : ''}`} />
-        </button>
+        {/* Móvil: las redes sociales y, a su derecha, el botón del menú */}
+        <div className="md:hidden flex flex-shrink-0 items-center gap-1">
+          <SocialLinks social={demo.social?.filter(s => ['instagram', 'tiktok', 'facebook'].includes(s.platform))} size="sm" muted={!overlayActive} light={overlayActive} />
+          <button onClick={() => setOpen(o => !o)} className="p-2 flex flex-col gap-1.5" aria-label="Menu">
+            <span className={`block h-0.5 w-6 transition-transform duration-200 ${hamBg} ${open ? 'translate-y-2 rotate-45' : ''}`} />
+            <span className={`block h-0.5 w-6 transition-opacity duration-200 ${hamBg} ${open ? 'opacity-0' : ''}`} />
+            <span className={`block h-0.5 w-6 transition-transform duration-200 ${hamBg} ${open ? '-translate-y-2 -rotate-45' : ''}`} />
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}

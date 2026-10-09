@@ -26,6 +26,7 @@ export default {
   },
   social: [
     { platform: 'instagram', href: 'https://instagram.com/intistreetfood' },
+    { platform: 'facebook', href: 'https://facebook.com/intistreetfood' },
     { platform: 'tiktok',    href: 'https://tiktok.com/@intistreetfood' },
     { platform: 'whatsapp',  href: 'https://wa.me/34612334789' },
   ],

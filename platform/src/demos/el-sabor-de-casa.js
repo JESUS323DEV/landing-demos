@@ -24,7 +24,11 @@ export default {
       },
     },
   },
-  social: [],
+  social: [
+    { platform: 'instagram', href: 'https://instagram.com/elpollastredhorta' },
+    { platform: 'facebook',  href: 'https://facebook.com/elpollastredhorta' },
+    { platform: 'tiktok',    href: 'https://tiktok.com/@elpollastredhorta' },
+  ],
   sections: ['hero', 'about', 'menu', 'order', 'contact'],
   nav: {
     initials: 'EPH',

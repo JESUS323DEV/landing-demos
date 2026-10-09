@@ -29,6 +29,7 @@ export default {
   },
   social: [
     { platform: 'instagram', href: 'https://instagram.com/almendrarestaurante' },
+    { platform: 'facebook', href: 'https://facebook.com/almendrarestaurante' },
     { platform: 'tiktok',    href: 'https://tiktok.com/@almendrarestaurante' },
     { platform: 'whatsapp',  href: 'https://wa.me/34600000000' },
   ],

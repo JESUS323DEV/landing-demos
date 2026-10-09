@@ -29,6 +29,7 @@ export default {
   },
   social: [
     { platform: 'instagram', href: 'https://instagram.com/brotepsicologia' },
+    { platform: 'facebook', href: 'https://facebook.com/brotepsicologia' },
     { platform: 'whatsapp',  href: 'https://wa.me/34600000000' },
   ],
   sections: ['hero', 'about', 'services', 'contact'],

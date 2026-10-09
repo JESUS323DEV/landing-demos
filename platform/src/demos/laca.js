@@ -29,6 +29,7 @@ export default {
   },
   social: [
     { platform: 'instagram', href: 'https://instagram.com/lacaestudio' },
+    { platform: 'facebook', href: 'https://facebook.com/lacaestudio' },
     { platform: 'tiktok',    href: 'https://tiktok.com/@lacaestudio' },
     { platform: 'whatsapp',  href: 'https://wa.me/34600000000' },
   ],

@@ -27,6 +27,7 @@ export default {
   },
   social: [
     { platform: 'instagram', href: 'https://instagram.com/lianabar' },
+    { platform: 'facebook', href: 'https://facebook.com/lianabar' },
     { platform: 'tiktok',    href: 'https://tiktok.com/@lianabar' },
   ],
   sections: ['hero', 'about', 'cta', 'contact'],

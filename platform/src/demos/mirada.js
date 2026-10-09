@@ -29,6 +29,7 @@ export default {
   },
   social: [
     { platform: 'instagram', href: 'https://instagram.com/miradasocial' },
+    { platform: 'facebook', href: 'https://facebook.com/miradasocial' },
     { platform: 'tiktok',    href: 'https://tiktok.com/@miradasocial' },
     { platform: 'whatsapp',  href: 'https://wa.me/34600000000' },
   ],
