@@ -1,5 +1,5 @@
 import Img from '../components/Img'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import Icon from '../components/Icon'
 export default function ServicesSection({ config }) {
   if (config.layout === 'cards') return <ServicesCards config={config} />
@@ -44,11 +44,44 @@ function CtaCard({ card }) {
   )
 }
 
-/* Móvil: carrusel lateral de tarjetas con la foto de fondo. Avanza solo y se pausa al tocarlo */
-function ServiceCarousel({ items }) {
+/* Móvil: carrusel lateral de tarjetas con la foto de fondo. Avanza solo, se pausa al tocarlo y va en bucle:
+   las tarjetas se pintan tres veces y, al salir de la copia del medio, salta sin animación a la misma tarjeta del medio.
+   También lo usa el hero de Caramela: cardClass cambia la medida de la tarjeta y showPrice enseña el precio */
+export function ServiceCarousel({ items, cardClass = 'aspect-[3/4]', showPrice = false }) {
   const ref = useRef(null)
   const [paused, setPaused] = useState(false)
   const resume = useRef(null)
+  const n = items.length
+  const loop = n > 1
+  const cards = loop ? [...items, ...items, ...items] : items
+
+  // Centra una tarjeta en el carrusel
+  const centerOn = (el, card, behavior) =>
+    el.scrollTo({ left: card.offsetLeft - (el.clientWidth - card.offsetWidth) / 2, behavior })
+
+  // Empieza en la primera tarjeta de la copia del medio
+  useLayoutEffect(() => {
+    const el = ref.current
+    if (el && loop) centerOn(el, el.children[n], 'instant')
+  }, [n, loop])
+
+  // Al parar el desplazamiento fuera de la copia del medio, salta a su gemela del medio
+  useEffect(() => {
+    const el = ref.current
+    if (!el || !loop) return
+    let t
+    const onScroll = () => {
+      clearTimeout(t)
+      t = setTimeout(() => {
+        const kids = el.children
+        const span = kids[n].offsetLeft - kids[0].offsetLeft
+        if (el.scrollLeft < kids[n].offsetLeft - el.clientWidth / 2) el.scrollTo({ left: el.scrollLeft + span, behavior: 'instant' })
+        else if (el.scrollLeft > kids[2 * n].offsetLeft - el.clientWidth / 2) el.scrollTo({ left: el.scrollLeft - span, behavior: 'instant' })
+      }, 140)
+    }
+    el.addEventListener('scroll', onScroll, { passive: true })
+    return () => { el.removeEventListener('scroll', onScroll); clearTimeout(t) }
+  }, [n, loop])
 
   useEffect(() => {
     const el = ref.current
@@ -62,8 +95,7 @@ function ServiceCarousel({ items }) {
       kids.forEach((k, i) => {
         if (Math.abs(k.offsetLeft + k.offsetWidth / 2 - center) < Math.abs(kids[cur].offsetLeft + kids[cur].offsetWidth / 2 - center)) cur = i
       })
-      const next = kids[(cur + 1) % kids.length]
-      el.scrollTo({ left: next.offsetLeft - (el.clientWidth - next.offsetWidth) / 2, behavior: 'smooth' })
+      centerOn(el, kids[Math.min(cur + 1, kids.length - 1)], 'smooth')
     }, 3800)
     return () => clearInterval(id)
   }, [paused, items.length])
@@ -81,10 +113,11 @@ function ServiceCarousel({ items }) {
       onMouseDown={pause}
       className="md:hidden -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-[11%] pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
     >
-      {items.map((item, i) => (
+      {cards.map((item, i) => (
         <article
           key={i}
-          className="relative aspect-[3/4] w-[78%] flex-shrink-0 snap-center overflow-hidden rounded-2xl bg-demo-surface"
+          aria-hidden={loop && (i < n || i >= 2 * n) ? true : undefined}
+          className={`relative ${cardClass} w-[78%] flex-shrink-0 snap-center overflow-hidden rounded-2xl bg-demo-surface`}
           style={item.image?.src ? undefined : { background: 'linear-gradient(135deg, var(--demo-surface), color-mix(in srgb, var(--demo-primary) 30%, var(--demo-surface)))' }}
         >
           {item.image?.src && (
@@ -96,6 +129,9 @@ function ServiceCarousel({ items }) {
               <span className="font-demo-body text-[11px] uppercase tracking-[0.2em] text-white/75">{item.category}</span>
             )}
             <h3 className="font-demo-heading text-2xl leading-tight">{item.title}</h3>
+            {showPrice && item.price && (
+              <p className="font-demo-body text-lg font-semibold">{item.price}</p>
+            )}
             {item.link && (
               <a href={item.link.href} className="font-demo-body mt-1 inline-flex items-center gap-1 text-xs font-medium uppercase tracking-widest text-white/85">
                 {item.link.label} <span>&rarr;</span>
@@ -109,6 +145,7 @@ function ServiceCarousel({ items }) {
 }
 
 function ServicesCards({ config }) {
+  const carousel = config.mobileCarousel
   return (
     <section id="services" className="py-20 md:py-28 bg-demo-bg">
       <div className="max-w-6xl mx-auto px-5">
@@ -121,14 +158,14 @@ function ServicesCards({ config }) {
           
         </div>
 
-        <ServiceCarousel items={config.items} />
-        {config.ctaCard && (
+        {carousel && <ServiceCarousel items={config.items} />}
+        {carousel && config.ctaCard && (
           <div className="md:hidden mt-6">
             <CtaCard card={config.ctaCard} />
           </div>
         )}
 
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className={`${carousel ? 'hidden md:grid' : 'grid'} grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6`}>
           {config.items.map((item, i) => (
             <div
               key={i}

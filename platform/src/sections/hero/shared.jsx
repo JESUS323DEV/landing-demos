@@ -1,17 +1,19 @@
 import Img from '../../components/Img'
 import Icon from '../../components/Icon'
 
-export function CTAButtons({ config, dark }) {
+// row: los botones van en fila también en móvil, con menos relleno para que quepan
+export function CTAButtons({ config, dark, row }) {
+  const pad = row ? 'px-5 sm:px-7' : 'px-7'
   return (
-    <div className="flex flex-col sm:flex-row gap-3">
-      <a href={config.cta.href} className="font-demo-body px-7 py-3.5 rounded-full bg-demo-primary text-demo-bg text-sm font-semibold tracking-wide hover:opacity-90 transition-opacity text-center">
+    <div className={`flex ${row ? 'flex-row' : 'flex-col sm:flex-row'} gap-3`}>
+      <a href={config.cta.href} className={`font-demo-body ${pad} py-3.5 rounded-full bg-demo-primary text-demo-bg text-sm font-semibold tracking-wide hover:opacity-90 transition-opacity text-center`}>
         {config.cta.label}
       </a>
 
       {config.ctaSecondary && (
         <a
           href={config.ctaSecondary.href}
-          className={`font-demo-body px-7 py-3.5 rounded-full text-sm font-semibold tracking-wide transition-colors text-center ${dark
+          className={`font-demo-body ${pad} py-3.5 rounded-full text-sm font-semibold tracking-wide transition-colors text-center ${dark
               ? 'bg-white/10 border border-white/30 text-white hover:bg-white/20'
               : 'border border-demo-primary/50 text-demo-text hover:border-demo-primary'
             }`}

@@ -96,6 +96,7 @@ export default {
   },
 
   services: {
+    mobileCarousel: true,
     label: 'Servicios',
     title: 'Lo que hacemos',
     subtitle: 'Pocos servicios, todos bien hechos.',
