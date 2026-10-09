@@ -6,50 +6,36 @@ export default function HeroEditorial({ config }) {
   const [idx, setIdx] = useSlideshow(images.length, 4500)
 
   return (
-    <section id="hero" className="relative bg-demo-bg overflow-hidden">
+    <section id="hero" className="relative flex min-h-[100svh] flex-col justify-end overflow-hidden bg-demo-bg md:block md:min-h-0">
 
-      {/* Móvil: imagen a todo el ancho con corte diagonal arriba, texto debajo */}
-      <div className="md:hidden relative pt-16">
-        <div
-          className="relative h-[54svh] min-h-[340px] max-h-[520px]"
-          style={{ clipPath: 'polygon(0 18%, 100% 0, 100% 100%, 0 100%)' }}
-        >
+      {/* Móvil: la foto es el fondo, con el corte diagonal arriba, y se funde con el color de la página; el texto va encima */}
+      <div className="md:hidden absolute inset-0">
+        <div className="absolute inset-0" style={{ clipPath: 'polygon(0 6%, 100% 0, 100% 100%, 0 100%)' }}>
           {images.map((img, i) => (
             <div key={i} className={`absolute inset-0 transition-opacity duration-1000 ${i === idx ? 'opacity-100' : 'opacity-0'}`}>
               {img.src
-                ? <img src={img.src} alt={img.label ?? ''} className="w-full h-full object-cover" />
+                ? <img src={img.src} alt={img.label ?? ''} className="w-full h-full object-cover object-top" />
                 : <div className="w-full h-full" style={{ background: img.bg ?? 'var(--demo-surface)' }} />
               }
             </div>
           ))}
         </div>
-        {images.length > 1 && (
-          <div className="absolute bottom-5 right-8 flex items-center gap-2">
-            {images.map((_, i) => (
-              <button
-                key={i}
-                onClick={() => setIdx(i)} aria-label={`Ir a la imagen ${i + 1}`}
-                className={`h-[3px] rounded-full transition-all duration-500 ${i === idx ? 'w-8 bg-demo-primary' : 'w-3 bg-demo-primary/30'}`}
-              />
-            ))}
-          </div>
-        )}
       </div>
 
       <div className="relative flex items-center md:min-h-[680px]">
-
-        {/* Texto */}
-        <div className="relative z-10 w-full md:w-[50%] xl:mx-25 px-8 md:px-14 lg:px-24 pt-8 md:pt-28 pb-12 md:pb-20 flex flex-col justify-center items-center text-center md:items-start md:text-left">
-          <h1 className="w-full text-left font-demo-heading text-demo-text leading-[1.05] text-[3.4rem] md:text-[clamp(2.6rem,5vw,4.5rem)] mb-5">
+        {/* Texto. En móvil todo va sobre un panel crema con el borde de arriba en diagonal; la foto queda limpia por encima */}
+        <div className="relative z-10 w-full md:w-[50%] xl:mx-25 px-8 md:px-14 lg:px-24 pt-0 md:pt-28 pb-0 md:pb-20 flex flex-col justify-center items-center text-center md:items-start md:text-left">
+          <div className="-mx-8 self-stretch bg-demo-bg px-8 pb-8 pt-16 [clip-path:polygon(0_0,100%_56px,100%_100%,0_100%)] md:contents">
+          <h1 className="w-full text-left font-demo-heading text-demo-text leading-[1.05] text-[2.6rem] md:text-[clamp(2.6rem,5vw,4.5rem)] mb-4 md:mb-5">
             {config.title}
             {config.titleHighlight && (
-              <><br /><em className="not-italic text-demo-primary">{config.titleHighlight}</em></>
+              <><br /><em className="not-italic">{config.titleHighlight}</em></>
             )}
             {config.titleGlow && (
-              <><br /><em className="not-italic text-demo-primary">{config.titleGlow}</em></>
+              <><br /><em className="not-italic">{config.titleGlow}</em></>
             )}
           </h1>
-          <p className="font-demo-body text-demo-muted text-lg md:text-base leading-relaxed max-w-sm md:max-w-xs mb-8">
+          <p className="font-demo-body text-demo-muted text-base text-left leading-relaxed max-w-sm md:max-w-xs mb-5 md:mb-8">
             {config.description}
           </p>
 
@@ -62,6 +48,7 @@ export default function HeroEditorial({ config }) {
                 {config.ctaSecondary.label}
               </a>
             )}
+          </div>
           </div>
 
           {images.length > 1 && (

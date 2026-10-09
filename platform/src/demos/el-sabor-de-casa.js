@@ -46,6 +46,7 @@ export default {
     title: 'que fa ',
     titleHighlight: 'olor',
     titleSuffix: ' a casa.',
+    emphasis: 'italic',
     description: 'Pollastre a l\'ast amanit amb romaní, cruixent per fora i sucós per dins. Cuina casolana de tota la vida, al barri d\'Horta-Guinardó.',
     cta: { label: 'Fes la comanda', href: '#order' },
     ctaSecondary: { label: 'Veure la carta', href: '#menu' },

@@ -36,7 +36,7 @@ export default function HeroTiras({ config }) {
         <h1 className="w-full text-left font-demo-heading leading-[1.04] text-demo-text text-[3.2rem] lg:text-[clamp(2.6rem,4.6vw,4.6rem)]">
           {config.title}
           {config.titleHighlight && (
-            <><br /><em className="italic font-normal text-demo-primary">{config.titleHighlight}</em></>
+            <><br /><span className="underline decoration-wavy decoration-demo-primary decoration-2 underline-offset-[0.2em]">{config.titleHighlight}</span></>
           )}
         </h1>
         <p className="mt-5 max-w-sm font-demo-body text-lg leading-relaxed text-demo-muted lg:max-w-md lg:text-base">{config.description}</p>

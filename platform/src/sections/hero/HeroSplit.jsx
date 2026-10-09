@@ -60,7 +60,13 @@ function SplitText({ config }) {
       <h1 className="font-demo-heading text-demo-text leading-none text-[clamp(3rem,10vw,6rem)]">
         {config.title}
         {config.titleGlow && (
-          <><br /><em className="not-italic text-demo-primary">{config.titleGlow}</em></>
+          <>
+            <br />
+            {/* glowStyle: 'outline' (solo el contorno) o 'soft' (el mismo color, más suave) */}
+            {config.glowStyle === 'outline'
+              ? <em className="not-italic" style={{ WebkitTextStroke: '2px var(--demo-text)', color: 'transparent' }}>{config.titleGlow}</em>
+              : <em className="not-italic opacity-60">{config.titleGlow}</em>}
+          </>
         )}
       </h1>
       {config.subtitle && (

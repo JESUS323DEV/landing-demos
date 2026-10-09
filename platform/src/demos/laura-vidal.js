@@ -44,15 +44,15 @@ export default {
 
   hero: {
     layout: 'editorial',
-    title: 'Tu piel,',
-    titleHighlight: 'tu mejor versión.',
-    description: 'Tratamientos faciales y corporales personalizados con tecnología avanzada y resultados naturales.',
+    title: 'Aura',
+    titleHighlight: 'Estética',
+    description: 'Tratamientos faciales y corporales personalizados.',
     cta: { label: 'Reservar cita', href: '#contact' },
     ctaSecondary: { label: 'Ver tratamientos', href: '#services' },
     images: [
       { src: 'https://images.unsplash.com/photo-1552693673-1bf958298935?w=1400&h=1800&fit=crop&q=85', label: 'Tratamiento facial' },
-      { src: 'https://images.unsplash.com/photo-1516815989420-9cb5ef0fce78?w=1400&h=1800&fit=crop&q=85', label: 'Sala de tratamientos' },
-      { src: 'https://images.unsplash.com/photo-1695527081827-fdbc4e77be9b?w=1400&h=1800&fit=crop&q=85', label: 'Zona bienestar' },
+      { src: 'https://images.pexels.com/photos/10999291/pexels-photo-10999291.jpeg?auto=compress&cs=tinysrgb&w=1400&h=1800&fit=crop', label: 'Cuidado facial' },
+      { src: 'https://images.pexels.com/photos/16120490/pexels-photo-16120490.jpeg?auto=compress&cs=tinysrgb&w=1400&h=1800&fit=crop', label: 'Tratamiento en cabina' },
     ],
   },
 

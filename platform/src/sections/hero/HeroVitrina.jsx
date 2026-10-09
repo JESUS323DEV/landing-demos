@@ -56,7 +56,7 @@ export default function HeroVitrina({ config }) {
           <h1 className="font-demo-heading text-demo-text leading-[0.95] tracking-tight text-[clamp(3rem,9vw,8rem)]">
             {config.title}
             {config.titleHighlight && (
-              <><br /><em className="italic font-normal text-demo-primary">{config.titleHighlight}</em></>
+              <><br /><em className="italic font-normal">{config.titleHighlight}</em></>
             )}
           </h1>
           {config.description && (

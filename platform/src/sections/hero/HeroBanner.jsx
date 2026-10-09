@@ -37,10 +37,8 @@ export default function HeroBanner({ config }) {
       <div className="bg-demo-primary">
         <div className="max-w-7xl mx-auto px-6 md:px-10 py-10 md:py-14 grid gap-8 md:grid-cols-[1.4fr_1fr] md:items-end">
           <h1 className="font-demo-heading uppercase leading-[0.9] text-white text-[clamp(3.2rem,8vw,8rem)]">
-            {config.title}
-            {config.titleHighlight && (
-              <><br /><span className="text-demo-bg">{config.titleHighlight}</span></>
-            )}
+            <span className={config.titleHighlight ? 'block text-[0.42em] tracking-[0.3em]' : ''}>{config.title}</span>
+            {config.titleHighlight && <span className="block">{config.titleHighlight}</span>}
           </h1>
 
           <div className="flex flex-col gap-6">

@@ -120,7 +120,7 @@ export default function HeroApetece({ config }) {
               <em
                 key={i}
                 aria-hidden={i !== target}
-                className={`col-start-1 row-start-1 font-normal italic text-demo-primary transition-opacity duration-500 ${i === target ? 'opacity-100 delay-300' : 'opacity-0'}`}
+                className={`col-start-1 row-start-1 font-normal not-italic transition-opacity duration-500 ${i === target ? 'opacity-100 delay-300' : 'opacity-0'}`}
               >
                 {m.highlight}
               </em>

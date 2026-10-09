@@ -48,6 +48,7 @@ export default {
     badge: 'Repostería Peruana en Madrid',
     title: 'Dulces que',
     titleGlow: 'saben a Lima.',
+    glowStyle: 'soft',
     description: 'Tortas, alfajores y postres peruanos hechos a mano cada día. Con recetas de la abuela, ingredientes frescos y el cariño de quien lo hace con amor.',
     cta: { label: 'Ver productos', href: '#services' },
     ctaSecondary: { label: 'Hacer un pedido', href: '#contact' },

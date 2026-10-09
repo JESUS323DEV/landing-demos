@@ -1,6 +1,12 @@
 import Icon from '../../components/Icon'
 import useSlideshow from './useSlideshow'
 
+/* Cómo se destaca la palabra del titular, sin cambiar su color: config.emphasis */
+const EMPHASIS = {
+  underline: 'underline decoration-demo-primary decoration-[4px] underline-offset-4',
+  italic: 'italic',
+}
+
 /* ── Showcase (fondo claro, texto izquierda, imagen redondeada derecha, stats) ── */
 export default function HeroShowcase({ config }) {
   const images = config.images ?? []
@@ -20,7 +26,7 @@ export default function HeroShowcase({ config }) {
             {config.titleAccent && <>{config.titleAccent}<br /></>}
             {config.title}
             {config.titleHighlight && (
-              <span className="text-demo-primary underline decoration-demo-primary decoration-[3px] underline-offset-4">
+              <span className={EMPHASIS[config.emphasis ?? 'underline']}>
                 {config.titleHighlight}
               </span>
             )}

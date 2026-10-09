@@ -47,6 +47,7 @@ export default {
     badge: 'Street Food Peruano en Madrid',
     title: 'Brasa,',
     titleGlow: 'ceviche y chaufa.',
+    glowStyle: 'outline',
     description: 'Cocina peruana de verdad, en el corazón de Madrid. Pollo marinado 12 horas, ceviche del día y arroz de wok. Sin fusión, sin atajos.',
     cta: { label: 'Ver la carta', href: '#menu' },
     ctaSecondary: { label: 'Ubicación', href: '#contact' },
