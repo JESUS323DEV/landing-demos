@@ -1,3 +1,4 @@
+import Img from '../../components/Img'
 import Icon from '../../components/Icon'
 import useSlideshow from './useSlideshow'
 import { CTAButtons, StatsRow, HeroImages } from './shared'
@@ -7,7 +8,7 @@ import { CTAButtons, StatsRow, HeroImages } from './shared'
 function ImgBox({ img, className = '', style }) {
   return (
     <div className={`relative overflow-hidden ${className}`} style={{ background: img.bg ?? 'var(--demo-surface)', ...style }}>
-      {img.src && <img src={img.src} alt={img.label ?? ''} className="absolute inset-0 w-full h-full object-cover" />}
+      {img.src && <Img src={img.src} alt={img.label ?? ''} className="absolute inset-0 w-full h-full object-cover" />}
     </div>
   )
 }
@@ -92,7 +93,7 @@ function SplitNeon({ config }) {
       {images.map((img, i) => (
         <div key={i} className={`absolute inset-0 transition-opacity duration-[1500ms] ${i === idx ? 'opacity-100' : 'opacity-0'}`}>
           {img.src
-            ? <img src={img.src} alt={img.label ?? ''} className="w-full h-full object-cover" />
+            ? <Img src={img.src} alt={img.label ?? ''} className="w-full h-full object-cover" />
             : <div className="w-full h-full" style={{ background: img.bg ?? 'var(--demo-surface)' }} />
           }
         </div>
@@ -159,7 +160,7 @@ export default function HeroSplit({ config }) {
             {images.slice(0, 3).map((img, i) => (
               <div key={i} className="aspect-square rounded-xl overflow-hidden relative" style={{ background: img.bg ?? 'var(--demo-surface)' }}>
                 {img.src ? (
-                  <img src={img.src} alt={img.label ?? ''} className="w-full h-full object-cover" />
+                  <Img src={img.src} alt={img.label ?? ''} className="w-full h-full object-cover" />
                 ) : img.icon && (
                   <div className="w-full h-full flex items-center justify-center">
                     <Icon name={img.icon} size={28} className="opacity-60 text-demo-text" />

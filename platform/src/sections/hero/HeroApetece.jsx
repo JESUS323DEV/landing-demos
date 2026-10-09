@@ -1,3 +1,4 @@
+import Img from '../../components/Img'
 import { useEffect, useRef, useState } from 'react'
 import { Pointer } from 'lucide-react'
 import { CTAButtons } from './shared'
@@ -51,7 +52,7 @@ export default function HeroApetece({ config }) {
     <section id="hero" className="relative flex min-h-[100svh] flex-col overflow-hidden bg-demo-bg pt-[4.5rem] lg:min-h-[780px] lg:pt-0">
       {/* Foto grande con la cortina */}
       <div className="relative h-[30svh] min-h-[210px] overflow-hidden bg-demo-surface lg:absolute lg:inset-y-0 lg:right-0 lg:h-auto lg:min-h-0 lg:w-[54%]">
-        <img
+        <Img
           src={moods[shown]?.src}
           alt={moods[shown]?.name ?? ''}
           className="absolute inset-0 h-full w-full object-cover"
@@ -73,7 +74,7 @@ export default function HeroApetece({ config }) {
                   transitionDelay: `${s * 70}ms`,
                 }}
               >
-                <img
+                <Img
                   src={incomingSrc}
                   alt=""
                   className="absolute inset-y-0 h-full max-w-none object-cover"

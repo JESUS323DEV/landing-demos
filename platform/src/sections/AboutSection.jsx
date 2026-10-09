@@ -1,3 +1,4 @@
+import Img from '../components/Img'
 import Icon from '../components/Icon'
 /* Sección "nosotros" — layout 2 columnas: texto+stats | imagen/features */
 export default function AboutSection({ config }) {
@@ -76,7 +77,7 @@ function ImageCol({ config }) {
         style={{ background: `linear-gradient(135deg, var(--demo-surface) 0%, color-mix(in srgb, var(--demo-primary) 20%, var(--demo-surface)) 100%)` }}
       >
         {config.image?.src
-          ? <img src={config.image.src} alt={config.image.alt ?? ''} className="w-full h-full object-cover" />
+          ? <Img src={config.image.src} alt={config.image.alt ?? ''} className="w-full h-full object-cover" />
           : <span className="font-demo-body text-demo-muted text-sm opacity-40">{config.imagePlaceholder ?? 'Foto del local'}</span>
         }
       </div>

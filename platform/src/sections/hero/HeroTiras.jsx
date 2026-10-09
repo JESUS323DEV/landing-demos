@@ -1,3 +1,4 @@
+import Img from '../../components/Img'
 import { CTAButtons } from './shared'
 
 /* ── Tiras: tres franjas verticales de foto, cada una más alta que la anterior, con el texto en la zona clara ──
@@ -11,7 +12,7 @@ function Strips({ images }) {
     <div className="flex h-full items-end gap-2 lg:gap-3">
       {images.slice(0, 3).map((img, i) => (
         <div key={i} className="min-w-0 flex-1 overflow-hidden bg-demo-surface" style={{ height: HEIGHTS[i] }}>
-          {img.src && <img src={img.src} alt={img.label ?? ''} className="h-full w-full object-cover" />}
+          {img.src && <Img src={img.src} alt={img.label ?? ''} className="h-full w-full object-cover" />}
         </div>
       ))}
     </div>

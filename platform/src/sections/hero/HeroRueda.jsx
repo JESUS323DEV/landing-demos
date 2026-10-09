@@ -1,3 +1,4 @@
+import Img from '../../components/Img'
 import { useEffect, useRef, useState } from 'react'
 import { CTAButtons } from './shared'
 import { SocialIcon } from '../../components/SocialIcons'
@@ -180,7 +181,7 @@ export default function HeroRueda({ config }) {
                     style={{ transform: `rotate(${-(theta + wheelAngle)}deg) scale(${active ? 1.2 : 0.82})` }}
                   >
                     <span className="block h-full w-full overflow-hidden rounded-full bg-demo-surface shadow-[0_18px_40px_-10px_rgba(0,0,0,0.7)] ring-4 ring-demo-bg">
-                      {d.src && <img src={d.src} alt={d.name} className="h-full w-full object-cover" />}
+                      {d.src && <Img src={d.src} alt={d.name} className="h-full w-full object-cover" />}
                     </span>
                     {d.badge && (
                       <span

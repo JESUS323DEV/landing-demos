@@ -1,3 +1,4 @@
+import Img from '../../components/Img'
 import { useState } from 'react'
 
 /* ── Fullbleed: foto a pantalla completa y titular protagonista ──
@@ -13,7 +14,7 @@ export default function HeroFullbleed({ config }) {
   return (
     <section id="hero" className="relative flex min-h-[100svh] overflow-hidden bg-demo-text">
       {config.image?.src && (
-        <img
+        <Img
           src={config.image.src}
           alt={config.image.alt ?? ''}
           className="absolute inset-0 h-full w-full object-cover"

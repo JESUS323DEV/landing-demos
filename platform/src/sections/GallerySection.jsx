@@ -1,3 +1,4 @@
+import Img from '../components/Img'
 const GRADIENTS = [
   'linear-gradient(135deg,#EAE4DC,#D4B896)',
   'linear-gradient(135deg,#E8EEE9,#B8CBBC)',
@@ -30,7 +31,7 @@ export default function GallerySection({ config }) {
                   className="rounded-xl aspect-square overflow-hidden relative"
                   style={{ background: img.bg ?? GRADIENTS[i % GRADIENTS.length] }}
                 >
-                  {img.src && <img src={img.src} alt={img.alt ?? ''} className="absolute inset-0 w-full h-full object-cover" />}
+                  {img.src && <Img src={img.src} alt={img.alt ?? ''} className="absolute inset-0 w-full h-full object-cover" />}
                   <div className="absolute bottom-0 inset-x-0 p-3">
                     <span className="font-demo-body text-white/70 text-xs drop-shadow">0{i + 1}</span>
                   </div>
@@ -50,7 +51,7 @@ export default function GallerySection({ config }) {
                     className={`rounded-xl overflow-hidden relative ${spanClass}`}
                     style={{ background: img.bg ?? GRADIENTS[i % GRADIENTS.length] }}
                   >
-                    {img.src && <img src={img.src} alt={img.alt ?? ''} className="absolute inset-0 w-full h-full object-cover" />}
+                    {img.src && <Img src={img.src} alt={img.alt ?? ''} className="absolute inset-0 w-full h-full object-cover" />}
                     <div className="absolute bottom-0 inset-x-0 p-4">
                       <span className="font-demo-body text-white/70 text-xs drop-shadow">0{i + 1}</span>
                     </div>
@@ -64,7 +65,7 @@ export default function GallerySection({ config }) {
             {config.images.map((img, i) => (
               <div key={i} className="relative aspect-square overflow-hidden group rounded-xl">
                 {img.src ? (
-                  <img
+                  <Img
                     src={img.src}
                     alt={img.alt}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"

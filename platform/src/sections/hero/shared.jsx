@@ -1,3 +1,4 @@
+import Img from '../../components/Img'
 import Icon from '../../components/Icon'
 
 export function CTAButtons({ config, dark }) {
@@ -49,7 +50,7 @@ export function HeroImages({ images }) {
           style={{ background: img.bg ?? 'var(--demo-surface)' }}
         >
           {img.src ? (
-            <img src={img.src} alt={img.label ?? ''} className="absolute inset-0 w-full h-full object-cover" />
+            <Img src={img.src} alt={img.label ?? ''} className="absolute inset-0 w-full h-full object-cover" />
           ) : (
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 opacity-60 group-hover:opacity-100 transition-opacity">
               {img.icon && <Icon name={img.icon} size={i === 0 ? 40 : 28} className="text-demo-text" />}
@@ -67,7 +68,7 @@ export function MobileSlideshow({ images, idx }) {
     <div className="md:hidden h-64 relative overflow-hidden">
       {images.map((img, i) => (
         <div key={i} className={`absolute inset-0 transition-opacity duration-1000 ${i === idx ? 'opacity-100' : 'opacity-0'}`}>
-          {img.src && <img src={img.src} alt={img.label ?? ''} className="w-full h-full object-cover" />}
+          {img.src && <Img src={img.src} alt={img.label ?? ''} className="w-full h-full object-cover" />}
         </div>
       ))}
     </div>

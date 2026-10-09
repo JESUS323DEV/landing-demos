@@ -1,3 +1,4 @@
+import Img from '../../components/Img'
 import Icon from '../../components/Icon'
 import useSlideshow from './useSlideshow'
 
@@ -80,7 +81,7 @@ function Slides({ images, idx, className = '' }) {
   return images.map((img, i) => (
     <div key={i} className={`absolute inset-0 transition-opacity duration-1000 ${i === idx ? 'opacity-100' : 'opacity-0'} ${className}`}>
       {img.src
-        ? <img src={img.src} alt={img.label ?? ''} className="w-full h-full object-cover" />
+        ? <Img src={img.src} alt={img.label ?? ''} className="w-full h-full object-cover" />
         : <div className="w-full h-full" style={{ background: img.bg ?? 'var(--demo-surface)' }} />
       }
     </div>

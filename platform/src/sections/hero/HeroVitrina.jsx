@@ -1,3 +1,4 @@
+import Img from '../../components/Img'
 import useSlideshow from './useSlideshow'
 import { CTAButtons } from './shared'
 
@@ -10,7 +11,7 @@ function Slot({ products, active, className = '' }) {
     <div className={className}>
       <div className="relative aspect-[3/4] overflow-hidden bg-demo-surface">
         {products.map((p, i) => (
-          <img
+          <Img
             key={i}
             src={p.image}
             alt={p.name}

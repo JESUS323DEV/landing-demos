@@ -1,3 +1,4 @@
+import Img from '../../components/Img'
 import useSlideshow from './useSlideshow'
 
 /* ── Editorial (texto izquierda, imagen derecha con corte diagonal) ── */
@@ -14,7 +15,7 @@ export default function HeroEditorial({ config }) {
           {images.map((img, i) => (
             <div key={i} className={`absolute inset-0 transition-opacity duration-1000 ${i === idx ? 'opacity-100' : 'opacity-0'}`}>
               {img.src
-                ? <img src={img.src} alt={img.label ?? ''} className="w-full h-full object-cover object-top" />
+                ? <Img src={img.src} alt={img.label ?? ''} className="w-full h-full object-cover object-top" />
                 : <div className="w-full h-full" style={{ background: img.bg ?? 'var(--demo-surface)' }} />
               }
             </div>
@@ -76,7 +77,7 @@ export default function HeroEditorial({ config }) {
               className={`absolute inset-0 transition-opacity  duration-1000 ${i === idx ? 'opacity-100' : 'opacity-0'}`}
             >
               {img.src
-                ? <img src={img.src} alt={img.label ?? ''} className="w-full h-full object-cover" />
+                ? <Img src={img.src} alt={img.label ?? ''} className="w-full h-full object-cover" />
                 : <div className="w-full h-full" style={{ background: img.bg ?? 'var(--demo-surface)' }} />
               }
             </div>

@@ -1,3 +1,4 @@
+import Img from '../../components/Img'
 
 
 /* ── Gallery Top (galería 5 imgs arriba, texto centrado abajo) ── */
@@ -15,7 +16,7 @@ export default function HeroGalleryTop({ config }) {
             className={`relative overflow-hidden rounded-xl ${i === 0 ? 'row-span-2' : ''}`}
             style={{ background: img.bg ?? 'var(--demo-surface)' }}
           >
-            {img.src && <img src={img.src} alt={img.label ?? ''} className="w-full h-full object-cover" />}
+            {img.src && <Img src={img.src} alt={img.label ?? ''} className="w-full h-full object-cover" />}
             {!img.src && img.label && (
               <div className="absolute inset-0 flex items-end p-4">
                 <span className="font-demo-body text-white/30 text-xs tracking-widest uppercase">{img.label}</span>
@@ -28,7 +29,7 @@ export default function HeroGalleryTop({ config }) {
       {/* Galería mobile: solo imagen principal */}
       <div className="md:hidden h-[45vw] min-h-[220px] relative overflow-hidden">
         {images[0]?.src
-          ? <img src={images[0].src} alt={images[0].label ?? ''} className="w-full h-full object-cover" />
+          ? <Img src={images[0].src} alt={images[0].label ?? ''} className="w-full h-full object-cover" />
           : <div className="w-full h-full" style={{ background: images[0]?.bg ?? 'var(--demo-surface)' }} />
         }
         <div className="absolute inset-0 bg-gradient-to-t from-demo-bg/80 to-transparent" />

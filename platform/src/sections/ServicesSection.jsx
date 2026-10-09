@@ -1,3 +1,4 @@
+import Img from '../components/Img'
 import { useEffect, useRef, useState } from 'react'
 import Icon from '../components/Icon'
 export default function ServicesSection({ config }) {
@@ -87,7 +88,7 @@ function ServiceCarousel({ items }) {
           style={item.image?.src ? undefined : { background: 'linear-gradient(135deg, var(--demo-surface), color-mix(in srgb, var(--demo-primary) 30%, var(--demo-surface)))' }}
         >
           {item.image?.src && (
-            <img src={item.image.src} alt={item.image.alt ?? item.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+            <Img src={item.image.src} alt={item.image.alt ?? item.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
           <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-5 text-white">
@@ -143,7 +144,7 @@ function ServicesCards({ config }) {
                   </span>
                 )}
                 {item.image?.src
-                  ? <img src={item.image.src} alt={item.image.alt ?? item.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+                  ? <Img src={item.image.src} alt={item.image.alt ?? item.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
                   : <span className="font-demo-body text-demo-muted text-xs opacity-30">Imagen</span>}
               </div>
               <div className="p-6 flex flex-col gap-2">
