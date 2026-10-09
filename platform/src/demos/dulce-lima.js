@@ -91,13 +91,13 @@ export default {
     cta: { label: 'Ver carta completa', href: '#menu' },
     items: [
       {
-        title: 'Tortas de Encargo',
+        title: 'Tortas de Encargo', image: { src: 'https://images.pexels.com/photos/28438607/pexels-photo-28438607.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Tortas de Encargo' },
         badge: 'Encargo',
         description: 'Tortas decoradas para cumpleaños, bodas y celebraciones. Rellenos peruanos: tres leches, manjar blanco, lúcuma.',
         price: 'Desde 35 €',
       },
       {
-        title: 'Suspiro a la Limeña',
+        title: 'Suspiro a la Limeña', image: { src: 'https://images.pexels.com/photos/34384839/pexels-photo-34384839.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Suspiro a la Limeña' },
         badge: 'Clásico',
         featured: true,
         featuredBadge: 'El más pedido',
@@ -105,7 +105,7 @@ export default {
         price: 'Desde 4,50 €',
       },
       {
-        title: 'Caja de Alfajores',
+        title: 'Caja de Alfajores', image: { src: 'https://images.pexels.com/photos/16101473/pexels-photo-16101473.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Caja de Alfajores' },
         badge: 'Regalo',
         description: 'Alfajores de maicena rellenos de manjar blanco casero. En caja de 6 o 12 unidades. El regalo perfecto.',
         price: 'Desde 12 €',
@@ -247,7 +247,7 @@ export default {
   contact: {
     label: 'Haz tu pedido',
     title: 'Cuéntanos qué necesitas.',
-    subtitle: 'Respondemos en menos de 24h. Para pedidos urgentes, escríbenos por WhatsApp.',
+    subtitle: 'Para pedidos urgentes, escríbenos por WhatsApp.',
     phone: '+34 613 51 50 64',
     email: 'hola@dulcelima.es',
     address: 'Calle Río Tajo, 3 · Alcorcón, Madrid',

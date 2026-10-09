@@ -103,7 +103,7 @@ export default {
   contact: {
     label: 'Contacto',
     title: 'Da el primer paso hacia tu mejor versión',
-    subtitle: 'Primera consulta gratuita. Te contactamos en menos de 24h.',
+    subtitle: 'Primera consulta gratuita.',
     phone: '612 345 678',
     email: 'hola@auraestetica.es',
     address: 'Carrer de Provença, 87 · Barcelona',

@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import Icon from '../components/Icon'
 export default function ServicesSection({ config }) {
   if (config.layout === 'cards') return <ServicesCards config={config} />
@@ -20,6 +21,92 @@ export default function ServicesSection({ config }) {
   )
 }
 
+function CtaCard({ card }) {
+  return (
+          <div className={`${card.tone === 'primary' ? 'bg-demo-primary' : 'bg-demo-accent'} rounded-2xl p-6 flex flex-col justify-between gap-6`}>
+            <div className="flex flex-col gap-3">
+              {card.label && (
+                <span className="font-demo-body text-demo-bg/60 text-xs font-medium tracking-widest uppercase">{card.label}</span>
+              )}
+              <h3 className="font-demo-heading text-demo-bg text-xl">{card.title}</h3>
+              <p className="font-demo-body text-demo-bg/60 text-sm leading-relaxed">{card.description}</p>
+            </div>
+            {card.button && (
+              <a
+                href={card.button.href}
+                className={`inline-block font-demo-body border border-demo-bg text-demo-bg text-xs px-5 py-3 rounded-full text-center hover:bg-demo-bg transition-colors ${card.tone === 'primary' ? 'hover:text-demo-primary' : 'hover:text-demo-accent'}`}
+              >
+                {card.button.label}
+              </a>
+            )}
+          </div>
+  )
+}
+
+/* Móvil: carrusel lateral de tarjetas con la foto de fondo. Avanza solo y se pausa al tocarlo */
+function ServiceCarousel({ items }) {
+  const ref = useRef(null)
+  const [paused, setPaused] = useState(false)
+  const resume = useRef(null)
+
+  useEffect(() => {
+    const el = ref.current
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (!el || paused || reduced || items.length < 2) return
+    const id = setInterval(() => {
+      const kids = Array.from(el.children)
+      const center = el.scrollLeft + el.clientWidth / 2
+      // La tarjeta más cercana al centro es la actual; se pasa a la siguiente
+      let cur = 0
+      kids.forEach((k, i) => {
+        if (Math.abs(k.offsetLeft + k.offsetWidth / 2 - center) < Math.abs(kids[cur].offsetLeft + kids[cur].offsetWidth / 2 - center)) cur = i
+      })
+      const next = kids[(cur + 1) % kids.length]
+      el.scrollTo({ left: next.offsetLeft - (el.clientWidth - next.offsetWidth) / 2, behavior: 'smooth' })
+    }, 3800)
+    return () => clearInterval(id)
+  }, [paused, items.length])
+
+  const pause = () => {
+    setPaused(true)
+    clearTimeout(resume.current)
+    resume.current = setTimeout(() => setPaused(false), 5000)
+  }
+
+  return (
+    <div
+      ref={ref}
+      onTouchStart={pause}
+      onMouseDown={pause}
+      className="md:hidden -mx-5 flex snap-x snap-mandatory gap-4 overflow-x-auto px-[11%] pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+    >
+      {items.map((item, i) => (
+        <article
+          key={i}
+          className="relative aspect-[3/4] w-[78%] flex-shrink-0 snap-center overflow-hidden rounded-2xl bg-demo-surface"
+          style={item.image?.src ? undefined : { background: 'linear-gradient(135deg, var(--demo-surface), color-mix(in srgb, var(--demo-primary) 30%, var(--demo-surface)))' }}
+        >
+          {item.image?.src && (
+            <img src={item.image.src} alt={item.image.alt ?? item.title} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
+          )}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 flex flex-col gap-2 p-5 text-white">
+            {item.category && (
+              <span className="font-demo-body text-[11px] uppercase tracking-[0.2em] text-white/75">{item.category}</span>
+            )}
+            <h3 className="font-demo-heading text-2xl leading-tight">{item.title}</h3>
+            {item.link && (
+              <a href={item.link.href} className="font-demo-body mt-1 inline-flex items-center gap-1 text-xs font-medium uppercase tracking-widest text-white/85">
+                {item.link.label} <span>&rarr;</span>
+              </a>
+            )}
+          </div>
+        </article>
+      ))}
+    </div>
+  )
+}
+
 function ServicesCards({ config }) {
   return (
     <section id="services" className="py-20 md:py-28 bg-demo-bg">
@@ -33,7 +120,14 @@ function ServicesCards({ config }) {
           
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <ServiceCarousel items={config.items} />
+        {config.ctaCard && (
+          <div className="md:hidden mt-6">
+            <CtaCard card={config.ctaCard} />
+          </div>
+        )}
+
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {config.items.map((item, i) => (
             <div
               key={i}
@@ -80,25 +174,7 @@ function ServicesCards({ config }) {
             </div>
           ))}
 
-          {config.ctaCard && (
-            <div className={`${config.ctaCard.tone === 'primary' ? 'bg-demo-primary' : 'bg-demo-accent'} rounded-2xl p-6 flex flex-col justify-between gap-6`}>
-              <div className="flex flex-col gap-3">
-                {config.ctaCard.label && (
-                  <span className="font-demo-body text-demo-bg/60 text-xs font-medium tracking-widest uppercase">{config.ctaCard.label}</span>
-                )}
-                <h3 className="font-demo-heading text-demo-bg text-xl">{config.ctaCard.title}</h3>
-                <p className="font-demo-body text-demo-bg/60 text-sm leading-relaxed">{config.ctaCard.description}</p>
-              </div>
-              {config.ctaCard.button && (
-                <a
-                  href={config.ctaCard.button.href}
-                  className={`inline-block font-demo-body border border-demo-bg text-demo-bg text-xs px-5 py-3 rounded-full text-center hover:bg-demo-bg transition-colors ${config.ctaCard.tone === 'primary' ? 'hover:text-demo-primary' : 'hover:text-demo-accent'}`}
-                >
-                  {config.ctaCard.button.label}
-                </a>
-              )}
-            </div>
-          )}
+          {config.ctaCard && <CtaCard card={config.ctaCard} />}
         </div>
 
         {config.cta && (

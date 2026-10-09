@@ -89,13 +89,13 @@ export default {
     cta: { label: 'Ver carta completa', href: '#menu' },
     items: [
       {
-        title: 'Pollo a la Brasa',
+        title: 'Pollo a la Brasa', image: { src: 'https://images.pexels.com/photos/30520200/pexels-photo-30520200.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Pollo a la Brasa' },
         badge: 'Brasa',
         description: 'Marinado 12 horas con adobo peruano de ajo, comino y ají panca. Asado lento sobre carbón. Crujiente por fuera, jugoso por dentro.',
         price: 'Desde 4,50 €',
       },
       {
-        title: 'Ceviche Clásico',
+        title: 'Ceviche Clásico', image: { src: 'https://images.pexels.com/photos/12946712/pexels-photo-12946712.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Ceviche Clásico' },
         badge: 'Firma',
         featured: true,
         featuredBadge: 'El más pedido',
@@ -103,7 +103,7 @@ export default {
         price: 'Desde 11,90 €',
       },
       {
-        title: 'Arroz Chaufa',
+        title: 'Arroz Chaufa', image: { src: 'https://images.pexels.com/photos/37179555/pexels-photo-37179555.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Arroz Chaufa' },
         badge: 'Wok',
         description: 'La fusión chino-peruana en su forma más pura. Arroz salteado en wok a fuego vivo con pollo, huevo, cebolleta y soja.',
         price: 'Desde 9,90 €',

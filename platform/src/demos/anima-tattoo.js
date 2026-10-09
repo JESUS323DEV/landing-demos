@@ -95,11 +95,11 @@ export default {
       button: { label: 'Pedir consulta', href: '#contact' },
     },
     items: [
-      { category: 'Detalle',     title: 'Fine line',   description: 'Trazo fino y delicado, ideal para piezas pequeñas, letras y símbolos.',          price: 'Desde 60 €',  link: { label: 'Pedir cita', href: '#contact' } },
-      { category: 'Contraste',   title: 'Blackwork',   description: 'Negro sólido, geometría y composiciones de gran impacto visual.',               price: 'Desde 90 €',  link: { label: 'Pedir cita', href: '#contact' } },
-      { category: 'Clásico',     title: 'Tradicional', description: 'Líneas gruesas, colores planos y los motivos de siempre, bien hechos.',          price: 'Desde 80 €',  link: { label: 'Pedir cita', href: '#contact' } },
-      { category: 'Detalle',     title: 'Realismo',    description: 'Retratos y escenas con sombras y volumen, como una fotografía sobre la piel.',  price: 'Desde 150 €', link: { label: 'Pedir cita', href: '#contact' } },
-      { category: 'Renovación',  title: 'Cover up',    description: 'Cubrimos o transformamos un tatuaje antiguo en una pieza nueva.',                price: 'Consultar',   link: { label: 'Pedir cita', href: '#contact' } },
+      { category: 'Detalle',     title: 'Fine line', image: { src: 'https://images.pexels.com/photos/25998494/pexels-photo-25998494.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Fine line' },   description: 'Trazo fino y delicado, ideal para piezas pequeñas, letras y símbolos.',          price: 'Desde 60 €',  link: { label: 'Pedir cita', href: '#contact' } },
+      { category: 'Contraste',   title: 'Blackwork', image: { src: 'https://images.pexels.com/photos/12639945/pexels-photo-12639945.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Blackwork' },   description: 'Negro sólido, geometría y composiciones de gran impacto visual.',               price: 'Desde 90 €',  link: { label: 'Pedir cita', href: '#contact' } },
+      { category: 'Clásico',     title: 'Tradicional', image: { src: 'https://images.pexels.com/photos/6156961/pexels-photo-6156961.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Tradicional' }, description: 'Líneas gruesas, colores planos y los motivos de siempre, bien hechos.',          price: 'Desde 80 €',  link: { label: 'Pedir cita', href: '#contact' } },
+      { category: 'Detalle',     title: 'Realismo', image: { src: 'https://images.pexels.com/photos/17476244/pexels-photo-17476244.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Realismo' },    description: 'Retratos y escenas con sombras y volumen, como una fotografía sobre la piel.',  price: 'Desde 150 €', link: { label: 'Pedir cita', href: '#contact' } },
+      { category: 'Renovación',  title: 'Cover up', image: { src: 'https://images.pexels.com/photos/33952928/pexels-photo-33952928.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Cover up' },    description: 'Cubrimos o transformamos un tatuaje antiguo en una pieza nueva.',                price: 'Consultar',   link: { label: 'Pedir cita', href: '#contact' } },
     ],
   },
 

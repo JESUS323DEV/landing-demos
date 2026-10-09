@@ -107,11 +107,11 @@ export default {
       button: { label: 'Pedir cita', href: '#contact' },
     },
     items: [
-      { category: 'Pelo',     title: 'Corte clásico',        description: 'Tijera o máquina, lavado y peinado incluidos.',             price: '15 €', link: { label: 'Reservar', href: '#contact' } },
-      { category: 'Barba',    title: 'Arreglo de barba',     description: 'Perfilado, recorte y toalla caliente con aceites.',         price: '10 €', link: { label: 'Reservar', href: '#contact' } },
-      { category: 'Navaja',   title: 'Afeitado con navaja',  description: 'El afeitado de toda la vida, con espuma y toalla caliente.', price: '14 €', link: { label: 'Reservar', href: '#contact' } },
-      { category: 'Combo',    title: 'Corte + barba',        description: 'El servicio completo en una sola sesión.',                  price: '22 €', link: { label: 'Reservar', href: '#contact' } },
-      { category: 'Infantil', title: 'Corte infantil',       description: 'Para los menores de 12 años, con paciencia incluida.',      price: '12 €', link: { label: 'Reservar', href: '#contact' } },
+      { category: 'Pelo',     title: 'Corte clásico', image: { src: 'https://images.pexels.com/photos/17553842/pexels-photo-17553842.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Corte clásico' },        description: 'Tijera o máquina, lavado y peinado incluidos.',             price: '15 €', link: { label: 'Reservar', href: '#contact' } },
+      { category: 'Barba',    title: 'Arreglo de barba', image: { src: 'https://images.pexels.com/photos/19482851/pexels-photo-19482851.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Arreglo de barba' },     description: 'Perfilado, recorte y toalla caliente con aceites.',         price: '10 €', link: { label: 'Reservar', href: '#contact' } },
+      { category: 'Navaja',   title: 'Afeitado con navaja', image: { src: 'https://images.pexels.com/photos/15378346/pexels-photo-15378346.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Afeitado con navaja' },  description: 'El afeitado de toda la vida, con espuma y toalla caliente.', price: '14 €', link: { label: 'Reservar', href: '#contact' } },
+      { category: 'Combo',    title: 'Corte + barba', image: { src: 'https://images.pexels.com/photos/29189821/pexels-photo-29189821.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Corte + barba' },        description: 'El servicio completo en una sola sesión.',                  price: '22 €', link: { label: 'Reservar', href: '#contact' } },
+      { category: 'Infantil', title: 'Corte infantil', image: { src: 'https://images.pexels.com/photos/853427/pexels-photo-853427.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Corte infantil' },       description: 'Para los menores de 12 años, con paciencia incluida.',      price: '12 €', link: { label: 'Reservar', href: '#contact' } },
     ],
   },
 

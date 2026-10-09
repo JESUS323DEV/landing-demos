@@ -94,11 +94,11 @@ export default {
       button: { label: 'Pedir presupuesto', href: '#contact' },
     },
     items: [
-      { category: 'Bollería',  title: 'Medialunas',         description: 'Hojaldradas, ligeras y recién horneadas cada mañana.',        price: '1,80 €',     link: { label: 'Pedir', href: '#contact' } },
-      { category: 'Tortas',    title: 'Torta de chocolate', description: 'Esponjosa, con crema de chocolate y un toque de sal.',          price: '4,50 € / porción', link: { label: 'Pedir', href: '#contact' } },
-      { category: 'Galletas',  title: 'Galletas de mantequilla', description: 'Crujientes por fuera y tiernas por dentro. En cajas para regalar.', price: '2,20 €', link: { label: 'Pedir', href: '#contact' } },
-      { category: 'Tartas',    title: 'Tarta de queso',     description: 'Cremosa y suave, sobre una base de galleta casera.',            price: '4,20 € / porción', link: { label: 'Pedir', href: '#contact' } },
-      { category: 'Chocolate', title: 'Brownie',            description: 'Denso, con chocolate negro y nueces.',                          price: '2,80 €',     link: { label: 'Pedir', href: '#contact' } },
+      { category: 'Bollería',  title: 'Medialunas', image: { src: 'https://images.pexels.com/photos/38811161/pexels-photo-38811161.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Medialunas' },         description: 'Hojaldradas, ligeras y recién horneadas cada mañana.',        price: '1,80 €',     link: { label: 'Pedir', href: '#contact' } },
+      { category: 'Tortas',    title: 'Torta de chocolate', image: { src: 'https://images.pexels.com/photos/29174808/pexels-photo-29174808.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Torta de chocolate' }, description: 'Esponjosa, con crema de chocolate y un toque de sal.',          price: '4,50 € / porción', link: { label: 'Pedir', href: '#contact' } },
+      { category: 'Galletas',  title: 'Galletas de mantequilla', image: { src: 'https://images.pexels.com/photos/39942764/pexels-photo-39942764.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Galletas de mantequilla' }, description: 'Crujientes por fuera y tiernas por dentro. En cajas para regalar.', price: '2,20 €', link: { label: 'Pedir', href: '#contact' } },
+      { category: 'Tartas',    title: 'Tarta de queso', image: { src: 'https://images.pexels.com/photos/30844785/pexels-photo-30844785.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Tarta de queso' },     description: 'Cremosa y suave, sobre una base de galleta casera.',            price: '4,20 € / porción', link: { label: 'Pedir', href: '#contact' } },
+      { category: 'Chocolate', title: 'Brownie', image: { src: 'https://images.pexels.com/photos/7966399/pexels-photo-7966399.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Brownie' },            description: 'Denso, con chocolate negro y nueces.',                          price: '2,80 €',     link: { label: 'Pedir', href: '#contact' } },
     ],
   },
 

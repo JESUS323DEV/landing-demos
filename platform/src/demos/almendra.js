@@ -94,9 +94,9 @@ export default {
       button: { label: 'Reservar mesa', href: '#contact' },
     },
     items: [
-      { category: 'Para compartir', title: 'Mesa de tapas',         description: 'Croquetas, albóndigas, embutidos y aceitunas.', price: '22,00 €', link: { label: 'Reservar mesa', href: '#contact' } },
-      { category: 'A la brasa',     title: 'Solomillo a la brasa',  description: 'Ternera con hierbas frescas y salsa de la casa.', price: '21,50 €', link: { label: 'Reservar mesa', href: '#contact' } },
-      { category: 'Postre',         title: 'Coulant de chocolate',  description: 'Corazón fundido con helado de vainilla.', price: '6,90 €',  link: { label: 'Reservar mesa', href: '#contact' } },
+      { category: 'Para compartir', title: 'Mesa de tapas', image: { src: 'https://images.pexels.com/photos/15476368/pexels-photo-15476368.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Mesa de tapas' },         description: 'Croquetas, albóndigas, embutidos y aceitunas.', price: '22,00 €', link: { label: 'Reservar mesa', href: '#contact' } },
+      { category: 'A la brasa',     title: 'Solomillo a la brasa', image: { src: 'https://images.pexels.com/photos/29614295/pexels-photo-29614295.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Solomillo a la brasa' },  description: 'Ternera con hierbas frescas y salsa de la casa.', price: '21,50 €', link: { label: 'Reservar mesa', href: '#contact' } },
+      { category: 'Postre',         title: 'Coulant de chocolate', image: { src: 'https://images.pexels.com/photos/17294750/pexels-photo-17294750.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Coulant de chocolate' },  description: 'Corazón fundido con helado de vainilla.', price: '6,90 €',  link: { label: 'Reservar mesa', href: '#contact' } },
     ],
   },
 

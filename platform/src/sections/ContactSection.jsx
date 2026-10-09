@@ -12,7 +12,6 @@ function ContactForm({ sent, onSubmit, form = {} }) {
           <span className="text-2xl text-demo-primary">✓</span>
         </div>
         <h3 className="font-demo-heading text-demo-primary text-2xl">Mensaje enviado</h3>
-        <p className="font-demo-body text-demo-muted text-sm">Te respondemos en menos de 24 h.</p>
       </div>
     )
   }
@@ -76,9 +75,6 @@ export default function ContactSection({ config }) {
           <div className="flex flex-col gap-6">
             <div className="flex flex-col gap-3">
               <h2 className="font-demo-heading text-demo-text text-3xl md:text-4xl leading-tight text-center md:text-left">{config.title}</h2>
-              {config.subtitle && (
-                <p className="font-demo-body text-demo-muted text-base leading-relaxed text-center md:text-left">{config.subtitle}</p>
-              )}
             </div>
 
             <div className="flex flex-col gap-4">

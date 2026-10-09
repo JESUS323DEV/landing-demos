@@ -58,7 +58,7 @@ export default function Footer({ demo }) {
                 </div>
               )}
               {col.title && (
-                <p className="font-demo-body text-xs font-bold uppercase tracking-widest mb-4 text-demo-primary">
+                <p className="font-demo-body text-xs font-bold uppercase tracking-widest mb-4 text-demo-primary" style={dark ? { color: textCol } : undefined}>
                   {col.title}
                 </p>
               )}

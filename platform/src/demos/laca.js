@@ -99,11 +99,11 @@ export default {
       button: { label: 'Pedir consejo', href: '#contact' },
     },
     items: [
-      { category: 'Clásico',    title: 'Manicura',                description: 'Limado, cutículas y esmaltado tradicional con un acabado cuidado.',   price: 'Desde 18 €', link: { label: 'Reservar', href: '#contact' } },
-      { category: 'Duración',   title: 'Semipermanente',          description: 'Color brillante que dura semanas, con la base cuidada y protegida.',   price: 'Desde 25 €', link: { label: 'Reservar', href: '#contact' } },
-      { category: 'Estructura', title: 'Uñas de gel',             description: 'Extensión y refuerzo con la forma y el largo que tú elijas.',          price: 'Desde 40 €', link: { label: 'Reservar', href: '#contact' } },
-      { category: 'Creativo',   title: 'Nail art',                description: 'Diseños a mano, desde un detalle sutil hasta una pieza completa.',     price: 'Desde 5 € por uña', link: { label: 'Reservar', href: '#contact' } },
-      { category: 'Pies',       title: 'Pedicura',                description: 'Cuidado completo del pie con esmaltado a elegir.',                     price: 'Desde 28 €', link: { label: 'Reservar', href: '#contact' } },
+      { category: 'Clásico',    title: 'Manicura', image: { src: 'https://images.pexels.com/photos/34997568/pexels-photo-34997568.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Manicura' },                description: 'Limado, cutículas y esmaltado tradicional con un acabado cuidado.',   price: 'Desde 18 €', link: { label: 'Reservar', href: '#contact' } },
+      { category: 'Duración',   title: 'Semipermanente', image: { src: 'https://images.pexels.com/photos/31091768/pexels-photo-31091768.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Semipermanente' },          description: 'Color brillante que dura semanas, con la base cuidada y protegida.',   price: 'Desde 25 €', link: { label: 'Reservar', href: '#contact' } },
+      { category: 'Estructura', title: 'Uñas de gel', image: { src: 'https://images.pexels.com/photos/33220768/pexels-photo-33220768.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Uñas de gel' },             description: 'Extensión y refuerzo con la forma y el largo que tú elijas.',          price: 'Desde 40 €', link: { label: 'Reservar', href: '#contact' } },
+      { category: 'Creativo',   title: 'Nail art', image: { src: 'https://images.pexels.com/photos/29141587/pexels-photo-29141587.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Nail art' },                description: 'Diseños a mano, desde un detalle sutil hasta una pieza completa.',     price: 'Desde 5 € por uña', link: { label: 'Reservar', href: '#contact' } },
+      { category: 'Pies',       title: 'Pedicura', image: { src: 'https://images.pexels.com/photos/32321496/pexels-photo-32321496.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Pedicura' },                description: 'Cuidado completo del pie con esmaltado a elegir.',                     price: 'Desde 28 €', link: { label: 'Reservar', href: '#contact' } },
     ],
   },
 

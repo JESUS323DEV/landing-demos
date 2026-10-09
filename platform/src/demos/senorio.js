@@ -95,19 +95,19 @@ export default {
     items: [
       {
         category: 'Cevichería',
-        title: 'Ceviche Clásico',
+        title: 'Ceviche Clásico', image: { src: 'https://images.pexels.com/photos/29168410/pexels-photo-29168410.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Ceviche Clásico' },
         description: 'Corvina del día macerada en leche de tigre, cebolla morada, ají limo y maíz tostado. El plato que define nuestro criterio.',
         link: { label: 'Preguntar disponibilidad', href: '#contact' },
       },
       {
         category: 'De la plancha',
-        title: 'Lomo Saltado',
+        title: 'Lomo Saltado', image: { src: 'https://images.pexels.com/photos/30766454/pexels-photo-30766454.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Lomo Saltado' },
         description: 'Solomillo de ternera salteado con tomate, cebolla, soya oscura y patatas fritas. Directo del wok al plato.',
         link: { label: 'Reservar mesa', href: '#contact' },
       },
       {
         category: 'Clásico limeño',
-        title: 'Ají de Gallina',
+        title: 'Ají de Gallina', image: { src: 'https://images.pexels.com/photos/5737452/pexels-photo-5737452.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Ají de Gallina' },
         description: 'Pollo deshilachado en salsa cremosa de ají amarillo, pan y nueces. Sobre arroz blanco y papa amarilla.',
         link: { label: 'Reservar mesa', href: '#contact' },
       },

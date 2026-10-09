@@ -90,10 +90,10 @@ export default {
       button: { label: 'Pedir una revisión', href: '#contact' },
     },
     items: [
-      { category: 'Base',      title: 'Estrategia',      description: 'Objetivo, público, tono de voz y líneas de contenido.', price: 'Desde 150 €', link: { label: 'Consultar', href: '#contact' } },
-      { category: 'Cada mes',  title: 'Contenido',       description: 'Calendario, diseño de publicaciones y redacción de textos.', price: 'Desde 300 € al mes', link: { label: 'Consultar', href: '#contact' } },
-      { category: 'Día a día', title: 'Comunidad',       description: 'Respuesta a comentarios y mensajes, y cuidado de la audiencia.', price: 'Desde 120 € al mes', link: { label: 'Consultar', href: '#contact' } },
-      { category: 'Reels',     title: 'Vídeo corto',     description: 'Guion, grabación y edición de vídeos para Instagram y TikTok.', price: 'Desde 60 € por pieza', link: { label: 'Consultar', href: '#contact' } },
+      { category: 'Base',      title: 'Estrategia', image: { src: 'https://images.pexels.com/photos/11216260/pexels-photo-11216260.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Estrategia' },      description: 'Objetivo, público, tono de voz y líneas de contenido.', price: 'Desde 150 €', link: { label: 'Consultar', href: '#contact' } },
+      { category: 'Cada mes',  title: 'Contenido', image: { src: 'https://images.pexels.com/photos/27467541/pexels-photo-27467541.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Contenido' },       description: 'Calendario, diseño de publicaciones y redacción de textos.', price: 'Desde 300 € al mes', link: { label: 'Consultar', href: '#contact' } },
+      { category: 'Día a día', title: 'Comunidad', image: { src: 'https://images.pexels.com/photos/29130200/pexels-photo-29130200.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Comunidad' },       description: 'Respuesta a comentarios y mensajes, y cuidado de la audiencia.', price: 'Desde 120 € al mes', link: { label: 'Consultar', href: '#contact' } },
+      { category: 'Reels',     title: 'Vídeo corto', image: { src: 'https://images.pexels.com/photos/17614477/pexels-photo-17614477.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Vídeo corto' },     description: 'Guion, grabación y edición de vídeos para Instagram y TikTok.', price: 'Desde 60 € por pieza', link: { label: 'Consultar', href: '#contact' } },
     ],
   },
 

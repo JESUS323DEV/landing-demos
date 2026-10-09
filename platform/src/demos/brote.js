@@ -89,10 +89,10 @@ export default {
       button: { label: 'Pedir cita', href: '#contact' },
     },
     items: [
-      { category: 'Valoración',  title: 'Evaluación',            description: 'Una valoración completa para entender las necesidades del niño o la niña.',        link: { label: 'Saber más', href: '#contact' } },
-      { category: 'Apoyo',       title: 'Intervención',          description: 'Sesiones individuales con juego y estrategias adaptadas a cada edad.',            link: { label: 'Saber más', href: '#contact' } },
-      { category: 'Familias',    title: 'Orientación familiar',  description: 'Pautas prácticas para acompañar en casa con más tranquilidad.',                   link: { label: 'Saber más', href: '#contact' } },
-      { category: 'Escuela',     title: 'Colaboración con centros', description: 'Comunicación con colegios para que el apoyo llegue también al aula.',          link: { label: 'Saber más', href: '#contact' } },
+      { category: 'Valoración',  title: 'Evaluación', image: { src: 'https://images.pexels.com/photos/17044199/pexels-photo-17044199.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Evaluación' },            description: 'Una valoración completa para entender las necesidades del niño o la niña.',        link: { label: 'Saber más', href: '#contact' } },
+      { category: 'Apoyo',       title: 'Intervención', image: { src: 'https://images.pexels.com/photos/16068292/pexels-photo-16068292.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Intervención' },          description: 'Sesiones individuales con juego y estrategias adaptadas a cada edad.',            link: { label: 'Saber más', href: '#contact' } },
+      { category: 'Familias',    title: 'Orientación familiar', image: { src: 'https://images.pexels.com/photos/16341094/pexels-photo-16341094.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Orientación familiar' },  description: 'Pautas prácticas para acompañar en casa con más tranquilidad.',                   link: { label: 'Saber más', href: '#contact' } },
+      { category: 'Escuela',     title: 'Colaboración con centros', image: { src: 'https://images.pexels.com/photos/35432248/pexels-photo-35432248.jpeg?auto=compress&cs=tinysrgb&w=700&h=900&fit=crop', alt: 'Colaboración con centros' }, description: 'Comunicación con colegios para que el apoyo llegue también al aula.',          link: { label: 'Saber más', href: '#contact' } },
     ],
   },
 
