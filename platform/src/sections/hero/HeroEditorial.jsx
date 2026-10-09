@@ -22,11 +22,11 @@ export default function HeroEditorial({ config }) {
         </div>
       </div>
 
-      <div className="relative flex items-center md:min-h-[100svh] xl:min-h-[680px]">
+      <div className="relative flex items-center md:min-h-[100svh]">
         {/* Texto. En móvil todo va sobre un panel crema con el borde de arriba en diagonal; la foto queda limpia por encima */}
-        <div className="relative z-10 w-full md:w-[50%] xl:mx-25 px-8 md:px-14 lg:px-24 pt-0 md:pt-28 pb-0 md:pb-20 flex flex-col justify-center items-center text-center md:items-start md:text-left">
+        <div className="relative z-10 w-full md:w-[50%] xl:mx-25 2xl:ml-[calc(48vw_-_596px)] px-8 md:px-14 lg:px-24 pt-0 md:pt-28 pb-0 md:pb-20 flex flex-col justify-center items-center text-center md:items-start md:text-left">
           <div className="-mx-8 self-stretch bg-demo-bg px-8 pb-8 pt-16 [clip-path:polygon(0_0,100%_56px,100%_100%,0_100%)] md:contents">
-          <h1 className="w-full text-left font-demo-heading text-demo-text leading-[1.05] text-[2.6rem] md:text-[clamp(2.6rem,5vw,4.5rem)] mb-4 md:mb-5">
+          <h1 className="w-full text-left font-demo-heading text-demo-text leading-[1.05] text-[2.6rem] md:text-[clamp(2.8rem,5.5vw,5.2rem)] mb-4 md:mb-5">
             {config.title}
             {config.titleHighlight && (
               <><br /><em className="not-italic">{config.titleHighlight}</em></>
@@ -67,7 +67,7 @@ export default function HeroEditorial({ config }) {
 
         {/* Imagen con corte diagonal en el borde izquierdo */}
         <div
-          className="hidden md:block absolute right-0 inset-y-0 w-[68%] xl:w-[60%]"
+          className="hidden md:block absolute right-0 inset-y-0 w-[68%] 2xl:w-[60%]"
           style={{ clipPath: 'polygon(50% 0, 100% 0, 100% 100%, 0 100%)' }}
         >
           {images.map((img, i) => (
