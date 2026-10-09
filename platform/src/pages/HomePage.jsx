@@ -183,9 +183,7 @@ function SearchResult({ demo, query }) {
 }
 
 /* Las demos del hero van una tras otra: primero las de un estilo y, al acabar, las del siguiente */
-const SEQUENCE = STYLES.flatMap(style => demosOf(style).map(demo => ({ style, demo })))
-const startOf = key => SEQUENCE.findIndex(item => item.style.key === key)
-const styleOfDemo = demo => SEQUENCE.find(item => item.demo.slug === demo.slug)?.style
+const SEQUENCE = STYLES.flatMap(style => demosOf(style))
 const SLIDE_MS = 5000
 
 function Hero() {
@@ -205,36 +203,16 @@ function Hero() {
 
   const current = SEQUENCE[pos]
   const match = typed ? matchSector(query) : null
-  const demo = typed ? (match ? demos.find(d => d.slug === match.sector.slug) ?? null : null) : current.demo
+  const demo = typed ? (match ? demos.find(d => d.slug === match.sector.slug) ?? null : null) : current
   if (demo) lastDemo.current = demo
-  const phoneDemo = demo ?? lastDemo.current ?? current.demo
-  const activeStyle = (demo ? styleOfDemo(demo) : null) ?? current.style
+  const phoneDemo = demo ?? lastDemo.current ?? current
   const noun = match ? match.noun : 'negocio'
-  const example = SECTORS.find(sec => sec.slug === current.demo.slug)?.query ?? 'restaurante'
-
-  // Las pestañas son los estilos: al pulsar una se salta a su primera demo y se vuelve al ciclo automático
-  const goToStyle = key => {
-    setQuery('')
-    setPos(startOf(key))
-  }
-  const tabs = STYLES.map(st => (
-    <button
-      key={st.key}
-      type="button"
-      aria-pressed={activeStyle.key === st.key}
-      onClick={() => goToStyle(st.key)}
-      className={`rounded-full border px-2.5 py-1.5 text-[11px] transition-colors lg:px-4 lg:py-2 lg:text-sm ${
-        activeStyle.key === st.key ? 'border-[#14130F] bg-[#14130F] text-[#F4F1EA]' : 'border-[#14130F]/25 hover:border-[#14130F]'
-      }`}
-    >
-      {st.name}
-    </button>
-  ))
+  const example = SECTORS.find(sec => sec.slug === current.slug)?.query ?? 'restaurante'
 
   return (
     <section id="top" className="relative overflow-hidden">
-      <div className="mx-auto grid max-w-6xl gap-x-12 gap-y-3 px-5 pb-16 pt-[4.25rem] lg:max-w-[1180px] lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-y-0 lg:pb-24 lg:pt-36 xl:max-w-[1320px] 2xl:max-w-[1500px]">
-        {/* En móvil: primero el titular, el buscador y las pestañas, y después la web con su resultado de Google pegado debajo.
+      <div className="mx-auto grid max-w-6xl gap-x-12 gap-y-3 px-5 pb-16 pt-24 lg:max-w-[1180px] lg:grid-cols-[1.1fr_1fr] lg:items-center lg:gap-y-0 lg:pb-24 lg:pt-36 xl:max-w-[1320px] 2xl:max-w-[1500px]">
+        {/* En móvil: primero el titular y el buscador, y después la web con su resultado de Google pegado debajo.
             En escritorio el bloque desaparece y cada pieza va a su sitio de la cuadrícula */}
         <div className="flex flex-col gap-5 lg:contents">
           <h1 className="font-serif text-[clamp(2.6rem,13vw,3.8rem)] leading-[0.98] tracking-tight lg:col-start-1 lg:row-start-1 lg:self-end lg:text-[clamp(3.2rem,7vw,6rem)] 2xl:text-[6.75rem]">
@@ -255,9 +233,7 @@ function Hero() {
                 spellCheck="false"
                 className="h-12 w-full rounded-full border border-[#14130F]/20 bg-white pl-10 pr-4 text-base shadow-sm outline-none transition-colors placeholder:text-[#6B675D]/70 focus:border-[#14130F] lg:h-14 lg:pl-12 lg:pr-5"
               />
-            </div>
-            <div className="mt-2 flex gap-1.5 lg:mt-3 lg:gap-2">{tabs}</div>
-          </div>
+            </div>          </div>
 
           <div className="lg:hidden">
             <LaptopDemo demo={phoneDemo} />
